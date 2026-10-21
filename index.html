@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberQuest — Eroi della Sicurezza Digitale (File Unico)</title>
+<meta name="description" content="Impara la sicurezza online giocando: lezioni, sfide, storie a bivi, abbonamenti e Patentino di Sicurezza Digitale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1026; --bg2:#0a0e22; --card:#101736; --card2:#0d1330; --line:#232b52; --line2:#1a2250;
+  --ink:#05081a; --txt:#e2e8f0; --mut:#94a3b8; --mut2:#64748b;
+  --vio:#8b5cf6; --cy:#22d3ee; --lime:#a3e635; --gold:#fbbf24; --rose:#fb7185; --fux:#e879f9; --ora:#fb923c;
+  --fd:'Fredoka',ui-rounded,system-ui,sans-serif; --fb:'Nunito',system-ui,sans-serif; --fm:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--txt);background-color:var(--bg);
+  background-image:radial-gradient(ellipse 900px 480px at 85% -10%,rgba(139,92,246,.16),transparent 60%),
+  radial-gradient(ellipse 700px 420px at -10% 30%,rgba(34,211,238,.09),transparent 60%);
+  background-attachment:fixed;min-height:100vh}
+.fd{font-family:var(--fd)} .fm{font-family:var(--fm)}
+h1,h2,h3,h4{font-family:var(--fd)}
+.svgwarp{display:flex;justify-content:center;overflow:hidden;border-radius:24px}
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+.mut{color:var(--mut)} .mut2{color:var(--mut2)} .small{font-size:12px} .xs{font-size:11px}
+.center{text-align:center} .bcy{color:var(--cy)} .blime{color:var(--lime)} .bgold{color:var(--gold)}
+.bvio{color:var(--vio)} .brose{color:var(--rose)} .bfux{color:var(--fux)} .bora{color:var(--ora)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.between{justify-content:space-between} .grow{flex:1;min-width:0}
+.hidden{display:none!important}
+/* ── Header ── */
+header.nav{position:sticky;top:0;z-index:100;border-bottom:2px solid var(--line);background:rgba(11,16,38,.92);backdrop-filter:blur(10px)}
+.nav-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:10px 16px}
+.logo{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;text-decoration:none;color:#fff}
+.logo .zap{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,var(--vio),var(--cy));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--ink);transition:transform .2s}
+.logo:hover .zap{transform:rotate(8deg)}
+.logo b{font-family:var(--fd);font-size:19px;letter-spacing:-.3px}
+.navlinks{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{display:flex;align-items:center;gap:5px;padding:7px 10px;border-radius:12px;font-size:12px;font-weight:800;color:var(--mut);text-decoration:none;white-space:nowrap}
+.navlinks a:hover{background:rgba(255,255,255,.06);color:#fff}
+.navlinks a.on{background:rgba(139,92,246,.22);color:#ddd6fe}
+.navlinks a.sos{color:#fda4af} .navlinks a.sos.on{background:rgba(251,113,133,.22);color:#fecdd3}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;border:2px solid;font-size:11px;font-weight:900;white-space:nowrap}
+.icbtn{border:2px solid;font-weight:900;border-radius:12px;padding:7px 12px;cursor:pointer;font-family:var(--fd);display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+/* ── Componenti ── */
+.card{background:var(--card);border:2px solid var(--line);border-radius:24px;box-shadow:0 6px 0 var(--ink);padding:24px}
+.card.sm{padding:16px;border-radius:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:15px;padding:13px 22px;border-radius:16px;border:2px solid;cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .12s;user-select:none}
+.btn.solid{color:#0b1026;box-shadow:0 5px 0 var(--ink)}
+.btn:hover{transform:scale(1.03)} .btn:active{transform:translateY(2px);box-shadow:none}
+.btn.ghost{background:transparent}
+.btn.sm{padding:9px 16px;font-size:13px;border-radius:13px}
+.btn.big{padding:17px 28px;font-size:17px}
+.btn.block{width:100%}
+.bar{height:14px;border-radius:999px;background:#0a0e24;border:2px solid var(--ink);overflow:hidden}
+.bar>span{display:block;height:100%;border-radius:999px;transition:width .8s ease}
+.field{width:100%;background:#0a0e24;border:2px solid #2b3560;border-radius:16px;padding:13px 16px;color:#fff;font-family:var(--fb);font-weight:700;font-size:14px;outline:none}
+.field:focus{border-color:var(--cy)}
+.tag{display:inline-flex;align-items:center;gap:6px;border:2px solid;padding:4px 12px;border-radius:999px;font-family:var(--fd);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.divider{height:2px;background:var(--line);border-radius:2px}
+.kick{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:5px 14px;border:2px solid;border-radius:999px;display:inline-flex;gap:6px;align-items:center}
+.badgebox{width:46px;height:46px;border-radius:16px;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink);flex-shrink:0}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;width:100%;background:rgba(11,16,38,.7);border:2px solid #2b3560;border-radius:16px;padding:13px 16px;color:var(--txt);font-weight:800;font-size:14px;cursor:pointer;transition:.15s}
+.opt:hover{border-color:rgba(34,211,238,.7);background:rgba(34,211,238,.06)}
+.opt.ok{border-color:var(--lime);background:rgba(163,230,53,.1)}
+.opt.err{border-color:var(--rose);background:rgba(251,113,133,.1);animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+/* ── Marquee ── */
+.marquee{overflow:hidden;border-block:2px solid var(--line);background:var(--card2);padding:12px 0}
+.marquee>div{display:flex;gap:34px;width:max-content;animation:mq 26s linear infinite;font-family:var(--fd);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--mut2)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* ── Mock telefono ── */
+.phone{max-width:360px;margin:0 auto;border:2px solid var(--ink);border-radius:28px;overflow:hidden;box-shadow:0 8px 0 var(--ink);background:#0a1f1c}
+.phone .ph-head{display:flex;align-items:center;gap:10px;background:#0d2b27;padding:12px 14px;border-bottom:1px solid rgba(16,185,129,.2)}
+.phone .ph-body{padding:14px;background:#081210;min-height:150px}
+.bub{max-width:88%;background:#10352e;color:#d1fae5;border-radius:16px 16px 16px 5px;padding:12px;font-size:13.5px;line-height:1.5}
+.mail{background:var(--card2);max-width:520px;margin:0 auto;border:2px solid var(--ink);border-radius:20px;box-shadow:0 8px 0 var(--ink);overflow:hidden}
+.mail .m-head{display:flex;gap:6px;align-items:center;background:var(--card);padding:11px 14px;border-bottom:2px solid var(--line)}
+.dot{width:11px;height:11px;border-radius:50%}
+/* ── Toast & Modal ── */
+#toasts{position:fixed;bottom:16px;right:16px;z-index:300;display:flex;flex-direction:column;gap:10px;max-width:min(92vw,360px)}
+.toast{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:2px solid;border-radius:18px;box-shadow:0 6px 0 var(--ink);padding:14px;animation:tin .3s ease}
+@keyframes tin{from{opacity:0;transform:translateX(60px)}}
+#modal{position:fixed;inset:0;background:rgba(5,8,26,.86);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:400;padding:16px}
+#modal.open{display:flex}
+#modal .mbox{width:100%;max-width:440px;background:var(--card);border:2px solid;border-radius:26px;box-shadow:0 10px 0 var(--ink);padding:32px;text-align:center;animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.7) translateY(30px);opacity:0}}
+/* ── Media player video animato ── */
+.frame-screen{background:#080c1f;border:2px solid var(--line);border-radius:18px;padding:26px;text-align:center;position:relative;overflow:hidden}
+.frame-screen .scan{position:absolute;inset-inline:0;height:60px;background:linear-gradient(180deg,transparent,rgba(34,211,238,.07),transparent);animation:scan 4s linear infinite}
+@keyframes scan{from{transform:translateY(-100%)}to{transform:translateY(500%)}}
+.f-ic{width:74px;height:74px;margin:12px auto;border-radius:20px;border:2px solid;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 var(--ink)}
+.dots{display:flex;gap:6px}
+.dots button{width:26px;height:9px;border-radius:99px;border:none;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--cy)}
+/* ── Finto profilo hotspot ── */
+.hot{background:transparent;border:none;border-bottom:2px dashed rgba(34,211,238,.55);cursor:pointer;color:inherit;font:inherit;padding:0 2px;border-radius:4px}
+.hot:hover{background:rgba(251,113,133,.18);border-bottom-color:var(--rose)}
+.hot.ok{background:rgba(163,230,53,.18);border-bottom-style:solid;border-bottom-color:var(--lime)}
+/* ── Piano ── */
+.plancard{position:relative}
+.pop-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--cy);color:#0b1026;font-family:var(--fd);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 14px;border-radius:999px;border:2px solid var(--ink);white-space:nowrap}
+table.compare{width:100%;min-width:620px;border-collapse:collapse;font-size:13px}
+table.compare th,table.compare td{padding:12px 10px;border-bottom:1px solid var(--line2);text-align:center}
+table.compare td:first-child,table.compare th:first-child{text-align:left}
+/* ── Avatars & misc ── */
+.swatch{width:38px;height:38px;border-radius:14px;border:2px solid var(--ink);cursor:pointer;transition:transform .12s}
+.swatch:hover{transform:scale(1.12)}
+.swatch.on{border-color:var(--lime)}
+.itembtn{display:flex;flex-direction:column;gap:2px;text-align:left;border-radius:14px;padding:10px 12px;border:2px solid #2b3560;background:rgba(11,16,38,.55);color:var(--txt);font-size:12.5px;font-weight:800;cursor:pointer;transition:.12s}
+.itembtn:hover{border-color:rgba(139,92,246,.6)}
+.itembtn.on{border-color:var(--lime);background:rgba(163,230,53,.1)}
+.itembtn.lock{opacity:.55;cursor:not-allowed;border-color:#201c3a}
+.acc-h{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:14px;font-weight:700;color:#fff}
+/* ── Certificato statico ── */
+#certWrap{display:flex;justify-content:center}
+#cert{position:relative;aspect-ratio:297/210;width:100%;max-width:1000px;background:#f8f3e7;border-radius:6px;box-shadow:0 20px 50px rgba(0,0,0,.45);color:#1e2a5a;overflow:hidden}
+.cert-frame{position:absolute;inset:12px;border:3px solid #1e2a5a;pointer-events:none}
+.cert-frame2{position:absolute;inset:19px;border:1px solid #c9a227;pointer-events:none}
+.cert-in{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:4.5% 6%}
+.cert-name{font-family:var(--fd);font-weight:700;color:#1e2a5a;font-size:clamp(26px,4.5vw,46px)}
+.cert-rule{height:3px;width:260px;max-width:80%;background:linear-gradient(90deg,transparent,#c9a227,transparent);margin:4px auto}
+/* ── Stampa ── */
+@media print{
+  @page{size:A4 landscape;margin:0}
+  body{background:#fff!important;background-image:none!important}
+  .no-print{display:none!important}
+  #certWrap{position:static}
+  #cert{position:fixed;inset:0;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;box-shadow:none}
+}
+@media (max-width:760px){ .hide-sm{display:none} }
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.floaty{animation:floaty 5s ease-in-out infinite}
+.pulse{animation:pul 2s ease-in-out infinite}
+@keyframes pul{50%{opacity:.55}}
+</style>
+</head>
+<body>
+<header class="nav no-print">
+  <div class="nav-in">
+    <a class="logo" href="#/home">
+      <span class="zap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+      <b>Cyber<span style="color:var(--cy)">Quest</span></b>
+    </a>
+    <nav class="navlinks grow" id="toplinks" aria-label="Sezioni"></nav>
+    <span class="chip hide-sm" id="chipStreak" style="border-color:rgba(251,146,60,.5);color:#fdba74;background:rgba(251,146,60,.08)">🔥 0</span>
+    <span class="chip" id="chipXp" style="border-color:rgba(163,230,53,.5);color:#d9f99d;background:rgba(163,230,53,.08)">⚡ 0 PX</span>
+    <span class="chip hidden" id="chipPlan"></span>
+    <span id="authArea"></span>
+  </div>
+</header>
+<main id="view" class="container" style="padding-top:26px;padding-bottom:60px"></main>
+<div id="toasts" class="no-print"></div>
+<div id="modal" class="no-print" onclick="if(event.target===this)closeModal()"><div class="mbox" id="mbox"></div></div>
+<canvas id="cnf" style="position:fixed;inset:0;pointer-events:none;z-index:250" class="no-print"></canvas>
+<!-- @@MORE@@ -->
+<script>
+"use strict";
+/* ══════════ DATI GIOCO ══════════ */
+const LEVELS=[[1,0,"Recluta Digitale"],[2,100,"Esploratore del Web"],[3,240,"Sentinella Online"],[4,420,"Guardiano dei Dati"],[5,650,"Cacciatore di Truffe"],[6,950,"Esperto di Privacy"],[7,1300,"Maestro delle Password"],[8,1700,"Paladino del Web"],[9,2200,"Leggenda Digitale"],[10,2800,"Cyber Guardiano Supremo"]];
+function computeLevel(xp){let cur=LEVELS[0];for(const l of LEVELS)if(xp>=l[1])cur=l;const next=LEVELS.find(l=>l[0]===cur[0]+1);return{level:cur[0],name:cur[2],next:next?next[1]:null,progress:next?Math.min(1,(xp-cur[1])/(next[1]-cur[1])):1}}
+const XPV={"lesson:password":60,"lesson:truffe":60,"lesson:privacy":60,"lesson:cyberbullismo":60,"lesson:virus":60,"game:testa-password":50,"game:escape-room":120,"game:finto-profilo":100,"story:regalo":60,"story:messaggio":60,"story:branco":60,"story:sconosciuto":60};
+function scamXp(p){return 40+Math.round(Math.max(0,Math.min(100,p))/100*60)}
+const TROPHIES=[
+ {k:"primo-passo",t:"Primo Passo",d:"Completa la tua prima lezione",i:"footprints",c:"#22d3ee"},
+ {k:"mente-acciaio",t:"Mente d'Acciaio",d:"Completa tutte e 5 le lezioni",i:"brain",c:"#8b5cf6"},
+ {k:"cacciatore",t:"Cacciatore di Truffe",d:"Trova la Truffa: almeno 75% di risposte giuste",i:"fish",c:"#fb7185"},
+ {k:"scudo",t:"Scudo Inattaccabile",d:"Crea una password FORTE nel Testa-Password",i:"shield-check",c:"#a3e635"},
+ {k:"fuga",t:"Fuga Perfetta",d:"Completa l'Escape Room Digitale",i:"key-round",c:"#fbbf24"},
+ {k:"detective",t:"Detective della Privacy",d:"Trova tutti gli 8 errori nel Finto Profilo",i:"search",c:"#22d3ee"},
+ {k:"finale-felice",t:"Finale Felice",d:"Raggiungi un finale positivo in una storia",i:"sparkles",c:"#e879f9"},
+ {k:"narratore",t:"Tutte le Strade",d:"Finale positivo in tutte e 4 le storie",i:"book-open",c:"#8b5cf6"},
+ {k:"fuoco-7",t:"Sette di Fuoco",d:"Entra nell'app per 7 giorni di fila",i:"flame",c:"#fb923c"},
+ {k:"stella-5",t:"Stella Nascente",d:"Raggiungi il livello 5",i:"star",c:"#fbbf24"},
+ {k:"leggenda-10",t:"Leggenda Vivente",d:"Raggiungi il livello 10",i:"crown",c:"#f59e0b"},
+ {k:"guardiano",t:"Cyber Guardiano",d:"Completa l'intero percorso e sblocca il Patentino",i:"award",c:"#4ade80"}];
+const REQUIRE=[["lesson","password","Lezione: Password Inespugnabili"],["lesson","truffe","Lezione: Trova la Truffa"],["lesson","privacy","Lezione: Privacy sui Social"],["lesson","cyberbullismo","Lezione: Cyberbullismo"],["lesson","virus","Lezione: Virus e Download"],["game","trova-la-truffa","Gioco: Trova la Truffa"],["game","testa-password","Gioco: Testa-Password"],["game","escape-room","Gioco: Escape Room Digitale"],["game","finto-profilo","Gioco: Finto Profilo"],["story","regalo","Storia: Il Regalo di AlexPro"],["story","messaggio","Storia: Il Messaggio Strano"],["story","branco","Storia: Il Branco"],["story","sconosciuto","Storia: Lo Sconosciuto Online"]];
+const PLANS=[
+ {id:"free",n:"Base Gratuito",tag:"FREE",tl:"Tutto l'essenziale per imparare a difendersi online, gratis per sempre.",mp:0,yp:0,yt:0,c:"#94a3b8",i:"shield",m:1,max:1,cta:"Piano Base Gratuito",
+  perks:["Tutte le 5 lezioni da 3 minuti con audio-lettura","Tutte le 4 prove pratiche interattive","Storie a bivi complete con finali multipli","Avatar personalizzabile + 12 trofei","Pronto Soccorso Digitale SOS","Patentino di Sicurezza Digitale statico in PDF"]},
+ {id:"pro",n:"Pro Eroe",tag:"PRO",tl:"Salita di livello rapida ed equipaggiamento leggendario.",mp:4.99,yp:3.99,yt:47.88,c:"#22d3ee",i:"zap",pop:1,m:2,max:1,cta:"Passa a Pro Eroe",
+  perks:["Tutto incluso nel piano Base","Moltiplicatore PX x2 su ogni attività","Bonus Serie Giornaliera raddoppiato (+40 PX)","Set Avatar PRO esclusivo (Corona, Visiera, Tuta Neon, Aurora)","Scudo Salva-Serie + badge PRO dorato","Zero pubblicità garantita"]},
+ {id:"family",n:"Famiglia Plus",tag:"FAMIGLIA",tl:"Protezione e divertimento per tutta la famiglia.",mp:9.99,yp:7.99,yt:95.88,c:"#e879f9",i:"users",m:2,max:5,cta:"Attiva Famiglia Plus",
+  perks:["Tutti i vantaggi di Pro Eroe (XP x2 e Set PRO)","Fino a 5 profili per la famiglia","Dashboard Genitori su progressi e punteggi","Report delle competenze acquisite","Guide dedicate al dialogo digitale"]},
+ {id:"business",n:"Business & Scuole",tag:"BUSINESS",tl:"La soluzione per classi, istituti, doposcuola e team.",mp:29.99,yp:23.99,yt:287.88,c:"#fbbf24",i:"building",m:2,max:30,cta:"Attiva Business & Scuole",
+  perks:["Tutti i vantaggi Pro & Famiglia + TUTTI gli oggetti Avatar","Fino a 30 studenti con Codice Classe dedicato","Pannello Docente con statistiche di classe","Kit Didattico Educazione Civica per LIM (45 min)","Monitoraggio Patentini + Supporto prioritario"]}];
+const euro=n=>n===0?"€0":"€"+n.toFixed(2).replace(".",",");
+const HAIR_C=["#232a38","#6b4423","#f2c94c","#e85d4a","#8b5cf6","#22d3ee"];
+const SKIN_C=["#f8d4b0","#eab883","#c98a54","#8d5a31","#6b4226","#f1c6de"];
+const AITEMS=[
+ {id:"spike",l:"Cresta Elettrica",cat:"hair"},{id:"curly",l:"Riccioli Pixel",cat:"hair"},{id:"long",l:"Chioma Fluida",cat:"hair"},{id:"fade",l:"Sfumatura Netta",cat:"hair"},{id:"mohawk",l:"Cresta Punk",cat:"hair",lv:3},
+ {id:"happy",l:"Sguardo Allegro",cat:"eyes"},{id:"cool",l:"Sguardo Deciso",cat:"eyes"},{id:"wink",l:"Occhiolino",cat:"eyes"},{id:"laser",l:"Occhi Laser",cat:"eyes",lv:6},
+ {id:"hoodie",l:"Felpa Viola",cat:"outfit"},{id:"tee",l:"Maglietta Cyan",cat:"outfit"},{id:"jacket",l:"Giubbotto Lime",cat:"outfit"},{id:"hacker",l:"Felpa da Hacker",cat:"outfit",tr:"cacciatore"},{id:"neon",l:"Tuta Neon PRO",cat:"outfit",pro:1},{id:"armatura",l:"Armatura Cyber",cat:"outfit",tr:"guardiano"},
+ {id:"none",l:"Nessuno",cat:"accessory"},{id:"glasses",l:"Occhiali Tondi",cat:"accessory"},{id:"headphones",l:"Cuffie Pro",cat:"accessory",lv:3},{id:"starshades",l:"Occhiali Stella",cat:"accessory",lv:4},{id:"ninja",l:"Fascia Ninja",cat:"accessory",tr:"cacciatore"},{id:"antenna",l:"Antenna Radar",cat:"accessory",tr:"fuga"},{id:"visor",l:"Visiera Olografica PRO",cat:"accessory",pro:1},{id:"crown",l:"Corona Cyber PRO",cat:"accessory",pro:1},
+ {id:"nebula",l:"Nebulosa Viola",cat:"bg"},{id:"matrix",l:"Pioggia Matrix",cat:"bg"},{id:"sunset",l:"Tramonto Retrowave",cat:"bg",lv:2},{id:"circuit",l:"Circuito Dorato",cat:"bg",tr:"detective"},{id:"galaxy",l:"Galassia Leggendaria",cat:"bg",tr:"narratore"},{id:"aurora",l:"Aurora Boreale PRO",cat:"bg",pro:1}];
+function itemUnlocked(it,S){if(planOf(S)==="business")return true;const paid=planOf(S)!=="free";if(it.pro)return paid;if(it.lv&&computeLevel(S.xp).level<it.lv)return false;if(it.tr&&!trophies(S).includes(it.tr))return false;return true}
+
+const LESSONS=[
+{slug:"password",title:"Password Inespugnabili",tagline:"Crea chiavi segrete che nessun hacker riuscirà mai a forzare.",icon:"key-round",c:"#a3e635",xp:60,
+ secs:[{h:"La tua password è la chiave di casa tua",ic:"key-round",t:"Con la tua password gli hacker possono entrare nei tuoi account, leggere i messaggi e fingersi te. Ecco perché deve essere impossibile da indovinare."},
+  {h:"Le password che crollano in 1 secondo",ic:"skull",t:"Gli hacker usano programmi che provano milioni di password al secondo partendo dalle più comuni:",b:["123456, qwerty, password — scoperte all'istante","Il tuo nome + anno di nascita (marco2013)","Parole vere come calcio o unicorno"]},
+  {h:"Il trucco: la frase-password",ic:"wand",t:"La password perfetta è LUNGA, non complicata. Inventa una frase assurda che solo tu puoi immaginare, poi aggiungi numeri e simboli: GattoPizza7Luna!Skate.",b:["Almeno 12 caratteri: la lunghezza batte tutto","Mescola maiuscole, minuscole, numeri e simboli","Parole che insieme non hanno senso: è il segreto!"]},
+  {h:"Le regole d'oro del Guardiano",ic:"scroll",t:"Anche la password più forte ha bisogno di alleati:",b:["MAI la stessa password su due account diversi","MAI condividerla: nemmeno con il tuo migliore amico","Attiva il 2FA: un codice extra sul telefono","Se un sito avvisa di un accesso strano, cambiala SUBITO"]}],
+ rem:["Lunga è meglio: 12+ caratteri con una frase assurda","Mai nome, data di nascita o parole semplici","Una password diversa per ogni account","Il 2FA è il tuo scudo extra"],
+ quiz:[{q:"Quale di queste password è la più sicura?",o:["luca2013","qwerty123","Pinguino!Corsa4Mare?"],a:2,w:"È lunga, usa parole senza senso insieme, maiuscole, numeri e simboli. Le altre crollano in pochi secondi."},
+   {q:"Il tuo migliore amico ti chiede la password del gioco. Cosa fai?",o:["Gliela do, è fidato","Non la do a nessuno: è solo mia","Gliela do ma poi la cambio"],a:1,w:"La password è come lo spazzolino: personale. Se il suo account viene rubato, anche il tuo è in pericolo."},
+   {q:"Cos'è il 2FA?",o:["Due password identiche","Un codice extra che arriva sul telefono oltre alla password","Un antivirus potenziato"],a:1,w:"Con il 2FA, anche se scoprono la password, senza il tuo telefono restano fuori. È il doppio lucchetto!"}],
+ comic:[["villain","M4sk4ra (Hacker)","Vediamo... proviamo '123456' oppure 'marco2013'... ah, entrato in 0,2 secondi!"],["hero","Tu (Cyber Eroe)","Non così in fretta! Cambio chiave: 'GattoPizza7Luna!Skate' + codice 2FA!"],["coach","Coach Scudo","BOOM! Oltre 12 caratteri con parole assurde, numeri e simboli = porta blindata per secoli!"]],
+ frames:[["skull","L'attacco dizionario","Un programma automatico prova milioni di password comuni ogni secondo."],["wand","La Frase-Password","Unisci 4 parole casuali + numeri e simboli: facile per te, impossibile per i bot!"],["smartphone","Doppio Lucchetto (2FA)","Attiva il codice sul telefono: senza il tuo dispositivo nessuno entra."],["shield-check","Missione Compiuta","Una chiave diversa per ogni app e i tuoi account diventano inespugnabili!"]]},
+{slug:"truffe",title:"Occhio alla Truffa",tagline:"Impara a smascherare email e messaggi falsi prima che sia troppo tardi.",icon:"fish",c:"#fb7185",xp:60,
+ secs:[{h:"Cos'è il phishing: la pesca dei tuoi dati",ic:"fish",t:"I truffatori lanciano un'esca — un messaggio falso che sembra vero — e aspettano che qualcuno abbocchi cliccando un link o scrivendo la password. Hanno sempre dei difetti: imparerai a vederli tutti."},
+  {h:"I 5 indizi che tradiscono ogni truffa",ic:"search",t:"Ogni messaggio-trappola lascia delle tracce:",b:["URGENZA: 'Solo per oggi!', 'Account bloccato in 24 ore!'","INDIRIZZO STRANO: amaz0n-support.xyz invece di amazon.it","PREMI IMPOSSIBILI: 'Hai vinto un iPhone!' senza giocare a nulla","RICHIESTA DI DATI: nessun servizio vero chiede password via messaggio","ERRORI DI ITALIANO: traduzioni buffe o tono strano"]},
+  {h:"Il messaggio dell'amico... che non è l'amico",ic:"user-x",t:"Se l'account di un amico viene rubato, il truffatore scrive a TUTTI i contatti. Prima di cliccare: chiama o chiedi di persona. Se è davvero lui, non si offenderà."},
+  {h:"Hai cliccato? Non è finita",ic:"life-buoy",t:"Cliccare un link strano non è un disastro se reagisci in fretta:",b:["Chiudi la pagina SUBITO, senza scrivere niente","Se hai scritto una password, cambiala immediatamente","Raccontalo a un adulto: succede anche ai grandi","La guida completa è nel Pronto Soccorso SOS"]}],
+ rem:["Fretta + premio + richiesta di dati = truffa","Controlla sempre l'indirizzo lettera per lettera","Nessuno di vero chiede password via messaggio","In dubbio? Chiedi a un adulto o chiama il mittente"],
+ quiz:[{q:"SMS: 'La tua banca ha bloccato il conto! Verifica qui: banca-sicurezza.xyz'. Cosa fai?",o:["Clicco subito","Non clicco: controllo dall'app ufficiale della banca","Rispondo chiedendo informazioni"],a:1,w:"Urgenza + indirizzo strano = due indizi giganteschi. Le banche vere non chiedono MAI dati via SMS."},
+   {q:"Un'amica scrive: 'Clicca qui, ho vinto 2 biglietti e te ne regalo uno!'. Che indizio cerchi?",o:["Nessuno, è un'amica","L'indirizzo del link — meglio chiamarla per chiedere","Il colore del messaggio"],a:1,w:"Il suo account potrebbe essere rubato. Una telefonata di 10 secondi risolve ogni dubbio."},
+   {q:"Perché i truffatori scrivono 'Sbrigati, offerta solo per oggi'?",o:["Sono impegnati","Per farti agire in fretta senza pensare","Il sito chiude davvero"],a:1,w:"Se ti fermi a pensare 10 secondi, la truffa quasi sempre si svela da sola."}],
+ comic:[["villain","SMS Sconosciuto","URGENTE!! Hai vinto un iPhone 17 GRATIS! Inserisci la carta entro 5 minuti su premi-ora.xyz!"],["hero","Tu (Cyber Eroe)","Aspetta un attimo: fretta assurda + dominio '.xyz' + premio mai giocato... è phishing puro!"],["coach","Coach Scudo","Colpito e affondato! Quando ti mettono fretta, fermati 10 secondi e controlla il mittente."]],
+ frames:[["fish","L'esca perfetta","Il truffatore imita una banca, un corriere o un amico per farti abboccare."],["timer","L'arma della fretta","'Scade tra 10 minuti!' serve a non farti riflettere. Tu invece respira!"],["search","Controlla l'URL","amaz0n-verifica.xyz NON è amazon.it: basta una lettera diversa."],["phone","Verifica sempre","Dubbio su un messaggio di un amico? Chiamalo a voce prima di cliccare!"]]},
+{slug:"privacy",title:"Privacy sui Social",tagline:"La tua vita online è preziosa: condividila con la testa.",icon:"eye-off",c:"#22d3ee",xp:60,
+ secs:[{h:"Internet non dimentica mai",ic:"infinity",t:"Quando pubblichi qualcosa online è come scriverlo sulla lavagna della scuola: ma una lavagna che vedono milioni di persone e che non si cancella davvero. Prima di postare chiediti: andrebbe bene se lo vedessero i miei genitori, i professori e il me del futuro?"},
+  {h:"Le informazioni che non si pubblicano MAI",ic:"shield-alert",t:"Alcuni dati sui social non devono esistere:",b:["Nome e cognome completi — meglio un soprannome","Indirizzo di casa e nome della scuola","Numero di telefono e data di nascita completa","Foto di documenti o biglietti di viaggio","'Finalmente a casa da solo!' — mai dirlo","La posizione in tempo reale: pubblica DOPO"]},
+  {h:"Amici di plastica: chi sono davvero i tuoi follower?",ic:"users",t:"Avere 500 follower sembra bello, ma se non li conosci sono 500 sconosciuti che guardano la tua vita. Un adulto che finge di avere 13 anni crea un falso profilo in tre minuti. Accetta solo persone che conosci davvero."},
+  {h:"Rendi il tuo profilo un fortino",ic:"lock",t:"Cinque minuti di impostazioni valgono mille problemi evitati:",b:["Profilo PRIVATO: solo chi accetti vede i contenuti","Disattiva la geolocalizzazione nelle foto","Controlla chi può taggarti e scriverti","Rivedi la lista follower e rimuovi gli sconosciuti"]}],
+ rem:["Online è per sempre: pensa prima di postare","Mai indirizzo, scuola, telefono o 'sono solo a casa'","Accetta solo persone che conosci davvero","Profilo privato = fortino attivato"],
+ quiz:[{q:"Quale post è il più pericoloso?",o:["La foto del panino","Il selfie col nuovo gioco","La foto del documento di identità appena arrivato"],a:2,w:"Un documento contiene nome, data e indirizzo: tutto per rubare la tua identità."},
+   {q:"Un profilo con foto carina ti chiede l'amicizia. Non lo conosci. Tu...",o:["Accetto, ha tanti follower","Rifiuto: accetto solo chi conosco di persona","Accetto ma non gli scrivo"],a:1,w:"I follower si comprano e le foto si rubano. Sconosciuto = rifiutato."},
+   {q:"Vuoi postare la foto della festa in piscina. Modo più sicuro?",o:["Subito con la posizione attiva","La sera, senza posizione, quando sei già a casa","Non posso postare mai niente"],a:1,w:"Postare DOPO e senza posizione: condividi il ricordo, nessuno ti trova sul momento."}],
+ comic:[["villain","Follower Misterioso","Ehi! Ho visto dalle tue storie in che scuola vai e che oggi sei a casa da solo..."],["hero","Tu (Cyber Eroe)","Profilo subito PRIVATO, via gli sconosciuti dai follower e GPS spento sulle foto!"],["coach","Coach Scudo","Regola d'oro: pubblica le foto di un posto solo DOPO che te ne sei già andato!"]],
+ frames:[["eye","Chi guarda davvero?","Con un profilo pubblico chiunque può raccogliere indizi su di te."],["map-pin","Zero dati sensibili","Mai scuola, indirizzo, telefono, documenti o 'sono solo a casa'."],["lock","Chiudi il fortino","Profilo Privato e accetta solo persone conosciute nella vita reale."],["badge","Condividi con testa","Posta i bei momenti in differita: proteggi la privacy senza rinunciare al divertimento!"]]},
+{slug:"cyberbullismo",title:"Cyberbullismo: Spegni il Branco",tagline:"Nessuno ha il diritto di rovinarti la giornata, nemmeno online.",icon:"heart-handshake",c:"#e879f9",xp:60,
+ secs:[{h:"Cos'è il cyberbullismo",ic:"message-x",t:"È il bullismo che viaggia attraverso schermi e chat: insulti nei gruppi, foto modificate, esclusione apposta, profili falsi, minacce. Non si ferma al suono della campanella. Ma ha un punto debole: lascia SEMPRE delle prove."},
+  {h:"Se succede a te: il piano in 4 mosse",ic:"shield",t:"Se qualcuno ti insulta o ti minaccia online, segui questi passi. Nell'ordine:",b:["1. NON RISPONDERE: è il cibo del bullo, togliglielo","2. FOTOGRAFA TUTTO: screenshot = prove","3. BLOCCA E SEGNALA il profilo dentro l'app","4. PARLANE SUBITO con un adulto: non è fare la spia, è difenderti"]},
+  {h:"Il superpotere dello spettatore",ic:"eye",t:"Se vedi qualcuno preso di mira, TU sei la persona più potente della scena. Il branco esiste solo se il pubblico ride. Un messaggio in privato alla vittima — 'io sto con te' — le cambia la giornata.",b:["Non mettere like e non rilanciare","Scrivi in privato alla vittima","Segnala il contenuto","Raccontalo a un adulto insieme"]},
+  {h:"E se lo 'scherzo' lo facessi tu?",ic:"hand",t:"Hai mai riso a un meme su un compagno 'tanto per ridere'? Prova questo test: lo diresti guardandolo negli occhi, davanti a tutta la classe? Se no, non pubblicarlo. Ridere CON qualcuno è bello. Ridere DI qualcuno è bullismo."}],
+ rem:["Non rispondere: togli il cibo al bullo","Screenshot di tutto: sono prove preziose","Blocca, segnala, parlane con un adulto","Se assisti, intervieni: sei più forte del branco"],
+ quiz:[{q:"Nel gruppo classe gira una foto crudele di un compagno. Cosa fai?",o:["Metto una reazione, è uno scherzo","Non la inoltro e scrivo in privato al compagno che sto con lui","Esco dal gruppo in silenzio"],a:1,w:"Spezzare la catena e sostenere la vittima in privato è il vero gesto da eroe."},
+   {q:"Uno sconosciuto ti insulta e minaccia ogni sera. Il primo passo giusto è...",o:["Rispondere a tono","Cancellare i messaggi","Screenshot, blocco e raccontarlo a un adulto"],a:2,w:"Mai rispondere e mai cancellare le prove. Screenshot + blocco + adulto = combinazione vincente."},
+   {q:"Perché il cyberbullismo può fare più male del bullismo classico?",o:["Perché ti segue ovunque, 24 ore su 24, davanti a un pubblico enorme","Perché gli insulti scritti fanno ridere","Non fa più male"],a:0,w:"Online l'attacco non si ferma alla campanella. Per questo parlarne subito è fondamentale."}],
+ comic:[["villain","Gruppo Chat","Ahahah guardate questo meme su Marco, giratelo a tutta la scuola!!"],["hero","Tu (Cyber Eroe)","Io non rido e non inoltro. Screenshot, segnalo e scrivo a Marco: 'Io sto con te!'"],["coach","Coach Scudo","Senza pubblico il bullo perde ogni forza. Parlarne con un adulto è coraggio, non spia!"]],
+ frames:[["message-x","Niente benzina al bullo","Non rispondere agli insulti: chi provoca cerca una tua reazione."],["camera","Salva le prove","Fai subito screenshot di messaggi, orari e nomi utente prima di bloccare."],["heart","Il potere di chi guarda","Un messaggio gentile in privato cambia la giornata a chi è preso di mira."],["users","Fai squadra con un adulto","Genitori e insegnanti hanno gli strumenti giusti per fermare tutto subito."]]},
+{slug:"virus",title:"Virus e Download Trappola",tagline:"Quel gioco gratis potrebbe costarti il telefono.",icon:"bug",c:"#fb923c",xp:60,
+ secs:[{h:"Cosa sono i virus (e perché si nascondono nei giochi)",ic:"bug",t:"Un virus è un programma cattivo che entra di nascosto: ruba dati, spia quello che scrivi o blocca tutto chiedendo un riscatto. Dove si nasconde? Nei giochi 'gratis' non ufficiali, nelle mod per monete infinite, nei link 'il film prima del cinema'. Se qualcosa che costa soldi è gratis in un sito strano... il prezzo sei tu."},
+  {h:"Le 5 trappole più comuni",ic:"alert",t:"I virus non entrano da soli: qualcuno deve aprire la porta:",b:["GIOCHI CRACCATI: 'Minecraft gratis!' — l'esca numero uno","MOD E CHEAT: monete infinite che rubano l'account","POPUP: 'Il tuo telefono ha 5 virus!' — il popup È il pericolo","ALLEGATI STRANI: file .exe o .apk inattesi","APP STORE FALSI: scaricare fuori dagli store ufficiali"]},
+  {h:"Scaricare come un professionista",ic:"shield-check",t:"Non devi rinunciare ai giochi: devi giocare in difesa:",b:["Solo store ufficiali: Google Play e App Store","Leggi le RECENSIONI e guarda i download","Controlla lo sviluppatore","Guarda i PERMESSI: un gioco di corse non serve ai tuoi contatti","Sistema sempre AGGIORNATO: gli update chiudono le falle"]},
+  {h:"SOS: il dispositivo si comporta in modo strano",ic:"siren",t:"Telefono che scalda, batteria che muore, popup ovunque:",b:["Disinstalla l'ultima app installata","NON scaricare 'antivirus gratis' trovati online","Scansione con un antivirus vero, con un adulto","Cambia le password importanti da UN ALTRO dispositivo"]}],
+ rem:["Gratis fuori dagli store ufficiali = trappola","Il popup 'hai un virus' È il virus","Controlla recensioni, sviluppatore e permessi","Sistema aggiornato = porte chiuse a chiave"],
+ quiz:[{q:"Un sito offre gratis un gioco da 20 euro. Cosa fai?",o:["Lo scarico subito","Non mi fido: i giochi gratis fuori dagli store nascondono spesso virus","Lo scarico ma lo apro dopo"],a:1,w:"Chi ti regala qualcosa che vale soldi vuole qualcosa in cambio: i tuoi dati."},
+   {q:"Popup lampeggiante: '5 virus trovati! Clicca per pulire!'. Tu...",o:["Clicco subito","Chiudo la pagina: il popup finto è la trappola","Clicco una volta per vedere"],a:1,w:"Nessun sito web può scansionare il telefono. Quel popup serve per farti scaricare il virus vero."},
+   {q:"Un'app torcia chiede accesso a contatti, microfono e posizione. Che pensi?",o:["Normale","Sospetto: a una torcia serve solo il flash","Concedo tutto"],a:1,w:"Ogni permesso deve avere un motivo logico. Se un'app chiede troppo, i tuoi dati sono il prodotto."}],
+ comic:[["villain","Sito Pirata","SCARICA ORA GemmeInfinite_Mod.apk!! Ignora gli avvisi e premi Installa!"],["hero","Tu (Cyber Eroe)","Col cavolo! File .apk da un sito sconosciuto = trojan assicurato. Solo Store ufficiali!"],["coach","Coach Scudo","E se un'app torcia ti chiede microfono e rubrica... disinstallala alla velocità della luce!"]],
+ frames:[["bug","Il Cavallo di Troia","Mod, cheat e giochi pirata nascondono spyware che rubano password e dati."],["alert","Falsi allarmi","Il banner 'Hai 5 virus!' è FALSO: chiudi la scheda e non cliccare!"],["shield-check","Solo Store Ufficiali","Controlla sviluppatore, recensioni vere e permessi prima di installare."],["refresh","Sempre aggiornato","Gli aggiornamenti di sistema chiudono le porte agli hacker automaticamente."]]}];
+</script>
+<script>
+const SCAMS=[
+ {id:"mamma",ch:"w",sender:"+39 351 882 4410",body:"Ciao tesoro sono la mamma, ho perso il telefono, questo è il mio nuovo numero! Mi servono urgentemente 20 euro di ricarica per chiamare il lavoro, mi fai il favore?",time:"14:32",scam:1,why:"È la famosa truffa del 'ciao mamma': un truffatore finge di essere un familiare con un nuovo numero per farsi mandare soldi.",rf:["Numero sconosciuto che dice di essere un familiare","Richiesta urgente di soldi o ricariche","Bastava chiamare la mamma sul vecchio numero"]},
+ {id:"amazon",ch:"e",sender:"Assistenza Amaz0n",addr:"noreply@amaz0n-support.xyz",subj:"URGENTE: il tuo account verrà eliminato in 24 ore",body:"Gentile cliente, abbiamo rilevato attività sospette. Per evitare la chiusura definitiva, verifica SUBITO i tuoi dati: amaz0n-verifica.xyz/login. Se non rispondi entro 24 ore l'account sarà cancellato.",time:"09:15",scam:1,why:"Phishing classico: la paura di perdere l'account serve a farti cliccare senza pensare. Amazon si scrive con la 'o', non lo zero!",rf:["Indirizzo falso: amaz0n-support.xyz","Minaccia + scadenza urgente ('24 ore')","Ti chiede di 'verificare i dati' tramite un link"]},
+ {id:"spesa",ch:"w",sender:"Mamma",body:"Amore passo a prenderti alle 17 davanti a scuola, ricordami di comprare il pane che stasera viene nonna",time:"12:04",scam:0,why:"Tutto normale: contatto salvato, niente link, niente soldi, niente fretta. Non tutti i messaggi sono trappole!",rf:[]},
+ {id:"iphone",ch:"w",sender:"+44 7721 998345",body:"CONGRATULAZIONI!!! Sei il visitatore numero 1.000.000! Hai vinto un iPhone 17 Pro Max GRATIS! Inserisci nome, indirizzo e dati della carta per la spedizione (solo 1,99 euro) su: vinci-ora-premi.click",time:"18:47",scam:1,why:"Nessuno regala telefoni da 1500 euro per 'essere il milionesimo visitatore'. I dati della carta servono ai truffatori.",rf:["Premio enorme senza aver partecipato a nulla","Chiede la carta per 'soli' 1,99 euro","Dominio assurdo: premi.click","Maiuscole urlate"]},
+ {id:"prof",ch:"e",sender:"Prof.ssa Ricci",addr:"s.ricci@iscritti.ittpascal.edu.it",subj:"Compiti per le vacanze - Classe 2B",body:"Cari ragazzi, trovate nell'area riservata del registro elettronico l'elenco dei libri e i compiti per l'estate. Buone vacanze! Prof.ssa Ricci",time:"10:30",scam:0,why:"Indirizzo istituzionale, niente link strani, rimanda al registro ufficiale che usi ogni giorno.",rf:[]},
+ {id:"gemme",ch:"w",sender:"RocketArena Official",body:"Ciao player! Sei stato selezionato per il programma GEMME INFINITE. Invia nome utente e password del gioco e riceverai 10.000 gemme gratis entro 24h. Rispondi a questo numero, offerta valida solo oggi!",time:"21:13",scam:1,why:"Le aziende dei videogiochi non chiedono MAI la password, per nessun motivo. Chi la chiede vuole rubarti l'account.",rf:["Chiede la password del gioco","Premio impossibile (gemme infinite)","'Solo oggi': la fretta è il trucco"]},
+ {id:"pacco",ch:"e",sender:"SDA Express Corriere",addr:"consegne@sda-tracking-ita.top",subj:"Consegna fallita: il pacco torna al mittente",body:"Il tentativo di consegna del pacco #IT88422031 è fallito. Per riprogrammare paga le spese di giacenza di 1,99 euro entro 48 ore: sda-rispedizione.top.",time:"07:58",scam:1,why:"I corrieri veri non chiedono pagamenti via email per riconsegnare. È la truffa più diffusa in assoluto.",rf:["Indirizzo falso: sda-tracking-ita.top","Piccolo pagamento per rubare la carta","Scadenza breve per metterti fretta"]},
+ {id:"allenamento",ch:"w",sender:"Coach Davide",body:"Ragazzi domani allenamento spostato alle 18:30, portate scarpe da indoor che in palestra rifanno il pavimento. Confermate con una reazione",time:"16:20",scam:0,why:"Contatto conosciuto, contenuto quotidiano, zero link, zero richieste di dati o soldi.",rf:[]}];
+const MISTAKES=[
+ {id:"nome",t:"Nome e cognome completi",w:"Con nome e cognome chiunque può trovarti nella vita reale e cercare info su di te e la tua famiglia.",f:"Usa solo il nome o un soprannome: 'Alex'."},
+ {id:"scuola",t:"Nome della scuola in bella vista",w:"Dice a tutti ESATTAMENTE dove trovarti 5 giorni a settimana e a che ora esci.",f:"Mai scrivere la tua scuola."},
+ {id:"citta",t:"Città nel profilo",w:"Città + scuola + nome = la mappa completa della tua vita per uno sconosciuto.",f:"Non indicare dove vivi."},
+ {id:"nascita",t:"Data di nascita completa",w:"Serve per le verifiche di sicurezza e per indovinare password tipo alex2013.",f:"Tieni la data per te."},
+ {id:"telefono",t:"Numero di telefono pubblicato",w:"Chiunque può chiamarti, iscriverti a spam o fingersi te su WhatsApp.",f:"Il numero si dà a voce agli amici veri."},
+ {id:"casa",t:"'Finalmente a casa da solo!'",w:"Hai appena detto a internet che sei SOLO a casa, col profilo che dice anche dove vivi.",f:"Mai dire quando sei solo o i tuoi sono in vacanza."},
+ {id:"documento",t:"Foto del documento d'identità",w:"Un documento contiene TUTTO: nome, data, luogo, indirizzo. Furto d'identità in 5 minuti.",f:"Documenti e biglietti non si fotografano per i social."},
+ {id:"password",t:"Indizio della password nel profilo",w:"Hai scritto 'nato nel 2013' e la tua password contiene 2013. Gli hacker leggono i profili apposta.",f:"Nessun dato del profilo deve finire nelle tue password."}];
+const ESCAPE=[
+ {t:"Enigma 1 — La Nuova Serratura",in:"Per iniziare il recupero devi scegliere una NUOVA password. M4sk4ra ti osserva: scegli quella che non indovinerà mai.",ty:"c",o:[["mia20132013",0,"Troppo corta e fatta solo di parole tue! Riprova."],["Tigre?Volo9Nuvola!Pane",1,"Perfetto: lunga, assurda, piena di simboli. CLACK."],["qwertyuiop",0,"È la prima riga della tastiera! M4sk4ra ride."],["Password123!",0,"'Password' col '!' resta pur sempre 'password'."]],ok:"La prima porta si apre. Dentro, un terminale lampeggia."},
+ {t:"Enigma 2 — Quattro Porte, Una Vera",in:"Il sistema di recupero mostra quattro link. Tre cancellano l'account per sempre. Osserva ogni lettera...",ty:"c",o:[["rocketarena-supporto.xyz/reset",0,"'xyz' e 'supporto' attaccato? Dominio trappola!"],["rocketarena-reset.top/aiuto",0,"Dominio '.top' sconosciuto: trappola classica."],["rocketarena.com/account/recupero",1,"Esatto! Dominio ufficiale con un normale percorso interno."],["assistenza-rocketarena.click/urgente",0,"'assistenza' davanti e '.click' dietro: finto."]],ok:"Accesso al pannello di recupero concesso."},
+ {t:"Enigma 3 — Il Codice di Cesare",in:"Sul terminale appare una parola cifrata. Appunto di M4sk4ra: 'Ogni lettera è quella che viene DOPO nell'alfabeto. AIUTO non arriverà mai... o sì?'",ty:"code",disp:"BJVUP",hint:"Sposta OGNI lettera di UNA posizione INDIETRO (B diventa A, J diventa I...)",ans:"AIUTO",ok:"Corretto: BJVUP torna ad essere AIUTO!"},
+ {t:"Enigma 4 — Il Doppio Lucchetto",in:"Quale di queste è la VERA autenticazione a due fattori?",ty:"c",o:[["Scrivere la password due volte",0,"Due volte la stessa cosa debole resta debole!"],["Password + codice temporaneo sul telefono",1,"Esatto: qualcosa che SAI + qualcosa che HAI."],["Una password più lunga di 8 caratteri",0,"Ottima, ma non è 2FA: serve un SECONDO passaggio."]],ok:"2FA riattivato. M4sk4ra è quasi fuori."},
+ {t:"Enigma 5 — Il Colpo di Grazia",in:"Account recuperato, password nuova, 2FA attivo. M4sk4ra scrive: 'Tanto rientro quando voglio'. C'è UNA cosa da fare subito.",ty:"c",o:[["Disconnettere tutti i dispositivi sconosciuti e controllare le sessioni attive",1,"ESATTO! Chiudi le sessioni: M4sk4ra viene sbattuto fuori."],["Cambiare la foto profilo",0,"La foto non ferma un hacker: lui è già dentro."],["Scrivergli insulti finché non si arrende",0,"Divertente ma inutile: la sua sessione è aperta."]],ok:"TUTTE LE SESSIONI CHIUSE. M4sk4ra è fuori. Per sempre."}];
+const ESCAPE_INTRO="Notte. Una schermata rossa invade il tuo telefono: 'Il tuo profilo è MIO adesso. Firmato: M4sk4ra, l'hacker'. Sei stato hackerato! L'unico modo per riprenderti l'account è risolvere i 5 enigmi di sicurezza che ha lasciato. Un errore? Si riparte dall'enigma.";
+const STORIES=[
+ {slug:"regalo",title:"Il Regalo di AlexPro",tagline:"Un campione misterioso ti offre una skin leggendaria. Accetti?",c:"#8b5cf6",icon:"gift",start:"s",xp:60,nodes:{
+  s:{t:"Venerdì sera. Stai giocando a RocketArena quando AlexPro, un giocatore con 40.000 follower, ti scrive: 'Ehi campione! Organizzo un torneo segreto. Se entri ti regalo la skin Drago Dorato. Mi serve solo la tua password. Veloce, restano 3 posti!'",c:[["Gliela do: è la skin Drago Dorato!","g"],["Niente password a nessuno: puzza di truffa","r"]]},
+  g:{t:"Scrivi la password. Dopo due minuti: 'Sessione scaduta'. Provi a rientrare... password errata. Il tuo account ora si chiama AlexPro2 e sta scrivendo ai TUOI amici: 'Ehi, mi presti 15 euro?'",c:[["Lo racconto SUBITO a un adulto e uso 'password dimenticata'","ok1"],["Non dico niente a nessuno: troppo imbarazzante","ko1"]]},
+  r:{t:"Rispondi: 'No grazie, la password non la do a nessuno'. AlexPro riprova: 'Ok, allora mandami una foto tua con la carta d'identità per verificare che sei minorenne. Poi la skin è tua.'",c:[["Le mando: senza password, che male c'è?","p"],["Adesso basta: lo blocco e lo segnalo al gioco","ok2"]]},
+  p:{t:"Mandi la foto. Passa un'ora e AlexPro cambia tono: 'Bel documento. Adesso so come ti chiami, dove abiti e quando sei nato. Se non vuoi che mandi tutto alla tua scuola, portami 50 euro di ricariche.'",c:[["Screenshot di tutto e corro da un adulto. SUBITO","ok3"],["Pago i 50 euro, così la smette","ko2"]]},
+  ok1:{t:"Recupero password tramite email, segnalazione al gioco, e AlexPro2 sparisce. I tuoi amici avvisati in tempo: nessuno ha mandato soldi. 'Hai fatto la cosa più difficile', dice tuo padre. 'Chiedere aiuto.'",e:[1,"Recupero Lampo","Mai dare la password a nessuno. E quando qualcosa va storto, raccontarlo SUBITO a un adulto dimezza il danno."]},
+  ko1:{t:"Per vergogna taci per giorni. AlexPro2 convince due tuoi amici a mandargli soldi. Quando finalmente racconti tutto, recuperare è molto più difficile.",e:[0,"Il Silenzio Costoso","Il truffatore vince quando hai paura di parlare. Nessuno ti giudicherà per aver sbagliato."]},
+  ok2:{t:"Blocco. Segnalazione. Fine. Il giorno dopo scopri che 'AlexPro' ha provato lo stesso trucco con altri quattro giocatori. Una notifica del gioco: 'Grazie per la segnalazione. Il profilo è stato rimosso.'",e:[1,"Muro Invalicabile","Nessun regalo vero richiede password, foto o documenti. CHI INSISTE È UN PERICOLO: blocca e segnala."]},
+  ok3:{t:"Screenshot di ogni messaggio, poi dai tuoi. Insieme bloccate il profilo e lo segnalate alla Polizia Postale. Niente soldi persi: le minacce funzionano solo se resti solo.",e:[1,"Mai da Soli","Chi ti ricatta vuole il tuo silenzio. Screenshot + adulto + Polizia Postale: con questo trio non ha scampo."]},
+  ko2:{t:"Mandi il codice delle ricariche. Risposta immediata: 'Bravo. Adesso altri 50, o mando tutto alla tua scuola.' I ricatti non finiscono mai col primo pagamento.",e:[0,"Il Pozzo Senza Fondo","MAI pagare un ricatto: non finirà mai. Screenshot, adulto, Polizia Postale."]}}},
+ {slug:"messaggio",title:"Il Messaggio Strano",tagline:"La tua amica Sara ti manda un link alle 23:47. Ma è davvero lei?",c:"#22d3ee",icon:"message-q",start:"s",xp:60,nodes:{
+  s:{t:"Domenica sera, 23:47. Vibra il telefono: è Sara. 'EHI guarda questo video, ci sei TU, è imbarazzantissimo!!' seguito da un link corto: vidz-clip.top/x82. Strano orario. Strano link. Ma è Sara... o no?",c:[["Clicco: se è un video su di me devo vederlo!","c1"],["Prima chiamo Sara e le chiedo se è davvero suo","v1"]]},
+  c1:{t:"Il link apre una pagina: 'Accedi per vedere il video'. Scrivi email e password. Il video non parte. Dopo dieci minuti il telefono rallenta e arriva: 'Accesso al tuo account da dispositivo sconosciuto. Eri tu?'",c:[["Cambio SUBITO la password e racconto tutto a un adulto","ok1"],["Ignoro la notifica, tanto funziona ancora","ko1"]]},
+  v1:{t:"Chiami Sara. 'Pronto? Che video? Io dormivo! Non ti ho mandato niente!' Il suo account è stato rubato quella sera: il truffatore sta scrivendo a TUTTI i contatti. 'Menomale che hai chiamato. Altre due persone hanno già cliccato.'",c:[["Avvisiamo insieme tutti i contatti della chat","ok2"]]},
+  ok1:{t:"Cinque minuti di velocità: password nuova, 2FA attivato, app sospetta disinstallata, scansione fatta. Il truffatore resta chiuso fuori a guardare la serratura nuova.",e:[1,"Reazione Istantanea","Cliccare per sbaglio capita a tutti. Conta la reazione: password subito, 2FA, adulto avvisato."]},
+  ko1:{t:"Ignori tutto. Ma l'intruso no: dalla tua chat parte lo stesso messaggio verso i tuoi gruppi. Tre amici cliccano fidandosi di te.",e:[0,"L'Effetto Domino","Ignorare un accesso sospetto gli regala i tuoi contatti. Se noti qualcosa di strano, agisci SUBITO."]},
+  ok2:{t:"Messaggio nella chat di classe: 'NON APRITE il link di Sara, è una truffa!' In dieci minuti tutti lo sanno. Sara cambia password, il truffatore perde l'accesso.",e:[1,"La Rete che Protegge","Se un messaggio è strano, VERIFICA SEMPRE con una chiamata, anche dal tuo migliore amico."]}}},
+ {slug:"branco",title:"Il Branco",tagline:"Nel gruppo di classe gira un meme crudele. Tutti ridono. Tu no?",c:"#e879f9",icon:"users-round",start:"s",xp:60,nodes:{
+  s:{t:"Nel gruppo della classe qualcuno posta una foto di Marco: faccia modificata, scritta crudele. Pioggia di reazioni che ridono. 'Giratela agli altri gruppi!' Marco è nel gruppo. Sta leggendo tutto. È online adesso.",c:[["Metto anche io una reazione, è solo uno scherzo...","j1"],["Scrivo a Marco in privato: 'io sto con te, non è vero niente'","s1"]]},
+  j1:{t:"La tua reazione compare nella lista. Il giorno dopo Marco non viene a scuola. Né il giorno dopo. La prof chiede spiegazioni e nessuno parla, ma lo schermo di Marco mostrava 32 reazioni. Una era tua.",c:[["Gli scrivo 'scusa' e racconto tutto alla prof","ok1"],["Faccio finta di niente, tanto non l'ho creata io","ko1"]]},
+  s1:{t:"Marco risponde subito: 'Grazie. Seriamente. Pensavo che ridevano tutti.' Ti racconta che sono settimane che girano foto così. Adesso sai la verità. E sai che da solo non può farcela.",c:[["Andiamo insieme dalla prof: screenshot di tutto","ok2"],["Gli dico di cancellarsi dai social, così non vede più niente","ko2"]]},
+  ok1:{t:"'Scusa davvero.' Poi, con le mani che tremano, parli con la prof. La scuola interviene sul gruppo e Marco torna in classe. Rimediare agli errori è difficile. Ma si può.",e:[1,"Rotta Corretta","Anche chi partecipa 'senza pensare' fa male. Scusarsi, rimediare e parlare con un adulto è sempre possibile."]},
+  ko1:{t:"Una settimana dopo arriva una denuncia alla Polizia Postale con tutti gli screenshot. Nella lista degli account che hanno diffuso la foto c'è anche il tuo nome, accanto alla tua reazione.",e:[0,"Silenzio di Complicità","Online una reazione è una firma. 'Tanto non l'ho creata io' non ti protegge."]},
+  ok2:{t:"Insieme raccogliete gli screenshot di settimane di meme. Il gruppo viene chiuso e i tre account principali sospesi. Marco torna a ridere a pranzo. E adesso gli siede vicino qualcuno: tu.",e:[1,"La Forza di Chi Interviene","Lo spettatore che interviene è il vero supereroe: sostegno, prove e un adulto spengono il branco."]},
+  ko2:{t:"Marco cancella i profili. Ma il branco non si ferma: crea un gruppo 'Marco è scappato' e i meme circolano ancora, anche fuori dalla scuola.",e:[0,"Fuga che Non Salva","Chiedere alla vittima di sparire punisce lei. La strada giusta è fermare CHI ATTACCA."]}}},
+ {slug:"sconosciuto",title:"Lo Sconosciuto nel Gioco Online",tagline:"Un giocatore misterioso ti fa i complimenti e ti chiede una tua foto.",c:"#fb923c",icon:"camera-off",start:"s",xp:60,nodes:{
+  s:{t:"Sabato pomeriggio. Vinci tre partite con ShadowLeo, conosciuto solo in chat. A fine partita ti scrive in privato: 'Sei simpatico/a! Io ho 13 anni come te, mandami una tua foto così ci conosciamo davvero!'. Non lo hai mai visto dal vivo.",c:[["Gliela mando: sembra simpatico, è solo un selfie!","p1"],["Lo blocco e lo segnalo: mai foto a sconosciuti!","ok2"]]},
+  p1:{t:"Mandi un selfie. Due minuti dopo ShadowLeo scrive: 'Adesso ho la tua faccia e so dove abiti grazie alla maglia! Mandamene altre e non dirlo ai tuoi, altrimenti giro questa foto a tutta la tua città.'",c:[["Screenshot di tutto, lo blocco e corro da un adulto","ok1"],["Ho paura: faccio quello che chiede sperando che smetta","ko1"]]},
+  ok1:{t:"Salvi ogni messaggio e chiami subito i tuoi genitori. Niente sgridate: solo abbraccio e azione. Segnalate il profilo al gioco e alla Polizia Postale. Il ricattatore sparisce.",e:[1,"Il Coraggio di Parlare","Se hai già mandato una foto e qualcuno ti minaccia, NON cedere: screenshot, blocca e avvisa subito un adulto. La colpa è solo di chi ricatta."]},
+  ko1:{t:"Ogni volta che cedi, ShadowLeo chiede di più e alza le minacce. Restare da soli è esattamente la trappola su cui contano i malintenzionati.",e:[0,"Cedere Alimenta il Ricatto","Chi ricatta non si ferma se obbedisci: si ferma solo quando rompi il silenzio. Parlane subito o chiama il 196 (Telefono Azzurro)."]},
+  ok2:{t:"Premi 'Blocca' e invii la segnalazione 'Richiesta inappropriata a minore'. Il giorno dopo una notifica del gioco: l'account ShadowLeo era falso ed è stato bannato.",e:[1,"Scudo Immediato","Online chiunque può fingere di avere la tua età. Mai foto personali a sconosciuti: bloccare e segnalare protegge te e gli altri."]}}}];
+const AID=[
+ {slug:"account-rubato",t:"Mi hanno rubato l'account",s:"Instagram, TikTok, gioco... il piano di recupero passo dopo passo.",i:"user-x",c:"#fb7185",
+  st:[["Non farti prendere dal panico","Nella maggior parte dei casi l'account si recupera agendo in fretta. Avvisa SUBITO un adulto."],["Usa 'Password dimenticata'","Fai arrivare il link di recupero sulla tua email o numero. Se l'hacker ha cambiato anche quelli, cerca 'Il mio account è stato compromesso'."],["Cambia la password dell'email","Nuova e fortissima, e attiva il 2FA anche lì."],["Avvisa i tuoi amici","'Il mio account è stato rubato, NON rispondete a quello che scrive'."],["Segnala alla piattaforma","Ogni social ha una pagina per account rubati (es. instagram.com/hacked)."],["Rafforza tutto","Password nuova diversa, 2FA attivo, disconnetti i dispositivi sconosciuti."]],
+  rem:"Agire nelle prime ore cambia tutto. Rubare account è un reato: la Polizia Postale si occupa proprio di questo."},
+ {slug:"insulti-minacce",t:"Mi insultano o mi ricattano in chat",s:"Nessuno deve subire. Come spegnere un ricattatore.",i:"message-x",c:"#e879f9",
+  st:[["NON rispondere alle provocazioni","Chi insulta cerca una reazione: è il suo cibo."],["NON pagare e NON cedere ai ricatti","I ricatti non finiscono con la prima richiesta. Finiscono quando parli."],["Fai screenshot di TUTTO","Messaggi, profilo, orari, nomi utente: sono prove."],["Blocca e segnala nella app","Bloccare non è da deboli: è togliere il palcoscenico."],["Racconta tutto a un adulto. OGGI","Mostra gli screenshot. Se serve, Polizia Postale."],["Parla di come ti senti","Confessare la paura non è debolezza: è il modo più veloce di stare meglio."]],
+  rem:"Chi ricatta punta tutto sul tuo silenzio. Screenshot + blocco + adulto = il suo piano fallisce."},
+ {slug:"link-strano",t:"Ho cliccato un link strano",s:"Succede anche ai migliori. La procedura di emergenza.",i:"link",c:"#fbbf24",
+  st:[["Chiudi la pagina immediatamente","Non scrivere, non scaricare, non toccare altro."],["NON inserire nessun dato","Niente password o carte, anche se somiglia al sito vero."],["Hai scritto una password? Cambiala SUBITO","Dall'app ufficiale o dal sito vero scritto da te."],["Controlla il dispositivo","App nuove? Popup? Batteria? Disinstalla le sospette e scansione con antivirus vero."],["Raccontalo a un adulto","Più in fretta lo dici, meno danni possibili."],["Tieni d'occhio gli account","Accessi sconosciuti? Segui la guida 'Mi hanno rubato l'account'."]],
+  rem:"Cliccare per sbaglio non è il disastro: il disastro è NON dirlo."},
+ {slug:"foto-richiesta",t:"Qualcuno online mi chiede foto o info personali",s:"Soprattutto se 'è un ragazzo gentile'. Massima allerta.",i:"camera-off",c:"#fb7185",
+  st:[["Riconosci il pericolo","Complimenti, regali nei giochi e poi foto o videochiamate: si chiama adescamento."],["NON mandare niente","Niente foto, dati, scuola o indirizzo. Una foto mandata non torna indietro."],["Rispondi NO o non rispondere","Non devi essere gentile con chi ti mette a disagio."],["Blocca e segnala il profilo","Proteggi anche altri ragazzi."],["Raccontalo SUBITO a un adulto","Se insiste o minaccia: Polizia Postale (commissariato PS online)."],["Non è colpa tua","Gli adescatori sono professionisti dell'inganno. Parlarne subito è l'unica mossa giusta."]],
+  rem:"CHI INSISTE È UN PERICOLO: blocca e parlane subito, senza vergogna."},
+ {slug:"telefono-virus",t:"Credo di aver preso un virus",s:"Popup ovunque, telefono lentissimo, app che si aprono da sole.",i:"bug",c:"#fb923c",
+  st:[["Riconosci i sintomi","Telefono bollente, batteria che muore, pubblicità dal nulla."],["Disinstalla l'app sospetta","Quasi sempre è l'ultima installata, soprattutto se fuori dagli store."],["Modalità provvisoria (con un adulto)","Disattiva le app esterne e rimuovi la cattiva."],["Scansione con antivirus VERO","MAI i 'pulitori' trovati nei popup: quelli SONO il virus."],["Cambia le password importanti","Da un ALTRO dispositivo: email, social, giochi."],["Ultima spiaggia: ripristino di fabbrica","Con un adulto, salvando prima foto e contatti."]],
+  rem:"Prevenzione: solo store ufficiali, leggi recensioni, controlla permessi, aggiorna sempre."},
+ {slug:"foto-diffusa",t:"Qualcuno ha diffuso una mia foto",s:"Una foto privata sta girando. Si può fermare.",i:"image-off",c:"#a78bfa",
+  st:[["Non è colpa tua","Diffondere foto private altrui è un REATO (revenge porn)."],["Raccontalo subito a un adulto","Agiranno per proteggerti, non per punirti. Anche insegnante o allenatore."],["Fai le prove prima che spariscano","Screenshot di foto, profilo, dove e quando pubblicate."],["Segnala alla piattaforma","'Immagini condivise senza consenso': le rimuovono in fretta."],["Polizia Postale","Con un adulto, segnalazione al Commissariato PS online."],["Prenditi cura di te","Parla con qualcuno, non isolarti. Telefono Azzurro (196) gratis, giorno e notte."]],
+  rem:"Prove + segnalazioni + adulti accelerano la rimozione. Non affrontarlo mai da solo."}];
+const FAQS=[
+ ["Per quale età è pensata CyberQuest?","È pensata principalmente per ragazzi della scuola secondaria di primo grado (11-14 anni), con linguaggio e grafica moderni. È utilissima anche per famiglie e classi intere."],
+ ["Serve un account per giocare?","No! Puoi giocare da ospite subito e i progressi restano salvati nel tuo dispositivo (localStorage). L'account serve solo per il cloud e gli abbonamenti."],
+ ["È davvero gratuita? Cosa aggiungono Pro, Famiglia e Business?","Sì, il piano Base è gratis per sempre senza pubblicità. Pro (€4,99/mese), Famiglia (€9,99/mese) e Business & Scuole (€29,99/mese) aggiungono XP x2, Scudo Salva-Serie, oggetti Avatar PRO e pannelli per genitori e classi."],
+ ["I miei dati personali sono al sicuro?","Assolutamente sì. In questa versione a file unico tutto resta nel TUO browser (localStorage): nessun server, nessun tracciamento, zero pubblicità. Il Testa-Password analizza tutto in locale."],
+ ["Posso usarla anche a scuola con tutta la classe?","Certo! È perfetta per l'Educazione Civica Digitale. Il piano Business & Scuole aggiunge Codice Classe e pannello docente."],
+ ["Cosa ottengo alla fine del percorso?","Completando le lezioni, le 4 sfide e le storie sblocchi il Patentino di Sicurezza Digitale statico, da stampare in A4 o scaricare in PDF col tuo nome."]];
+const TESTI=[["Laura M.","Mamma di Tommaso, 12 anni","Mio figlio chiedeva di fare le lezioni ogni sera per non perdere la serie! Non pensavo fosse possibile."],["Prof. Andrea R.","Scuola Media 'A. Manzoni'","L'ho usata con tutta la classe durante l'ora di educazione civica. Finalmente uno strumento che i ragazzi usano con entusiasmo vero."],["Sofia, 13 anni","Studentessa di 3ª media","Il gioco 'Trova la Truffa' mi ha davvero aperto gli occhi. Ora controllo sempre i link prima di cliccare!"]];
+</script>
+<script>
+/* ══════════ STATO (localStorage) ══════════ */
+const DEFAV={skin:1,hair:"spike",hairColor:0,eyes:"happy",outfit:"hoodie",accessory:"none",bg:"nebula"};
+let S=null;
+function defaultState(){return{name:"Cyber Eroe",xp:0,streak:0,last:null,avatar:{...DEFAV},comp:[],accounts:{},user:null}}
+function load(){try{const s=JSON.parse(localStorage.getItem("cq_state_v1")||"null");S=s&&typeof s==="object"?Object.assign(defaultState(),s):defaultState()}catch{S=defaultState()}
+S.avatar=Object.assign({},DEFAV,S.avatar||{})}
+function save(){localStorage.setItem("cq_state_v1",JSON.stringify(S))}
+function planOf(st){return st.user?(st.accounts[st.user]?.plan||"free"):"free"}
+function cycleOf(st){return st.user?(st.accounts[st.user]?.cycle||"monthly"):"monthly"}
+function planDef(id){return PLANS.find(p=>p.id===id)||PLANS[0]}
+function xpMult(){return planDef(planOf(S)).m}
+function hasComp(k,r){return S.comp.some(c=>c.k===k&&c.r===r)}
+function scoreOf(k,r){const c=S.comp.find(c=>c.k===k&&c.r===r);return c?c.s:null}
+function trophies(st){const c=st.comp,out=[];const L=c.filter(x=>x.k==="lesson").map(x=>x.r);const good=id=>c.some(x=>x.k==="story"&&x.r===id&&x.s>=100);
+ if(L.length>=1)out.push("primo-passo");
+ if(["password","truffe","privacy","cyberbullismo","virus"].every(l=>L.includes(l)))out.push("mente-acciaio");
+ if(c.some(x=>x.k==="game"&&x.r==="trova-la-truffa"&&x.s>=75))out.push("cacciatore");
+ if(c.some(x=>x.k==="game"&&x.r==="testa-password"&&x.s>=100))out.push("scudo");
+ if(c.some(x=>x.k==="game"&&x.r==="escape-room"))out.push("fuga");
+ if(c.some(x=>x.k==="game"&&x.r==="finto-profilo"&&x.s>=100))out.push("detective");
+ if(["regalo","messaggio","branco","sconosciuto"].some(good))out.push("finale-felice");
+ if(["regalo","messaggio","branco","sconosciuto"].every(good))out.push("narratore");
+ if(st.streak>=7)out.push("fuoco-7");
+ if(computeLevel(st.xp).level>=5)out.push("stella-5");
+ if(computeLevel(st.xp).level>=10)out.push("leggenda-10");
+ if(REQUIRE.every(r=>c.some(x=>x.k===r[0]&&x.r===r[1])))out.push("guardiano");
+ return out}
+function patentinoReady(){return REQUIRE.every(r=>hasComp(r[0],r[1]))}
+function dailyCheck(){const t=new Date().toISOString().slice(0,10);if(S.last!==t){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);S.streak=(S.last===y||(planOf(S)!=="free"&&S.streak>=1))?S.streak+1:1;S.last=t;S.xp+=20*xpMult();save();setTimeout(()=>{toast("Premio giornaliero: +"+20*xpMult()+" PX!","Serie di "+S.streak+(S.streak===1?" giorno":" giorni")+". Torna anche domani!","#fb923c","🔥");confetti()},700)}}
+/* ══════════ ICONE SVG ══════════ */
+const PATHS={"key-round":"M2 18v-2a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v2M14 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM17 8l5 5-2.5 2.5M19 11l2.5-2.5",skull:"M12 2a8 8 0 0 0-8 8v4l3 3v3h10v-3l3-3v-4a8 8 0 0 0-8-8zM9 12h.01M15 12h.01M10 17h4",wand:"M15 4V2m0 20v-2m4.7-14.3 1.4-1.4M4.6 19.4 6 18m10-11a6 6 0 1 0 6 6M9.9 13.9 2 22",scroll:"M19 17V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h16M19 17a2 2 0 0 0 2 2 2 2 0 0 0 2-2v-2",fish:"M2 12s4-8 12-8c6 0 8 6 8 8s-2 8-8 8C6 20 2 12 2 12zm13-3h.01M11 4c1 2 1 4 0 6M14 12c-2 1-4 2-4 4",search:"M11 3a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm10 18-4.35-4.35","user-x":"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M11 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm6 5 6 6m0-6-6 6","life-buoy":"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-3v3m0 10v3M4 12h3m10 0h3","shield-alert":"M12 2 20 5v6c0 5.5-3.5 9.5-8 11-4.5-1.5-8-5.5-8-11V5l8-3zm0 8v3m0 3h.01",infinity:"M6 8a4 4 0 1 0 0 8c3 0 4-2 6-4s3-4 6-4a4 4 0 1 1 0 8c-3 0-4-2-6-4s-3-4-6-4z",users:"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm13.5 10v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",lock:"M4 11h16v10H4V11zm4 0V7a4 4 0 0 1 8 0v4",eye:"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7zM12 12a3 3 0 1 0 0 .01z",hand:"M11 14 5.5 8.5A2.12 2.12 0 0 1 8.5 5.5L11 8V4a2 2 0 0 1 4 0v5l2-2a2.12 2.12 0 0 1 3 3L14 16v6h-8l-1-8z","message-x":"M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3-.6L3 21l1.7-5.1A8.4 8.4 0 1 1 21 11.5zM12 8v4m0 4h.01",shield:"M12 2 20 5v6c0 5.5-3.5 9.5-8 11-4.5-1.5-8-5.5-8-11V5l8-3z","heart-handshake":"M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12c-1 2-2.5 4-4 5.5M12 21l3.5-2.5",bug:"M8 2l1.5 2M16 2l-1.5 2M8 6h8a4 4 0 0 1 4 4v2a8 8 0 0 1-16 0v-2a4 4 0 0 1 4-4zM4 10h3m10 0h3M5 20l3-2m8 2 3-2M12 7v4",alert:"M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4m0 4h.01","shield-check":"M12 2 20 5v6c0 5.5-3.5 9.5-8 11-4.5-1.5-8-5.5-8-11V5l8-3zM8.5 11.5 11 14l4.5-4.5",siren:"M6 8a6 6 0 0 1 12 0v6H6V8zm-2 10h16a2 2 0 0 0 2-2M12 2v2",footprints:"M5 13c2 0 3-1.5 3-3.5S7 6 5.5 6 3 7.5 3 9.5 4 13 5 13zm14 8c2 0 3-1.5 3-3.5S21 14 19.5 14 17 15.5 17 17.5 18 21 19 21zM7 13l2 3m6 2 2 3",brain:"M9.5 2a2.5 2.5 0 0 0-2.4 3.2A2.5 2.5 0 0 0 4 7.5c0 .5.1 1 .4 1.4A2.5 2.5 0 0 0 3 11.3c0 1 .5 1.8 1.2 2.3A2.5 2.5 0 0 0 7 18.8c.3.7 1 1.2 1.9 1.2.8 0 1.5-.5 1.9-1.2.4.1.7.1 1.1.1a2.5 2.5 0 0 0 2.5-2.5V4.5A2.5 2.5 0 0 0 11.9 2a2.5 2.5 0 0 0-2.4 0zM21.6 8.9c.3-.4.4-.9.4-1.4a2.5 2.5 0 0 0-3.1-2.3A2.5 2.5 0 0 0 16.5 2",sparkles:"M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2L12 3zM19 3l.7 2L22 6l-2.3 1L19 9l-.7-2L16 6l2.3-1L19 3zM5 15l.7 2L8 18l-2.3 1L5 21l-.7-2L2 18l2.3-1L5 15z","book-open":"M12 5c-1.5-1.5-4-2-8-2v16c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2V3c-4 0-6.5.5-8 2zm0 0v16",flame:"M12 22c4 0 7-2.7 7-6.5 0-3-2-5.5-3.5-7C14 6.9 13 4.5 13 2c-4 3-7 7-7 11.5C6 19.3 8 22 12 22zm-1-7a3 3 0 0 0 5.8 1c0-1.8-1-3.3-1.8-4.5-.8 1.3-1.8 2-4 3.5z",star:"M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2 2 9.3l6.9-1L12 2z",crown:"M2 8l4 4 6-8 6 8 4-4-2 12H4L2 8zm2 12h16",award:"M12 14a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM9.3 13.5 8 22l4-2.5L16 22l-1.3-8.5",home:"M3 10.5 12 3l9 7.5M5 9.5V21h14V9.5",zap:"M13 2 3 14h7l-1 8 10-12h-7l1-8z",trophy:"M8 21h8m-4-4v4M7 4h10v6a5 5 0 0 1-10 0V4zM7 6H4a2 2 0 0 0 0 5h3m10-5h3a2 2 0 0 1 0 5h-3",medal:"M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM9.5 12.5 8 22l4-2.5L16 22l-1.5-9.5",check:"M5 13l4 4L19 7",x:"M18 6 6 18M6 6l12 12",timer:"M10 2h4m-2 4v8l4 2a8 8 0 1 0-6-14z",play:"M6 4l14 8-14 8V4z",pause:"M8 4v16m8-16v16",printer:"M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2m-12-4h12v6H6v-6z",download:"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3","graduation-cap":"M2 9.5 12 4l10 5.5-10 5.5L2 9.5zm4 3v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5M22 10v6",target:"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 5h.01","arrow-right":"M5 12h14m-6-6 6 6-6 6","arrow-left":"M19 12H5m6 6-6-6 6-6","chevron-down":"M6 9l6 6 6-6","chevron-right":"M9 6l6 6-6 6","rotate-ccw":"M3 12a9 9 0 1 0 3-6.7L3 8m0-5v5h5",lightbulb:"M9 18h6m-5 4h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3v1h6v-1c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z",puzzle:"M14 3v3a2 2 0 0 0 4 0h3v4a2 2 0 0 0 0 4v3h-4a2 2 0 0 0-4 0v-3H6a2 2 0 0 0 0-4V7h4a2 2 0 0 0 4 0V3z",swords:"M4 4l6 6m8.5 8.5L14 14m-4-9 9 9v4h-4l-9-9zM4 20l2-2m0 0 4 4",gift:"M4 8h16v4H4V8zm2 4v10h12V12M12 22V8m0 0S9 8 7.5 6.5a2 2 0 1 1 3.3-2C12 6 12 8 12 8zm0 0s3 0 4.5-1.5a2 2 0 1 0-3.3-2C12 6 12 8 12 8z",route:"M6 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm12 12a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM6 9c0 5 4 6 6 9","user":"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM6 21v-1a6 6 0 0 1 12 0v1","gamepad-2":"M6 6h12a4 4 0 0 1 4 4v3a3 3 0 0 1-5.3 1.9L15.5 13h-7l-1.2 1.9A3 3 0 0 1 2 13v-3a4 4 0 0 1 4-4zm3 3v4m-2-2h4m7-.5h.01M17.5 9h.01","lock-open":"M4 11h16v10H4V11zm4 0V7a4 4 0 0 1 8 .5",link:"M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7","image-off":"M5 3h14l1 2v14l-1 2H5l-1-2V5l1-2zm4 6h.01M11 12l-2 5h9l-2-3-1.5 1.5L11 12zM3 3l18 18","refresh-ccw":"M3 12a9 9 0 0 1 15.5-6.4L21 8m0-5v5h-5m5 9a9 9 0 0 1-15.5 6.4L3 16m0 5v-5h5","eye-off":"M9.9 4.2A10.6 10.6 0 0 1 12 4c6.5 0 10 7 10 7a17 17 0 0 1-2.2 3M6.1 6.1A16.6 16.6 0 0 0 2 12s3.5 7 10 7c1.5 0 2.9-.3 4.2-.7M9.9 9.9a3 3 0 0 0 4.2 4.2M2 2l20 20","map-pin":"M12 21s-7-5.8-7-11a7 7 0 0 1 14 0c0 5.2-7 11-7 11zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z",compass:"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.5 5.5-2 5-5 2 2-5 5-2z","credit-card":"M2 7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7zm0 3h18",building:"M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M16 9h4a2 2 0 0 1 2 2v10M2 21h20M8 7h2m-2 4h2m-2 4h2",mail:"M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm18 3-10 6L2 7","user-plus":"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM19 8v6m3-3h-6","log-in":"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3","log-out":"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9",school:"M12 3 3 8l9 5 9-5-9-5zM7 11.5V17c0 1.7 2.2 3 5 3s5-1.3 5-3v-5.5M21 9v5","badge-check":"M12 2 15 5l4 .5-1 4 2 3.5-3 2.5-.5 4-4-.5-3.5 2L7 18l-4-.5 1-4-2-3.5 3-2.5.5-4 4 .5 9.5 0zM9 12l2 2 4-4","phone":"M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.6 2.8a2 2 0 0 1-.5 2L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2-.5l2.8.6a2 2 0 0 1 1.7 2z",smartphone:"M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm4 17h.01","message-q":"M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3-.6L3 21l1.7-5.1A8.4 8.4 0 1 1 21 11.5zM12 7h.01M12 11h2","users-round":"M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm13 10v-2a4 4 0 0 0-3-3.9M18 3.1a4 4 0 0 1 0 7.8",crown2:"M2 8l4 4 6-8 6 8 4-4-2 12H4L2 8z",wand2:"M15 4V2m0 20v-2m4.7-14.3 1.4-1.4M4.6 19.4 6 18m13-4h2M2 17h2m15-5a5 5 0 1 1-10 0M9.9 13.9 2 22",volume2:"M11 5 6 9H2v6h4l5 4V5zm8.5 9.5a5 5 0 0 0-2-9M16.9 20a9 9 0 0 0-.6-18",gem:"M6 3h12l4 6-10 12L2 9l4-6zm6 18L8 9l4-6 4 6-4 12zM2 9h20","message-square":"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z",camera:"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2v11zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",rocket:"M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2M9 12l-4-1c1-4 5-7 10-9 4-1.5 7-1.5 7-1.5s0 3.5-1.5 7.5c-2 5-5 9-9 10l-1-4-1.5-2zM15 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4z",ban:"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM5.7 5.7l12.6 12.6",circle:"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z",heart:"M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.5-9.5 9-9.5 9z"};
+function icon(n,sz,sw){const d=PATHS[n]||PATHS.shield;return `<svg width="${sz||18}" height="${sz||18}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw||2.2}" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`}
+/* ══════════ UI base: toast, modal, confetti, speech ══════════ */
+function toast(title,desc,color,ic){const t=document.createElement("div");t.className="toast";t.style.borderColor=color;t.innerHTML=`<span style="flex-shrink:0;width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:${color}22;color:${color}">${ic||icon("zap",17)}</span><div class="grow"><p class="fd" style="font-size:13.5px;font-weight:700">${title}</p>${desc?`<p class="small mut" style="margin-top:2px;line-height:1.4">${desc}</p>`:""}</div>`;document.getElementById("toasts").appendChild(t);setTimeout(()=>{t.style.transition="all .35s";t.style.opacity="0";t.style.transform="translateX(60px)";setTimeout(()=>t.remove(),380)},4200)}
+function showModal(html,color){const m=document.getElementById("modal");const b=document.getElementById("mbox");b.style.borderColor=color;b.innerHTML=html;m.classList.add("open")}
+function closeModal(){document.getElementById("modal").classList.remove("open")}
+const cnf=document.getElementById("cnf"),cx=cnf.getContext("2d");let parts=[],cfRun=0;
+function confetti(big){cnf.width=innerWidth;cnf.height=innerHeight;const cols=["#8b5cf6","#22d3ee","#a3e635","#fbbf24","#fb7185"];for(let i=0;i<(big?140:70);i++)parts.push({x:Math.random()*cnf.width,y:-20-Math.random()*cnf.height*.4,vx:(Math.random()-.5)*2.4,vy:2+Math.random()*3.5,s:5+Math.random()*7,c:cols[i%5],r:Math.random()*Math.PI,vr:(Math.random()-.5)*.2});if(!cfRun)cLoop()}
+function cLoop(){cfRun=requestAnimationFrame(cLoop);cx.clearRect(0,0,cnf.width,cnf.height);parts=parts.filter(p=>p.y<cnf.height+30);if(!parts.length){cancelAnimationFrame(cfRun);cfRun=0;return}for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.62);cx.restore()}}
+let speaking=false;
+function speakAll(text,btn){if(!("speechSynthesis" in window)){toast("Audio-lettura","Il tuo browser non supporta la lettura vocale.","#fb7185");return}const sy=window.speechSynthesis;if(speaking){sy.cancel();speaking=false;if(btn)btn.classList.remove("on");return}sy.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="it-IT";u.rate=.98;const v=sy.getVoices().find(v=>v.lang.toLowerCase().startsWith("it"));if(v)u.voice=v;u.onend=()=>{speaking=false;document.querySelectorAll(".micbtn.on").forEach(b=>b.classList.remove("on"))};speaking=true;if(btn)btn.classList.add("on");sy.speak(u)}
+function micBtn(text,cls){return`<button type="button" class="icbtn micbtn ${cls||""}" style="border-color:#2b3560;color:var(--mut);font-size:11px" onclick="speakAll(this.dataset.t,this)" data-t="${text.replace(/"/g,"&quot;")}">${icon("volume2",13)} Ascolta</button>`}
+/* ══════════ componenti markup ══════════ */
+function bar(pct,color,h){return`<div class="bar" style="height:${h||14}px"><span style="width:${Math.round(Math.min(1,Math.max(0,pct))*100)}%;background:linear-gradient(90deg,${color},${color}cc)"></span></div>`}
+function colChip(txt,c,ic){return`<span class="chip" style="border-color:${c}55;background:${c}14;color:${c}">${icon(ic||"zap",12)} ${txt}</span>`}
+function doneB(on){return on?`<span class="chip" style="border-color:rgba(163,230,53,.6);background:rgba(163,230,53,.1);color:#bef264;font-size:10px">${icon("check",11,3)} Fatto</span>`:""}
+function header(kick,title,desc,c,ic,speakTxt){return`<div style="margin-bottom:26px"><span class="kick" style="border-color:${c};color:${c}">${icon(ic,13)} ${kick}</span><h1 style="font-size:clamp(30px,5vw,48px);font-weight:700;line-height:1.05;letter-spacing:-.5px;margin-top:12px">${title}</h1>${desc?`<div class="row" style="margin-top:10px;max-width:640px;align-items:flex-start"><p class="mut" style="line-height:1.6;font-size:15px">${desc}</p>${speakTxt?micBtn(speakTxt):""}</div>`:""}</div>`}
+function avatarSVG(cfg,size){const skin=SKIN_C[cfg.skin%6],hair=HAIR_C[cfg.hairColor%6];const oc={hoodie:["#8b5cf6","#6d28d9"],tee:["#22d3ee","#0e7490"],jacket:["#a3e635","#4d7c0f"],hacker:["#14532d","#052e16"],neon:["#0f172a","#22d3ee"]}[cfg.outfit]||["#8b5cf6","#6d28d9"];let bg="";
+ if(cfg.bg==="sunset")bg=`<rect x="4" y="4" width="232" height="232" fill="url(#gsu)"/><circle cx="120" cy="150" r="52" fill="#fde68a" opacity=".9"/><rect x="4" y="175" width="232" height="13" fill="#1e1b4b" opacity=".6"/>`;
+ else if(cfg.bg==="matrix")bg=`<rect x="4" y="4" width="232" height="232" fill="#03150b"/><rect x="30" y="15" width="8" height="90" rx="4" fill="#10b981" opacity=".6"/><rect x="90" y="60" width="8" height="70" rx="4" fill="#34d399" opacity=".45"/><rect x="150" y="10" width="8" height="110" rx="4" fill="#10b981" opacity=".55"/><rect x="200" y="70" width="8" height="60" rx="4" fill="#34d399" opacity=".5"/>`;
+ else if(cfg.bg==="circuit")bg=`<rect x="4" y="4" width="232" height="232" fill="#0b1026"/><path d="M4 60 H60 V24 H120M236 90 H180 V40M40 190 H90 V230" stroke="#fbbf24" stroke-width="2.5" fill="none" opacity=".5"/><circle cx="120" cy="24" r="5" fill="#fbbf24"/><circle cx="180" cy="40" r="5" fill="#fbbf24"/>`;
+ else if(cfg.bg==="galaxy")bg=`<rect x="4" y="4" width="232" height="232" fill="#170b38"/><circle cx="190" cy="50" r="22" fill="#f0abfc" opacity=".85"/><ellipse cx="190" cy="50" rx="38" ry="9" fill="none" stroke="#f0abfc" stroke-width="4" opacity=".6" transform="rotate(-18 190 50)"/><circle cx="30" cy="50" r="2.2" fill="#fff"/><circle cx="70" cy="200" r="2" fill="#fff"/><circle cx="150" cy="210" r="2.4" fill="#fff"/>`;
+ else if(cfg.bg==="aurora")bg=`<rect x="4" y="4" width="232" height="232" fill="#061224"/><path d="M0 95 Q65 40 130 85 T240 60 V150 Q170 120 110 155 T0 135 Z" fill="#22d3ee" opacity=".35"/><path d="M0 130 Q80 75 150 115 T240 95 V185 Q160 155 95 190 T0 170 Z" fill="#a855f7" opacity=".3"/><path d="M0 65 Q70 25 140 55 T240 35 V95 Q165 70 90 95 T0 85 Z" fill="#a3e635" opacity=".22"/>`;
+ else bg=`<rect x="4" y="4" width="232" height="232" fill="url(#gn)"/><circle cx="30" cy="40" r="2" fill="#fff"/><circle cx="200" cy="30" r="2.6" fill="#fff"/><circle cx="50" cy="200" r="2" fill="#fff"/><circle cx="210" cy="190" r="2.2" fill="#fff"/>`;
+ let hairS="";if(cfg.hair==="spike")hairS=`<path d="M76 98 A45 45 0 0 1 164 98 L158 100 Q120 78 82 100 Z" fill="${hair}"/><path d="M80 92 L88 44 L104 78 Z" fill="${hair}"/><path d="M100 76 L114 26 L126 70 Z" fill="${hair}"/><path d="M124 72 L140 34 L148 80 Z" fill="${hair}"/><path d="M146 84 L168 52 L162 96 Z" fill="${hair}"/>`;
+ else if(cfg.hair==="curly")hairS=`<path d="M76 100 A45 45 0 0 1 164 100 L156 102 Q120 84 84 102 Z" fill="${hair}"/><circle cx="82" cy="84" r="16" fill="${hair}"/><circle cx="102" cy="66" r="17" fill="${hair}"/><circle cx="126" cy="62" r="17" fill="${hair}"/><circle cx="148" cy="74" r="16" fill="${hair}"/>`;
+ else if(cfg.hair==="long")hairS=`<path d="M74 96 A46 46 0 0 1 166 96 L166 150 Q150 158 148 138 L150 96 Q120 70 90 96 L92 138 Q90 158 74 150 Z" fill="${hair}"/>`;
+ else if(cfg.hair==="fade")hairS=`<path d="M78 94 Q76 54 120 52 Q164 54 162 94 L150 94 Q150 72 120 71 Q90 72 90 94 Z" fill="${hair}"/>`;
+ else if(cfg.hair==="mohawk")hairS=`<path d="M108 94 L102 34 L120 22 L138 34 L132 94 Q120 86 108 94 Z" fill="${hair}"/>`;
+ let face="";if(cfg.eyes==="happy")face=`<ellipse cx="104" cy="96" rx="5.5" ry="7" fill="#221f2e"/><ellipse cx="136" cy="96" rx="5.5" ry="7" fill="#221f2e"/><circle cx="106" cy="93" r="2" fill="#fff"/><circle cx="138" cy="93" r="2" fill="#fff"/><path d="M106 116 Q120 129 134 116" stroke="#221f2e" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+ else if(cfg.eyes==="cool")face=`<path d="M97 90 L112 96 L110 101 L97 97 Z" fill="#221f2e"/><path d="M143 90 L128 96 L130 101 L143 97 Z" fill="#221f2e"/><path d="M107 117 Q121 123 133 113" stroke="#221f2e" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+ else if(cfg.eyes==="wink")face=`<path d="M97 94 Q104 100 111 94" stroke="#221f2e" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="136" cy="96" rx="5.5" ry="7" fill="#221f2e"/><circle cx="138" cy="93" r="2" fill="#fff"/><path d="M106 114 Q120 130 136 112" stroke="#221f2e" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+ else if(cfg.eyes==="laser")face=`<rect x="96" y="89" width="16" height="10" rx="5" fill="#22d3ee"/><rect x="128" y="89" width="16" height="10" rx="5" fill="#22d3ee"/><rect x="94" y="87" width="20" height="14" rx="7" fill="#22d3ee" opacity=".3"/><rect x="126" y="87" width="20" height="14" rx="7" fill="#22d3ee" opacity="0.3"/><path d="M110 118 H130" stroke="#221f2e" stroke-width="4" stroke-linecap="round"/>`;
+ let acc="";if(cfg.accessory==="glasses")acc=`<g stroke="#221f2e" stroke-width="4" fill="none"><circle cx="104" cy="97" r="13"/><circle cx="136" cy="97" r="13"/><path d="M117 97 h6"/></g>`;
+ else if(cfg.accessory==="headphones")acc=`<path d="M72 98 A48 48 0 0 1 168 98" stroke="#221f2e" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="60" y="88" width="18" height="28" rx="8" fill="#221f2e"/><rect x="162" y="88" width="18" height="28" rx="8" fill="#221f2e"/>`;
+ else if(cfg.accessory==="starshades")acc=`<polygon points="104,81 110,93 122,95 113,104 115,116 104,110 93,116 95,104 86,95 98,93" fill="#fbbf24" stroke="#221f2e" stroke-width="3"/><polygon points="136,81 142,93 154,95 145,104 147,116 136,110 125,116 127,104 118,95 130,93" fill="#fbbf24" stroke="#221f2e" stroke-width="3"/>`;
+ else if(cfg.accessory==="ninja")acc=`<rect x="74" y="66" width="92" height="17" rx="8.5" fill="#fb7185"/><path d="M162 74 L188 58 L183 76 L192 88 L165 82 Z" fill="#fb7185"/><circle cx="120" cy="74.5" r="5.5" fill="#fff" opacity=".85"/>`;
+ else if(cfg.accessory==="antenna")acc=`<path d="M120 52 V30" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/><circle cx="120" cy="24" r="8" fill="#fb7185"/><circle cx="120" cy="24" r="13" fill="#fb7185" opacity=".3"/>`;
+ else if(cfg.accessory==="visor")acc=`<rect x="78" y="84" width="84" height="24" rx="12" fill="#22d3ee" opacity=".72" stroke="#0e7490" stroke-width="3.5"/><path d="M88 92 H126" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".85"/>`;
+ else if(cfg.accessory==="crown")acc=`<path d="M88 54 L94 26 L108 42 L120 20 L132 42 L146 26 L152 54 Z" fill="#fbbf24" stroke="#92400e" stroke-width="3" stroke-linejoin="round"/><circle cx="120" cy="40" r="4" fill="#22d3ee"/>`;
+ let body="";if(cfg.outfit==="armatura")body=`<path d="M46 244 V196 Q46 158 90 150 Q120 158 150 150 Q194 158 194 196 V244 Z" fill="#94a3b8"/><circle cx="120" cy="196" r="13" fill="#22d3ee"/><circle cx="120" cy="196" r="20" fill="#22d3ee" opacity=".25"/>`;
+ else if(cfg.outfit==="neon")body=`<path d="M46 244 V196 Q46 158 92 150 L148 150 Q194 158 194 196 V244 Z" fill="${oc[0]}"/><path d="M82 154 L120 186 L158 154" stroke="#22d3ee" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 184 L96 244 M178 184 L144 244" stroke="#e879f9" stroke-width="4" stroke-linecap="round"/>`;
+ else if(cfg.outfit==="hacker")body=`<path d="M58 108 Q50 34 120 32 Q190 34 182 108 L176 150 L64 150 Z" fill="#052e16"/><path d="M46 244 V196 Q46 158 92 150 L148 150 Q194 158 194 196 V244 Z" fill="${oc[0]}"/><rect x="112" y="196" width="16" height="16" rx="3" fill="#22d3ee"/>`;
+ else body=`<path d="M46 244 V196 Q46 158 92 150 L148 150 Q194 158 194 196 V244 Z" fill="${oc[0]}"/>${cfg.outfit==="hoodie"?`<ellipse cx="120" cy="154" rx="36" ry="14" fill="${oc[1]}"/><rect x="100" y="200" width="40" height="20" rx="9" fill="${oc[1]}" opacity=".85"/>`:cfg.outfit==="tee"?`<path d="M96 152 Q120 168 144 152" stroke="#f0fdff" stroke-width="6" fill="none" stroke-linecap="round"/>`:`<path d="M120 244 V152" stroke="${oc[1]}" stroke-width="5"/><path d="M96 152 L118 176 L104 200 L88 156 Z" fill="${oc[1]}"/><path d="M144 152 L122 176 L136 200 L152 156 Z" fill="${oc[1]}"/>`}`;
+ return`<svg width="${size}" height="${size}" viewBox="0 0 240 240" role="img" aria-label="Avatar"><defs><linearGradient id="gn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#312e81"/><stop offset="1" stop-color="#7c3aed"/></linearGradient><linearGradient id="gsu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f97316"/><stop offset=".55" stop-color="#e11d78"/><stop offset="1" stop-color="#5b21b6"/></linearGradient></defs><g>${bg}${body}<rect x="104" y="132" width="32" height="26" rx="10" fill="${skin}"/><circle cx="75" cy="100" r="9" fill="${skin}"/><circle cx="165" cy="100" r="9" fill="${skin}"/><circle cx="120" cy="96" r="45" fill="${skin}"/>${hairS}<ellipse cx="97" cy="110" rx="7" ry="4" fill="#fb7185" opacity=".35"/><ellipse cx="143" cy="110" rx="7" ry="4" fill="#fb7185" opacity=".35"/>${face}${acc}</g><rect x="4" y="4" width="232" height="232" rx="36" fill="none" stroke="#0e1434" stroke-width="8"/></svg>`}
+</script>
+<script>
+/* ══════════ ROUTING ══════════ */
+const ROUTES=[["home","Home","home"],["impara","Impara","book-open"],["gioca","Gioca","gamepad-2"],["storie","Storie","route"],["trofei","Trofei","trophy"],["avatar","Avatar","user"],["patentino","Patentino","award"],["piani","Piani","crown"],["soccorso","SOS","siren"]];
+let V={name:"home",arg:null};
+function go(name,arg){V={name,arg};render();window.scrollTo({top:0,behavior:"instant"})}
+function goHash(){location.hash="#/"+V.name+(V.arg?("/"+V.arg):"")}
+function renderTop(){const links=document.getElementById("toplinks");links.innerHTML=ROUTES.map(r=>`<a data-r="${r[0]}" class="${V.name===r[0]?"on":""} ${r[0]==="soccorso"?"sos":""}" onclick="go('${r[0]}');goHash()">${icon(r[2],13)} ${r[1]}</a>`).join("");
+ document.getElementById("chipStreak").innerHTML="🔥 "+S.streak;
+ document.getElementById("chipXp").innerHTML="⚡ "+S.xp+" PX";
+ const cp=document.getElementById("chipPlan");const pd=planDef(planOf(S));
+ if(pd.id!=="free"){cp.classList.remove("hidden");cp.style.cssText=`border-color:${pd.c};color:${pd.c};background:${pd.c}14`;cp.innerHTML=icon("crown",11)+" "+pd.tag}else cp.classList.add("hidden");
+ document.getElementById("authArea").innerHTML=S.user
+  ?`<button class="icbtn" style="border-color:#475569;color:var(--mut2)" onclick="logout()" title="Esci (torna ospite)">${icon("log-out",13)}</button>`
+  :`<a class="icbtn" style="border-color:var(--lime);background:var(--lime);color:#0b1026;box-shadow:0 3px 0 var(--ink)" onclick="go('accedi');goHash()">${icon("log-in",13)} Accedi</a>`}
+function render(){renderTop();const v=document.getElementById("view");if("speechSynthesis" in window){window.speechSynthesis.cancel();speaking=false}
+ const fns={home:rHome,impara:rImpara,lesson:rLesson,gioca:rGioca,trova:rScam,pw:rPwTest,escape:rEscape,finto:rFinto,storie:rStorie,story:rStory,trofei:rTrofei,avatar:rAvatar,patentino:rPatentino,piani:rPiani,accedi:rAccedi,soccorso:rSos};
+ (fns[V.name]||rHome)(v,V.arg)}
+/* ══════════ SUBMIT = progresso ══════════ */
+function submit(kind,refId,score){const prev=trophies(S);const before=patentinoReady();const base=refId==="trova-la-truffa"?scamXp(score):XPV[kind+":"+refId];if(base==null)return;
+ const ex=S.comp.find(c=>c.k===kind&&c.r===refId);const first=!ex;const gained=first?base*xpMult():0;
+ if(ex){ex.s=Math.max(ex.s,score)}else S.comp.push({k:kind,r:refId,s:score});
+ const lvlOld=computeLevel(S.xp);S.xp+=gained;const lvlNew=computeLevel(S.xp);save();renderTop();
+ if(gained>0){toast("+"+gained+" PX guadagnati!",xpMult()>1?"Bonus Abbonamento x"+xpMult()+" applicato!":"Esperienza aggiunta al tuo profilo","#a3e635");confetti()}
+ else toast("Attività già completata","Hai migliorato il record, i PX li avevi già presi","#22d3ee",icon("check",17));
+ const now=trophies(S);now.filter(t=>!prev.includes(t)).forEach((k,i)=>{const d=TROPHIES.find(x=>x.k===k);setTimeout(()=>{toast("TROFEO SBLOCCATO: "+d.t,d.d,d.c,icon(d.i,17));confetti(true)},600+i*500)});
+ if(lvlNew.level>lvlOld.level)setTimeout(()=>{confetti(true);showModal(`<div class="badgebox" style="margin:0 auto;background:rgba(163,230,53,.15);color:var(--lime);width:80px;height:80px;border-radius:24px">${icon("sparkles",40)}</div><p class="fd blime" style="margin-top:18px;font-size:12px;letter-spacing:3px;text-transform:uppercase">Nuovo livello!</p><p class="fd" style="font-size:44px;font-weight:700;margin-top:6px">Livello ${lvlNew.level}</p><p class="fd bvio" style="font-size:19px;font-weight:700">${lvlNew.name}</p><p class="small mut" style="margin-top:10px">Controlla l'Avatar: potrebbero essersi sbloccati nuovi oggetti!</p><button class="btn solid block" style="background:var(--lime);border-color:var(--lime);margin-top:18px" onclick="closeModal()">Continua</button>`,"#a3e635")},now.length>prev.length?1900:800);
+ if(!before&&patentinoReady())setTimeout(()=>{confetti(true);showModal(`<div class="badgebox" style="margin:0 auto;background:rgba(251,191,36,.15);color:var(--gold);width:80px;height:80px;border-radius:24px">${icon("graduation-cap",40)}</div><p class="fd bgold" style="margin-top:18px;font-size:12px;letter-spacing:3px;text-transform:uppercase">Impresa completata</p><p class="fd" style="font-size:34px;font-weight:700;margin-top:6px">IL PATENTINO È TUO!</p><p class="small mut" style="margin-top:10px">Hai completato tutto il percorso. Il tuo attestato ti aspetta.</p><button class="btn solid block" style="background:var(--gold);border-color:var(--gold);margin-top:16px" onclick="closeModal();go('patentino');goHash()">Vai al Patentino</button>`,"#fbbf24")},3200)}
+/* ══════════ HOME ══════════ */
+function rHome(v){const xp=S.xp,lvl=computeLevel(xp),done=REQUIRE.filter(r=>hasComp(r[0],r[1])).length;const next=REQUIRE.find(r=>!hasComp(r[0],r[1]));
+ const mq=["Password Forti","Anti-Phishing","Privacy sui Social","Stop Cyberbullismo","Download Sicuri","Storie a Bivi","Trofei da Collezione","Serie Giornaliera","Patentino Finale"];
+ const url=n=>n.split(":")[0]==="lesson"?`/lesson:${n.split(":")[1]}`:n.split(":")[0]==="game"?`/game:${n.split(":")[1]}`:`/story:${n.split(":")[1]}`;
+ v.innerHTML=`
+ <div class="grid" style="grid-template-columns:1.05fr .95fr;align-items:center;gap:34px" id="heroGrid">
+  <div>
+    <span class="kick" style="border-color:rgba(232,121,249,.5);color:#f5b8f8">⚡ Impara giocando — gratis per sempre</span>
+    <h1 style="font-size:clamp(38px,6vw,66px);font-weight:700;line-height:.98;letter-spacing:-1px;margin-top:16px">Diventa un<br><span style="background:linear-gradient(90deg,var(--vio),var(--cy),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent">Cyber Guardiano</span></h1>
+    <p class="mut" style="font-size:16.5px;line-height:1.65;margin-top:16px;max-width:520px">Ciao <b style="color:#fff">${S.name}</b>! Impara a smascherare truffe, creare password invincibili e proteggere la tua vita online. Lezioni da 3 minuti, sfide vere e trofei da conquistare.</p>
+    <div class="row" style="margin-top:22px">
+      <a class="btn solid big" style="background:var(--lime);border-color:var(--lime)" onclick="go('impara');goHash()">${icon("play",18,2.6)} Inizia a imparare</a>
+      <a class="btn ghost big" style="border-color:rgba(34,211,238,.6);color:var(--cy)" onclick="go('gioca');goHash()">${icon("gamepad-2",18)} Vai alle sfide</a>
+    </div>
+    <div class="row" style="margin-top:20px;gap:8px">${colChip("⚡ "+S.xp+" PX","#a3e635")}${colChip("Livello "+lvl.level+" — "+lvl.name,"#fbbf24","star")}${colChip(trophies(S).length+"/12 trofei","#e879f9","trophy")}</div>
+    <div class="row" style="margin-top:14px;gap:14px" class="small">${["⭐ 4.9/5 genitori","🏫 Usata in 200+ scuole","🔒 100% sicura e senza pubblicità"].map(t=>`<span class="small" style="font-weight:900;color:var(--mut)">${t}</span>`).join("")}</div>
+  </div>
+  <div style="position:relative;text-align:center">
+    <div class="floaty" style="display:inline-block;max-width:380px;width:100%">${avatarSVG(S.avatar,380)}</div>
+    <div class="row" style="justify-content:center;gap:8px;margin-top:14px">
+      ${colChip("🔥 Serie: "+S.streak+" gg","#fb923c","flame")}${colChip(next?"Prossima: "+next[2].split(": ")[1]:"Percorso completo!","#22d3ee","target")}
+    </div>
+  </div>
+ </div>
+ <div class="marquee no-print" style="margin:34px -16px 0"><div>${(mq.concat(mq)).map(m=>`<span>⚡ ${m}</span>`).join("")}</div></div>
+ <div style="margin-top:44px" class="between row"><div><p class="kick" style="border-color:var(--vio);color:#c4b5fd">Il tuo percorso</p><h2 style="font-size:clamp(24px,4vw,36px);font-weight:700;margin-top:10px">La missione verso il Patentino</h2></div><a class="fd" style="color:var(--gold);font-weight:700;cursor:pointer" onclick="go('patentino');goHash()">Vedi il Patentino →</a></div>
+ <div class="grid g2" style="margin-top:18px">
+   <div class="card row">
+     <div style="position:relative;width:120px;height:120px;flex-shrink:0"><svg viewBox="0 0 120 120" style="transform:rotate(-90deg)"><circle cx="60" cy="60" r="50" fill="none" stroke="#0a0e24" stroke-width="12"/><circle cx="60" cy="60" r="50" fill="none" stroke="#fbbf24" stroke-width="12" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="${314*(1-done/REQUIRE.length)}" style="transition:stroke-dashoffset 1s"/></svg><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><b class="fd" style="font-size:30px">${done}</b><span class="xs mut2" style="font-weight:900">su ${REQUIRE.length}</span></div></div>
+     <div class="grow"><h3 class="fd" style="font-size:22px;font-weight:700">${done===0?"L'avventura comincia qui":done===REQUIRE.length?"PERCORSO COMPLETO!":"Sei sulla strada giusta"}</h3>
+     <p class="small mut" style="margin-top:8px;line-height:1.6">Completa le 5 lezioni, supera le 4 sfide e vivi le 4 storie per conquistare il <b class="bgold">Patentino di Sicurezza Digitale</b> statico e stampabile.</p>
+     <div style="margin-top:12px"><div class="between small mut2" style="font-weight:800;margin-bottom:5px"><span>Lv.${lvl.level} — ${lvl.name}</span><span class="bvio">${Math.round(lvl.progress*100)}%</span></div>${bar(lvl.progress,"#8b5cf6",12)}</div></div>
+   </div>
+   <div class="card" style="border-color:${next?"#a3e635":"#fbbf24"}">
+     <p class="kick" style="border-color:#334155;color:var(--mut);font-size:10px">${next?"Prossima missione":"Tutto completato"}</p>
+     <h3 class="fd" style="font-size:21px;font-weight:700;margin-top:12px">${next?next[2]:"Sei un Cyber Guardiano certificato"}</h3>
+     <p class="small mut" style="margin-top:8px;line-height:1.6;min-height:40px">${next?(next[0]==="lesson"?"Tre minuti di lettura e un mini-quiz finale. Veloce e indolore!":next[0]==="game"?"Una sfida pratica: prova davvero quello che sai fare.":"Una storia a bivi: ogni tua scelta cambia il finale."):"Hai finito il percorso: prendi il tuo attestato e resta imbattibile."}</p>
+     <a class="btn solid" style="background:${next?"#a3e635":"#fbbf24"};border-color:${next?"#a3e635":"#fbbf24"};margin-top:14px" onclick="openReq('${next?next[0]+":"+next[1]:"patentino"}')">${next?"Gioca ora":"Apri il Patentino"} ${icon("arrow-right",15)}</a>
+   </div>
+ </div>
+ <div class="grid g3" style="margin-top:18px">
+   ${[["5","Lezioni tematiche da 3 min","#8b5cf6"],["4","Prove pratiche interattive","#22d3ee"],["12","Trofei digitali da sbloccare","#fbbf24"],["100%","Sicura e senza pubblicità","#a3e635"]].map(s=>`<div class="card sm center"><p class="fd" style="font-size:40px;font-weight:700;color:${s[2]}">${s[0]}</p><p class="xs mut" style="font-weight:900;text-transform:uppercase;letter-spacing:1px;margin-top:4px">${s[1]}</p></div>`).join("")}
+ </div>
+ <div style="height:2px;background:var(--line);margin:44px 0 34px"></div>
+ <div class="center" style="max-width:660px;margin:0 auto"><span class="kick" style="border-color:var(--cy);color:var(--cy)">${icon("sparkles",13)} Cosa rende speciale l'app</span>
+ <h2 style="font-size:clamp(26px,4.4vw,44px);font-weight:700;margin-top:14px">Pensata come <span class="bcy">un videogioco</span><br>non come un corso noioso</h2></div>
+ <div class="grid g3" style="margin-top:26px">${[["gamepad-2","#8b5cf6","Livelli e Punti","Ogni lezione completata fa guadagnare PX e salire di livello, come in un videogioco."],["user","#fb7185","Avatar personalizzabile","Crea il tuo personaggio: vestiti e accessori si sbloccano superando le sfide."],["medal","#fbbf24","Trofei da collezionare","Medaglie digitali per ogni traguardo: dalla prima lezione al patentino."],["flame","#22d3ee","Serie giornaliera","Bastano 2 minuti al giorno per tenere viva la striscia e vincere premi."],["book-open","#a3e635","Lezioni da 3 minuti","Spiegazioni brevi con fumetti, audio-lettura e video animati."],["siren","#e879f9","Pronto Soccorso","Guide immediate passo-passo per account rubati, insulti o link pericolosi."]].map(f=>`<div class="card sm"><span class="badgebox" style="background:${f[1]};color:#0b1026">${icon(f[0],22,2.6)}</span><h3 class="fd" style="font-size:18px;font-weight:700;margin-top:14px">${f[2]}</h3><p class="small mut" style="margin-top:6px;line-height:1.55">${f[3]}</p></div>`).join("")}</div>
+ <div class="grid g2" style="margin-top:26px">
+   <div class="card"><div class="row">${colChip("Come funziona","#22d3ee","compass")}</div>
+    <div class="grid g2" style="margin-top:16px;gap:12px">${[["1","Crea l'avatar","Personalizza il tuo Eroe digitale.","#8b5cf6"],["2","Guarda le lezioni","3 minuti con fumetti, audio e video.","#22d3ee"],["3","Affronta le sfide","Giochi realistici e storie a bivi.","#a3e635"],["4","Ottieni il patentino","Scarica e stampa l'attestato statico.","#fbbf24"]].map(s=>`<div class="card sm center" style="border-color:${s[3]}55"><span class="badgebox" style="margin:0 auto;background:${s[3]};color:#0b1026">${s[0]}</span><b class="fd" style="display:block;margin-top:10px;font-size:15px">${s[1]}</b><p class="xs mut" style="margin-top:4px;line-height:1.5">${s[2]}</p></div>`).join("")}</div></div>
+   <div class="card" style="border-color:#8b5cf688"><div class="row">${colChip("Sicura e adatta a tutti","#a3e635","lock")}</div>
+     <div class="grid" style="gap:10px;margin-top:16px">${[["palette","#8b5cf6","Grafica moderna","Colorata e coinvolgente, non infantile."],["volume2","#22d3ee","Audio-lettura","Legge i testi ad alta voce per chi ha difficoltà di lettura."],["ban","#fb7185","Senza pubblicità","Nessun annuncio, zero tracking, tutto in locale."],["graduation-cap","#fbbf24","Patentino finale","Attestato statico e stampabile in A4."]].map(p=>`<div class="row" style="background:rgba(11,16,38,.8);border:1px solid var(--line2);border-radius:16px;padding:12px"><span class="badgebox" style="width:38px;height:38px;border:none;box-shadow:none;background:${p[1]}20;color:${p[1]}">${icon(p[0]==="palette"?"sparkles":p[0],17)}</span><div><b class="fd" style="font-size:14px">${p[2]}</b><p class="xs mut">${p[3]}</p></div></div>`).join("")}</div></div>
+ </div>
+ <div class="grid g3" style="margin-top:26px">${TESTI.map(t=>`<div class="card sm"><div style="color:var(--gold);letter-spacing:2px">★★★★★</div><p class="small" style="margin-top:12px;line-height:1.65;font-style:italic;color:#cbd5e1">"${t[2]}"</p><div class="row" style="margin-top:16px;border-top:1px solid var(--line2);padding-top:12px"><span class="badgebox" style="width:36px;height:36px;border:none;box-shadow:none;background:rgba(139,92,246,.2);color:#c4b5fd;font-size:13px">${t[0][0]}</span><div><b class="fd" style="font-size:13px">${t[0]}</b><p class="xs mut">${t[1]}</p></div></div></div>`).join("")}</div>
+ <div id="faq" style="max-width:760px;margin:34px auto 0">
+   <div class="center">${colChip("Domande frequenti","#22d3ee","lightbulb")}<h2 style="font-size:clamp(24px,4vw,34px);font-weight:700;margin-top:12px">Hai dubbi? <span class="bvio">Rispondiamo noi</span></h2></div>
+   <div class="grid" style="gap:10px;margin-top:20px">${FAQS.map((f,i)=>`<div class="card sm" style="padding:0;overflow:hidden"><button class="opt" style="border:none;border-radius:0;padding:16px 18px" onclick="this.nextElementSibling.classList.toggle('hidden');this.querySelector('svg').style.transform=this.nextElementSibling.classList.contains('hidden')?'':'rotate(180deg)'"><b class="fd" style="font-size:14.5px">${f[0]}</b>${icon("chevron-down",15)}</button><p class="small mut hidden" style="padding:0 18px 16px;line-height:1.6;border-top:1px solid var(--line2);padding-top:12px">${f[1]}</p></div>`).join("")}</div>
+ </div>
+ <div class="card center" style="margin-top:34px;border-color:rgba(34,211,238,.6);background:linear-gradient(90deg,rgba(139,92,246,.14),rgba(34,211,238,.1))">
+   <h2 style="font-size:clamp(24px,4vw,36px);font-weight:700">Pronto a diventare un Eroe della Sicurezza Digitale?</h2>
+   <p class="mut small" style="margin-top:10px">Bastano 3 minuti al giorno. Installa la pagina sul telefono (Aggiungi a schermata Home) e gioca dove vuoi.</p>
+   <div class="row" style="justify-content:center;margin-top:20px">
+     <a class="btn solid" style="background:var(--lime);border-color:var(--lime)" onclick="go('impara');goHash()">Inizia subito</a>
+     <a class="btn ghost" style="border-color:rgba(251,191,36,.6);color:var(--gold)" onclick="go('piani');goHash()">${icon("crown",16)} Piani Pro & Scuole</a>
+     <a class="btn ghost" style="border-color:rgba(34,211,238,.6);color:var(--cy)" onclick="toast('Scarica l&#39;app (Web App)','Tocca ⋮/Condividi nel browser e scegli &quot;Aggiungi a schermata Home&quot;.','#22d3ee','')">${icon("smartphone",16)} Scarica l'App</a>
+   </div>
+ </div>
+ <footer style="margin-top:40px;border-top:2px solid var(--line2);padding-top:26px">
+   <div class="grid g4">
+     <div><b class="fd" style="font-size:16px">Cyber<span class="bcy">Quest</span></b><p class="xs mut" style="margin-top:8px;line-height:1.6;max-width:240px">L'app gamificata che trasforma l'educazione alla sicurezza digitale in un'avventura per ragazzi delle medie, famiglie e scuole.</p><a class="icbtn" style="border-color:rgba(251,113,133,.6);color:#fda4af;margin-top:12px" onclick="go('soccorso');goHash()">${icon("siren",13)} Pronto Soccorso SOS</a></div>
+     <div><b class="fd small">Prodotto</b><div class="grid xs" style="gap:7px;margin-top:10px;color:var(--mut);font-weight:800"><a style="cursor:pointer;color:var(--mut)" onclick="go('impara');goHash()">Funzionalità</a><a style="cursor:pointer;color:var(--mut)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">Come funziona</a><a style="cursor:pointer;color:var(--gold)" onclick="go('piani');goHash()">Abbonamenti Pro & Business</a></div></div>
+     <div><b class="fd small">Risorse</b><div class="grid xs" style="gap:7px;margin-top:10px;color:var(--mut);font-weight:800"><a style="cursor:pointer;color:var(--mut)" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">FAQ</a><a style="cursor:pointer;color:var(--mut)" onclick="toast('Per le Scuole','Convenzioni e pannelli classe con il piano Business & Scuoles (€29,99/mese).','#22d3ee',icon('school',15))">Per le Scuole</a><a style="cursor:pointer;color:var(--mut)" onclick="go('patentino');goHash()">Patentino Digitale</a></div></div>
+     <div><b class="fd small">Legale & Contatti</b><div class="grid xs" style="gap:7px;margin-top:10px;color:var(--mut);font-weight:800"><a style="cursor:pointer;color:var(--mut)" onclick="toast('Privacy Policy','Zero tracking: tutti i dati restano nel tuo browser (localStorage).','#a3e635',icon('shield-check',15))">Privacy Policy</a><a style="cursor:pointer;color:var(--mut)" onclick="toast('Termini di servizio','Disdici o cambia piano in qualsiasi momento con un clic.','#fbbf24','')">Termini di servizio</a><a style="cursor:pointer;color:var(--mut)" onclick="toast('Contatti','supporto@cyberquest-edu.it · scuole@cyberquest-edu.it','#e879f9',icon('mail',15))">Contatti</a></div></div>
+   </div>
+   <div class="between xs mut2" style="border-top:1px solid var(--line2);margin-top:24px;padding-top:16px;row"><span>© ${new Date().getFullYear()} CyberQuest · Versione file unico HTML5 (tutto salvato in locale).</span><span>Fatto con cura per rendere internet più sicuro.</span></div>
+ </footer>`}
+function openReq(id){const[k,r]=id.split(":");if(id==="patentino"){go("patentino")}else if(k==="lesson"){go("lesson",r)}else if(k==="game"){goMap({["trova-la-truffa"]:"trova","testa-password":"pw","escape-room":"escape","finto-profilo":"finto"}[r],null)}else{go("story",r)}goHash()}
+function goMap(n,a){go(n,a)}
+</script>
+<script>
+/* ══════════ IMPARA ══════════ */
+function rImpara(v){v.innerHTML=header("Accademia","Lezioni da 3 minuti","Niente muri di testo: spiegazioni brevi, fumetti e video animati, audio-lettura e un quiz da 3 domande alla fine di ogni lezione.","#8b5cf6","book-open","Benvenuto nell'Accademia. Cinque lezioni da tre minuti: password, truffe, privacy, cyberbullismo e virus. Completale tutte per diventare un Cyber Guardiano.")+
+ `<div class="grid g2">${LESSONS.map((l,i)=>{const done=hasComp("lesson",l.slug);return`<div class="card sm" style="border-color:${done?"#a3e635":l.c+"66"};cursor:pointer;transition:transform .15s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''" onclick="go('lesson','${l.slug}');goHash()">
+   <div class="row between"><span class="badgebox" style="background:${l.c};color:#0b1026">${icon(l.icon,22,2.6)}</span>${doneB(done)}</div>
+   <h2 class="fd" style="font-size:19px;font-weight:700;margin-top:12px">${l.title}</h2>
+   <p class="small mut" style="margin-top:5px;line-height:1.5">${l.tagline}</p>
+   <div class="row" style="margin-top:12px;gap:6px">${colChip("3 min","#94a3b8","timer")}${colChip("+"+l.xp+" PX","#a3e635")}<span class="fd" style="margin-left:auto;font-size:13px;font-weight:700;color:${l.c}">Apri ${icon("arrow-right",13)}</span></div></div>`}).join("")}
+ </div>`}
+let LES={idx:0,tab:"comic",frame:0,playing:false,timer:null,quiz:null};
+function rLesson(v,slug){const l=LESSONS.find(x=>x.slug===(slug||V.arg)||LESSONS[0])||LESSONS[0];LES.q=l;LES.tab=LES.tab||"comic";const done=hasComp("lesson",l.slug);
+ const fullTxt=l.title+". "+l.secs.map(s=>s.h+". "+s.t+" "+(s.b?s.b.join(". "):"")).join(" ");
+ v.innerHTML=`<a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('impara');goHash()">${icon("arrow-left",14)} Tutte le lezioni</a>
+ <div class="card" style="margin-top:14px;border-color:${l.c}77">
+   <div class="row" style="gap:14px"><span class="badgebox" style="width:56px;height:56px;background:${l.c};color:#0b1026">${icon(l.icon,27,2.6)}</span>
+    <div class="grow"><h1 class="fd" style="font-size:clamp(26px,4.5vw,40px);font-weight:700;line-height:1.02">${l.title}</h1><p class="small mut" style="margin-top:4px">${l.tagline}</p></div>${doneB(done)}</div>
+   <div class="row" style="margin-top:14px;gap:6px;flex-wrap:wrap">${colChip("3 minuti","#94a3b8","timer")}${colChip("+"+l.xp+" PX","#a3e635")}${colChip("Quiz finale","#fbbf24","target")}<span style="margin-left:auto">${micBtn(fullTxt)}</span></div>
+ </div>
+ <div class="card sm" style="margin-top:16px">
+   <div class="row between"><span class="chip" style="border-color:${l.c}55;color:${l.c}">${icon("sparkles",12)} Fumetto & Video Animato</span>
+     <div class="row" style="background:#0a0e24;border:2px solid var(--line);border-radius:14px;padding:4px;gap:4px">
+      <button class="icbtn les-tab" data-t="comic" style="border:none;font-size:11px;padding:5px 12px">Fumetto</button>
+      <button class="icbtn les-tab" data-t="video" style="border:none;font-size:11px;padding:5px 12px">${icon("play",11)} Video</button></div></div>
+   <div id="lesmedia" style="margin-top:14px"></div>
+ </div>
+ ${l.secs.map(s=>`<div class="card sm" style="margin-top:14px"><div class="row between" style="align-items:flex-start">
+    <div class="row"><span class="badgebox" style="width:42px;height:42px;border:none;box-shadow:none;background:${l.c}1c;color:${l.c}">${icon(s.ic,20)}</span><h2 class="fd" style="font-size:19px;font-weight:700">${s.h}</h2></div>
+    ${micBtn(s.h+". "+s.t+" "+(s.b?s.b.join(". "):""),"hide-sm")}</div>
+   <p class="mut small" style="margin-top:12px;line-height:1.65;color:#cbd5e1">${s.t}</p>
+   ${s.b?`<div class="grid" style="gap:8px;margin-top:12px">${s.b.map(b=>`<div class="row small" style="align-items:flex-start;background:rgba(11,16,38,.7);border-radius:12px;padding:10px 12px;line-height:1.55"><span style="color:${l.c};flex-shrink:0">${icon("check",14,3)}</span>${b}</div>`).join("")}</div>`:""}
+ </div>`).join("")}
+ <div class="card" style="margin-top:18px;border-color:${l.c}88"><div class="row"><span class="badgebox" style="background:${l.c}1c;color:${l.c};border:none;box-shadow:none">${icon("lightbulb",20)}</span><h2 class="fd" style="font-size:21px;font-weight:700">Da ricordare</h2></div>
+   <div class="grid g2" style="margin-top:14px;gap:8px">${l.rem.map(r=>`<div class="row small" style="background:rgba(11,16,38,.8);border-radius:14px;padding:12px;line-height:1.5;font-weight:800"><span style="color:${l.c}">${icon("star",13)}</span>${r}</div>`).join("")}</div></div>
+ <div class="row" style="margin-top:26px"><span class="badgebox" style="background:rgba(251,191,36,.15);color:var(--gold);border:none;box-shadow:none">${icon("target",20)}</span>
+  <div><h2 class="fd" style="font-size:22px;font-weight:700">Prova finale</h2><p class="small mut">Rispondi giusto alle 3 domande per conquistare i PX.</p></div></div>
+ <div id="lesquiz" style="margin-top:14px"></div>`;
+ LES.qz=l.quiz.map(()=>({pick:null,solved:false}));updateLesTab();renderLesMedia();renderQuiz()}
+function updateLesTab(){document.querySelectorAll(".les-tab").forEach(b=>{const on=b.dataset.t===LES.tab;b.style.background=on?(b.dataset.t==="video"?"var(--cy)":"var(--vio)"):"transparent";b.style.color=on?(b.dataset.t==="video"?"#0b1026":"#fff"):"var(--mut)";b.onclick=()=>{LES.tab=b.dataset.t;LES.playing=false;LES.frame=0;updateLesTab();renderLesMedia()}})}
+function renderLesMedia(){const el=document.getElementById("lesmedia");const l=LES.q;if(!el)return;clearInterval(LES.timer);
+ if(LES.tab==="comic"){el.innerHTML=l.comic.map((c,i)=>{const st=c[0]==="villain"?"border-color:rgba(251,113,133,.5);background:rgba(251,113,133,.1)":c[0]==="hero"?"border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.1);margin-left:22px":"border-color:rgba(163,230,53,.5);background:rgba(163,230,53,.1)";return`<div style="border:2px solid;border-radius:16px;padding:12px 14px;font-size:13.5px;line-height:1.55;font-weight:700;${st};margin-top:${i?10:0}px"><p class="xs fd" style="text-transform:uppercase;letter-spacing:1px;opacity:.8">${c[1]}</p><p style="margin-top:4px">${c[2]}</p></div>`}).join("")+`<div class="row small" style="margin-top:12px;background:#0b1026;border:1px solid rgba(34,211,238,.25);border-radius:14px;padding:12px;color:#cbd5e1"><span class="bcy">${icon("sparkles",15)}</span>Dopo il fumetto, guarda il Mini-Video Animato nella scheda <b>Video</b>: quattro scene illustrate con play e pausa.</div>`;return}
+ const f=l.frames[LES.frame];const pct=((LES.frame+1)/l.frames.length)*100;
+ el.innerHTML=`<div class="frame-screen"><div class="scan"></div>
+   <p class="fm bcy" style="font-size:10px;letter-spacing:3px;font-weight:700">SCENA ${LES.frame+1} / ${l.frames.length}</p>
+   <div class="f-ic" style="border-color:${l.c};background:${l.c}22;color:${l.c}">${icon(f[0],34)}</div>
+   <h3 class="fd" style="font-size:22px;font-weight:700;margin-top:12px">${f[1]}</h3>
+   <p class="small mut" style="max-width:440px;margin:8px auto 0;line-height:1.6">${f[2]}</p>
+   <div class="row between" style="margin-top:18px;border-top:1px solid rgba(255,255,255,.1);padding-top:12px">
+    <button class="icbtn" style="border-color:var(--cy);background:var(--cy);color:#0b1026;font-size:11px" id="lesplay">${icon(LES.playing?"pause":"play",12)} ${LES.playing?"Pausa":"Play"}</button>
+    <div class="dots">${l.frames.map((_,i)=>`<button onclick="LES.frame=${i};LES.playing=false;renderLesMedia()" class="${i===LES.frame?"on":""}"></button>`).join("")}</div>
+    <span class="fm small mut2">${LES.frame+1}/${l.frames.length}</span></div>
+   <div class="bar" style="height:7px;margin-top:10px"><span style="width:${pct}%;background:var(--cy)"></span></div></div>`;
+ document.getElementById("lesplay").onclick=()=>{LES.playing=!LES.playing;renderLesMedia();if(LES.playing){LES.timer=setInterval(()=>{if(LES.frame+1>=l.frames.length){LES.playing=false;LES.frame=0}else LES.frame++;renderLesMedia()},3000)}}}
+function renderQuiz(){const el=document.getElementById("lesquiz");const l=LES.q;const allOk=LES.qz.every(q=>q.solved);const done=hasComp("lesson",l.slug);
+ el.innerHTML=l.quiz.map((q,qi)=>{const st=LES.qz[qi];return`<div class="card sm" style="margin-top:${qi?12:0}px;border-color:${st.solved?"#a3e635":"var(--line)"}">
+  <p class="fd" style="font-size:15.5px;font-weight:700;line-height:1.4"><span class="bgold" style="margin-right:6px">D${qi+1}.</span>${q.q}</p>
+  <div class="grid" style="gap:8px;margin-top:12px">${q.o.map((o,oi)=>{let cls="opt";if(st.solved&&oi===q.a)cls+=" ok";else if(st.pick===oi&&oi!==q.a)cls+=" err";return`<button class="${cls}" ${st.solved?"disabled":""} onclick="quizPick(${qi},${oi})">${o}${st.solved&&oi===q.a?icon("check",15,3):""}</button>`}).join("")}</div>
+  ${st.pick!==null||st.solved?`<div class="small" style="margin-top:12px;border-radius:14px;padding:12px;line-height:1.6;border:2px solid ${st.solved?"rgba(163,230,53,.4)":"rgba(251,113,133,.4)"};background:${st.solved?"rgba(163,230,53,.06)":"rgba(251,113,133,.06)"}"><b class="fd">${st.solved?"Esatto!":"Ops, riprova!"}</b> ${q.w}</div>`:""}
+ </div>`}).join("")+
+ (allOk?`<div class="card center" style="margin-top:14px;border-color:#a3e635"><div class="badgebox" style="margin:0 auto;background:rgba(163,230,53,.15);color:var(--lime);width:60px;height:60px;border-radius:20px">${icon("sparkles",28)}</div>
+  <h3 class="fd" style="font-size:24px;font-weight:700;margin-top:12px">Lezione superata!</h3>
+  <p class="small mut" style="margin-top:6px">${done?"PX già incassati in passato, ma ripassare fa sempre bene.":"Riscuoti i tuoi "+l.xp*xpMult()+" PX."}</p>
+  <div class="row" style="justify-content:center;margin-top:16px;flex-wrap:wrap">
+   ${done?"":`<button class="btn solid" style="background:var(--lime);border-color:var(--lime)" onclick="submit('lesson','${l.slug}',100);renderQuiz();renderTop()">${icon("zap",15,2.6)} Riscuoti +${l.xp*xpMult()} PX</button>`}
+   <button class="btn ghost" style="border-color:rgba(139,92,246,.6);color:#c4b5fd" onclick="go('gioca');goHash()">Alle sfide! ${icon("gamepad-2",15)}</button></div></div>`:"")}
+function quizPick(qi,oi){const l=LES.q;const st=LES.qz[qi];if(st.solved)return;st.pick=oi;if(l.quiz[qi].a===oi)st.solved=true;renderQuiz()}
+/* ══════════ HUB GIOCA ══════════ */
+const GAMES=[["trova","Trova la Truffa","8 messaggi tra WhatsApp ed email: veri o fake?","fish","#fb7185","Vero o falso","fino a 100 PX"],["pw","Testa-Password","In quanti secondi un hacker scopre la tua chiave? (tutto in locale)","key-round","#a3e635","Laboratorio","+50 PX"],["escape","Escape Room Digitale","L'hacker M4sk4ra ha rubato il profilo: 5 enigmi per riprendertelo.","lock-open","#fbbf24","Avventura","+120 PX"],["finto","Il Finto Profilo","Scova tutti gli 8 errori di privacy nascosti nel profilo di Alex.","search","#22d3ee","Investigazione","+100 PX"]];
+const GAME_IDS={trova:"trova-la-truffa",pw:"testa-password",escape:"escape-room",finto:"finto-profilo"};
+function gameDone(id){const ownID=Object.keys(GAME_IDS).find(k=>GAME_IDS[k]===id)||id;return hasComp("game",GAME_IDS[ownID]||ownID)}
+function rGioca(v){v.innerHTML=header("Sala Giochi","Le prove pratiche","Qui la teoria diventa muscoli: quattro sfide realistiche che ti preparano ai pericoli veri di internet. Ogni vittoria vale una montagna di PX.","#22d3ee","gamepad-2","Benvenuto nella Sala Giochi. Quattro sfide ti aspettano: Trova la Truffa, il Testa Password, la Escape Room e il Finto Profilo.")+
+ `<div class="grid g2">${GAMES.map(g=>{const done=hasComp("game",g[0]==="trova"?"trova-la-truffa":g[0]==="pw"?"testa-password":g[0]==="escape"?"escape-room":"finto-profilo");const best=scoreOf("game",g[0]==="trova"?"trova-la-truffa":g[0]==="pw"?"testa-password":g[0]==="escape"?"escape-room":"finto-profilo");
+ return`<div class="card sm" style="border-color:${done?"#a3e635":g[4]+"77"};cursor:pointer" onclick="go('${g[0]}');goHash()">
+  <div class="row between"><div class="row"><span class="badgebox" style="background:${g[4]};color:#0b1026">${icon(g[3],24,2.6)}</span><div><p class="xs fd" style="color:${g[4]};text-transform:uppercase;letter-spacing:1.5px;font-weight:700">${g[5]}</p><h2 class="fd" style="font-size:21px;font-weight:700">${g[1]}</h2></div></div>${doneB(done)}</div>
+  <p class="small mut" style="margin-top:12px;line-height:1.55">${g[2]}</p>
+  <div class="row" style="margin-top:12px;gap:6px">${colChip(g[6],"#a3e635")}${best!=null?colChip("Record: "+best+"%","#e879f9","target"):""}<span class="fd" style="margin-left:auto;font-size:13px;font-weight:700;color:${g[4]}">${done?"Rigioca":"Sfida"} ${icon("arrow-right",13)}</span></div></div>`}).join("")}</div>
+ <div class="card sm row" style="margin-top:20px;border-color:#8b5cf666"><span class="badgebox" style="background:rgba(139,92,246,.15);color:#c4b5fd;border:none;box-shadow:none">${icon("lightbulb",20)}</span><p class="small mut grow">Consiglio del coach: se una sfida sembra difficile, ripassa prima la lezione collegata nella sezione Impara.</p><a class="btn ghost sm" style="border-color:rgba(139,92,246,.6);color:#c4b5fd" onclick="go('impara');goHash()">Ripassa</a></div>`}
+/* ══════════ TROVA LA TRUFFA ══════════ */
+let SC={i:0,ok:0,phase:"intro"};
+function mockOf(it){if(it.ch==="w")return`<div class="phone"><div class="ph-head"><span class="badgebox" style="width:38px;height:38px;border:none;box-shadow:none;background:rgba(16,185,129,.25);color:#6ee7b7">${icon("user",17)}</span><div class="grow"><b class="small" style="color:#fff">${it.sender}</b><p class="xs" style="color:rgba(167,243,208,.6)">online</p></div><span style="color:rgba(167,243,208,.5)">${it.time}</span></div>
+ <div class="ph-body"><p class="center xs" style="color:rgba(167,243,208,.4);font-weight:800;text-transform:uppercase;margin-bottom:8px">Oggi</p><div class="bub">${it.body}<span class="xs" style="display:block;text-align:right;margin-top:6px;color:rgba(167,243,208,.5)">${it.time}</span></div></div></div>`;
+ return`<div class="mail"><div class="m-head"><span class="dot" style="background:#fb7185"></span><span class="dot" style="background:#fbbf24"></span><span class="dot" style="background:#a3e635"></span><span class="xs mut" style="margin-left:6px;font-weight:800">Posta in arrivo — 1 nuovo messaggio</span></div>
+ <div style="padding:18px"><h3 class="fd" style="font-size:16px;font-weight:700">${it.subj}</h3>
+ <div class="row" style="background:#0b1026;border-radius:14px;padding:10px;margin-top:10px"><span class="badgebox" style="width:38px;height:38px;border:none;box-shadow:none;background:rgba(139,92,246,.25);color:#c4b5fd">${icon("user",17)}</span><div class="grow"><b class="small">${it.sender}</b><p class="fm xs mut2">&lt;${it.addr}&gt;</p></div><span class="xs mut2" style="font-weight:800">${it.time}</span></div>
+ <p class="small mut" style="margin-top:12px;line-height:1.6">${it.body}</p></div></div>`}
+function rScam(v){SC={i:0,ok:0,phase:"intro"};drawScam(v)}
+function drawScam(v){const total=SCAMS.length;const best=scoreOf("game","trova-la-truffa");
+ if(SC.phase==="intro"){v.innerHTML=`<a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('gioca');goHash()">${icon("arrow-left",14)} Sala Giochi</a>
+ <div class="card center" style="margin-top:14px;border-color:#fb7185;padding:36px"><span class="badgebox" style="margin:0 auto;background:rgba(251,113,133,.15);color:var(--rose);width:76px;height:76px;border-radius:24px">${icon("fish",38)}</span>
+ <h1 class="fd" style="font-size:clamp(30px,5vw,46px);font-weight:700;margin-top:16px">Trova la Truffa</h1>
+ <p class="mut" style="max-width:560px;margin:12px auto 0;line-height:1.65">Riceverai <b class="brose">${total} messaggi</b>: finte chat WhatsApp e finte email. Per ognuno decidi: <b class="blime">È VERO</b> o <b class="brose">È UNA TRUFFA</b>?</p>
+ <div class="row" style="justify-content:center;margin-top:16px;gap:6px">${colChip("circa 4 minuti","#94a3b8","timer")}${colChip("fino a 100 PX","#a3e635")}${colChip("Trofeo dal 75%","#fbbf24","trophy")}${best!=null?colChip("Record: "+best+"%","#e879f9","target"):""}</div>
+ <button class="btn solid big" style="background:#fb7185;border-color:#fb7185;margin-top:22px" onclick="SC.phase='play';drawScam(document.getElementById('view'))">${icon("play",18,2.6)} Inizia la caccia</button></div>`;return}
+ const it=SCAMS[SC.i];
+ if(SC.phase==="play"||SC.phase==="fb"){const speak=`${it.ch==="w"?"Messaggio WhatsApp da":"Email da"} ${it.sender}. ${it.subj||""}. ${it.body}`;
+ v.innerHTML=`<a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('gioca');goHash()">${icon("arrow-left",14)} Sala Giochi</a>
+ <div class="row between" style="margin:14px 0"><p class="fd small mut" style="font-weight:800">Messaggio <b style="color:#fff">${SC.i+1}</b> / ${total}</p><div class="dots">${SCAMS.map((_,i)=>`<span style="width:24px;height:9px;border-radius:99px;display:block;background:${i<SC.i?"#8b5cf6":i===SC.i?"#22d3ee":"#232b52"}"></span>`).join("")}</div></div>
+ <div class="grid" style="grid-template-columns:1.1fr .9fr;gap:20px;align-items:start">
+  <div>${mockOf(it)}<div class="center" style="margin-top:12px">${micBtn(speak)}</div></div>
+  <div>${SC.phase==="play"?`<div class="card sm"><p class="fd" style="font-size:20px;font-weight:700">Vero o truffa?</p><p class="small mut" style="margin-top:8px;line-height:1.6">Osserva ogni dettaglio: chi scrive, l'indirizzo, cosa chiede, quanta fretta mette.</p>
+   <div class="grid" style="gap:10px;margin-top:16px">
+    <button class="btn solid" style="background:var(--lime);border-color:var(--lime)" onclick="scamGuess(0)">${icon("check",18,3)} È vero, mi fido</button>
+    <button class="btn solid" style="background:#fb7185;border-color:#fb7185" onclick="scamGuess(1)">${icon("fish",18)} È una truffa!</button></div></div>`
+  :`<div class="card sm" style="border-color:${SC.lastOk?"#a3e635":"#fb7185"}">
+   <div class="row"><span class="badgebox" style="background:${SC.lastOk?"var(--lime)":"#fb7185"};color:#0b1026">${icon(SC.lastOk?"check":"x",24,3)}</span>
+    <div><p class="fd" style="font-size:21px;font-weight:700">${SC.lastOk?"Occhio da falco!":"Questa ti ha fregato!"}</p><p class="small mut">In realtà era: <b style="color:${it.scam?"#fb7185":"#a3e635"}">${it.scam?"UNA TRUFFA":"un messaggio VERO"}</b></p></div></div>
+   <p class="small" style="margin-top:12px;line-height:1.6;color:#cbd5e1">${it.why}</p>
+   ${it.rf.length?`<div style="background:#0b1026;border-radius:14px;padding:12px;margin-top:12px"><p class="xs fd brose" style="text-transform:uppercase;letter-spacing:1px;display:flex;gap:6px;align-items:center">${icon("alert",12)} Gli indizi che dovevi vedere</p>${it.rf.map(r=>`<div class="row xs" style="margin-top:7px;align-items:flex-start;line-height:1.45"><span class="brose" style="flex-shrink:0">${icon("x",11,3)}</span><span class="mut">${r}</span></div>`).join("")}</div>`:`<div class="small" style="background:#0b1026;border-radius:14px;padding:12px;margin-top:12px;color:#cbd5e1">${icon("shield-check",14)} Nessun indizio: contatto conosciuto, zero richieste di dati o link strani.</div>`}
+   <button class="btn solid block" style="background:var(--cy);border-color:var(--cy);margin-top:14px" onclick="scamNext()">${SC.i+1>=total?"Vedi il risultato":"Prossimo messaggio"} ${icon("arrow-right",15)}</button></div>`}</div></div>`;return}
+ const pct=Math.round(SC.ok/total*100);const stars=pct>=75?3:pct>=50?2:pct>=25?1:0;
+ v.innerHTML=`<div class="card center" style="margin-top:30px;border-color:${pct>=75?"#a3e635":"#fbbf24"};padding:36px">
+  <p class="fd xs mut2" style="text-transform:uppercase;letter-spacing:3px">Caccia terminata</p>
+  <div class="row" style="justify-content:center;margin-top:14px;font-size:38px">${[0,1,2].map(s=>`<span style="color:${s<stars?"#fbbf24":"#334155"}">★</span>`).join("")}</div>
+  <h1 class="fd" style="font-size:56px;font-weight:700;margin-top:10px">${pct}%</h1>
+  <p class="small mut" style="font-weight:800">${SC.ok} su ${total} identificati correttamente</p>
+  <p class="small mut" style="max-width:460px;margin:12px auto 0;line-height:1.65">${pct>=75?"Incredibile: fiuti le truffe a chilometri di distanza!":pct>=50?"Buon lavoro! Ripassa la lezione 'Occhio alla Truffa' e riprova per il trofeo.":"Le trappole hanno vinto... ma ora sai quali indizi cercare. Riprova!"}</p>
+  <div class="row" style="justify-content:center;margin-top:20px;flex-wrap:wrap">
+   <button class="btn solid" style="background:#fb7185;border-color:#fb7185" onclick="SC={i:0,ok:0,phase:'intro'};drawScam(document.getElementById('view'))">${icon("rotate-ccw",15)} Rigioca</button>
+   <button class="btn ghost" style="border-color:rgba(139,92,246,.6);color:#c4b5fd" onclick="go('lesson','truffe');goHash()">${icon("book-open",15)} Ripassa la lezione</button>
+   <button class="btn ghost" style="border-color:rgba(34,211,238,.6);color:var(--cy)" onclick="go('gioca');goHash()">Altre sfide</button></div></div>`;
+ submit("game","trova-la-truffa",pct)}
+function scamGuess(is){const it=SCAMS[SC.i];SC.lastOk=!!it.scam===!!is;if(SC.lastOk)SC.ok++;SC.phase="fb";drawScam(document.getElementById("view"))}
+function scamNext(){if(SC.i+1>=SCAMS.length){SC.phase="end"}else{SC.i++;SC.phase="play"}drawScam(document.getElementById("view"))}
+/* ══════════ TESTA PASSWORD ══════════ */
+const COMMON=["password","qwerty","calcio","juventus","ciao","amore","mamma","gatto","pokemon","drago","angelo","stella","admin","prova","banana","fortnite","minecraft","napoli"];
+function pwScore(pw){const len=pw.length;let pool=0;if(/[a-z]/.test(pw))pool+=26;if(/[A-Z]/.test(pw))pool+=26;if(/\d/.test(pw))pool+=10;if(/[^a-zA-Z0-9]/.test(pw))pool+=33;let e=len>0&&pool?len*Math.log2(pool):0;const pen=[];
+ const lo=pw.toLowerCase();if(COMMON.some(w=>lo.includes(w))){e*=.45;pen.push("Contiene una parola comunissima (i dizionari degli hacker la trovano subito)")}
+ if(/(abc|bcd|qwe|ert|123|234|345|456|567|678|789)/i.test(pw)){e*=.6;pen.push("Contiene una sequenza ovvia come '123' o 'abc'")}
+ if(/(.)\1{2,}/.test(pw)){e*=.65;pen.push("Ripete lo stesso carattere tante volte (tipo 'aaa')")}
+ if(/(19|20)\d{2}/.test(pw)){e*=.75;pen.push("Contiene un anno: nome+anno è la prima combinazione che provano")}
+ const sec=Math.pow(2,e)/1e10;let sc=0;if(e>=30)sc=1;if(e>=47)sc=2;if(e>=62)sc=3;if(e>=78)sc=4;if(!len)sc=0;
+ return{len,e,sec,sc,pen,checks:[[len>=12,"Almeno 12 caratteri"],[/[a-z]/.test(pw)&&/[A-Z]/.test(pw),"Maiuscole e minuscole"],[/\d/.test(pw),"Almeno un numero"],[/[^a-zA-Z0-9]/.test(pw),"Almeno un simbolo (!?#...)"],[pen.length===0,"Niente sequenze o parole ovvie"]]}}
+function humanT(s){if(s<.001)return"istantaneamente";if(s<1)return"meno di 1 secondo";if(s<60)return Math.round(s)+" secondi";const m=s/60;if(m<60)return"circa "+Math.round(m)+" minuti";const h=m/60;if(h<24)return"circa "+Math.round(h)+" ore";const g=h/24;if(g<30)return"circa "+Math.round(g)+" giorni";const me=g/30;if(me<12)return"circa "+Math.round(me)+" mesi";const a=g/365;if(a<1000)return"circa "+Math.round(a)+" anni";if(a<1e6)return"circa "+Math.round(a/1000)+" mila anni";if(a<1e9)return"circa "+Math.round(a/1e6)+" milioni di anni";return"miliardi di anni: praticamente MAI"}
+const TIERS=[["Carta velina","#fb7185","skull","Un hacker ci metterebbe meno di un battito di ciglia. SERIAMENTE?"],["Molto debole","#fb923c","alert","Un hacker con un computer normale la scopre praticamente subito."],["Così così","#fbbf24","shield","Resiste un po', ma un hacker testardo la butta giù comunque."],["FORTE","#a3e635","shield-check","Ottima! Un hacker dovrebbe lavorare tantissimo: quasi sempre rinuncia."],["FORTISSIMA","#22d3ee","shield-check","Livello leggendario! il computer più veloce del mondo invecchierebbe tentando."]];
+function rPwTest(v){v.innerHTML=`<a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('gioca');goHash()">${icon("arrow-left",14)} Sala Giochi</a>
+ <div class="card" style="margin-top:14px;border-color:#a3e635">
+ <div class="row between"><div class="row"><span class="badgebox" style="background:var(--lime);color:#0b1026">${icon("key-round",24,2.6)}</span><div><h1 class="fd" style="font-size:clamp(24px,4vw,34px);font-weight:700">Testa-Password</h1><p class="small mut">Quanto resisterebbe la tua chiave segreta contro un hacker?</p></div></div>${colChip("+50 PX","#a3e635")}</div>
+ <div class="row" style="border:2px solid rgba(34,211,238,.4);background:rgba(34,211,238,.06);border-radius:16px;padding:14px;margin-top:16px;align-items:flex-start"><span class="bcy" style="flex-shrink:0">${icon("shield-check",19)}</span><p class="small" style="line-height:1.6;color:#c7f0f8"><b>Cassaforte garantita:</b> quello che scrivi resta SOLO sul tuo dispositivo. Zero invii, zero salvataggi, zero spie. Te lo giuriamo sul nostro trofeo più prezioso.</p></div>
+ <div style="position:relative;margin-top:18px"><input class="field fm" id="pwinp" type="password" placeholder="Scrivi qui una password da testare..." maxlength="64" autocomplete="off" style="padding-right:46px" oninput="pwEval()"><button type="button" class="icbtn" style="border:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--mut)" onclick="const i=document.getElementById('pwinp');i.type=i.type==='password'?'text':'password'">${icon("eye",17)}</button></div>
+ <div id="pwout" style="margin-top:16px"></div></div>
+ <div class="card sm" style="margin-top:16px"><h2 class="fd row" style="font-size:19px;font-weight:700;gap:8px"><span class="bvio">${icon("lightbulb",19)}</span> I trucchi del Mastro Fabbro di password</h2>
+  <div class="grid" style="gap:9px;margin-top:14px">${["Trasforma 3-4 parole assurde in una frase: GattoPizza7Luna!Skate","Allungala: ogni carattere in più rende tutto molte volte più difficile","Niente nome, squadra del cuore o anno di nascita: sono pubblici per un hacker","Una chiave diversa per ogni account + 2FA attivo ovunque"].map(s=>`<div class="row small" style="align-items:flex-start;line-height:1.55"><span class="bvio" style="flex-shrink:0">${icon("sparkles",14)}</span>${s}</div>`).join("")}</div>
+  <button class="btn ghost sm" style="border-color:rgba(139,92,246,.6);color:#c4b5fd;margin-top:14px" onclick="go('lesson','password');goHash()">${icon("book-open",14)} Apri la lezione sulle password</button></div>`;pwEval()}
+function pwEval(){const pw=document.getElementById("pwinp").value;const out=document.getElementById("pwout");if(!pw){out.innerHTML="";return}const a=pwScore(pw);const t=TIERS[a.sc];const claimed=hasComp("game","testa-password");
+ out.innerHTML=`<div class="row" style="gap:6px">${[0,1,2,3,4].map(i=>`<span style="flex:1;height:14px;border-radius:99px;border:1px solid var(--ink);background:${i<=a.sc?t[1]:"#1c2450"}"></span>`).join("")}</div>
+ <div class="row" style="margin-top:14px;gap:8px"><span class="chip fd" style="font-size:14px;padding:8px 14px;border-color:${t[1]};color:${t[1]};background:${t[1]}14">${icon(t[2],16)} ${t[0]}</span><span class="fm xs mut2">${a.len} caratteri</span></div>
+ <div style="border:2px solid ${t[1]}55;background:${t[1]}0d;border-radius:16px;padding:16px;margin-top:14px">
+  <p class="fd" style="font-size:18px;font-weight:700">Un hacker ci metterebbe: <span style="color:${t[1]}">${humanT(a.sec)}</span></p>
+  <p class="small mut" style="margin-top:6px;line-height:1.6">${t[3]}</p></div>
+ <div class="grid g2" style="gap:8px;margin-top:12px">${a.checks.map(c=>`<div class="row small" style="background:#0b1026;border-radius:12px;padding:9px 12px;font-weight:800;color:${c[0]?"#e2e8f0":"#64748b"}"><span style="color:${c[0]?"#a3e635":"#334155"}">${icon(c[0]?"check":"x",14,3)}</span>${c[1]}</div>`).join("")}</div>
+ ${a.pen.length?`<div style="border:2px solid rgba(251,191,36,.4);background:rgba(251,191,36,.06);border-radius:16px;padding:14px;margin-top:12px"><p class="xs fd bgold" style="text-transform:uppercase;letter-spacing:1px;display:flex;gap:6px">${icon("alert",13)} Punti deboli trovati</p>${a.pen.map(p=>`<div class="row xs" style="margin-top:7px;align-items:flex-start;color:#fde8b3;line-height:1.45"><span class="bgold" style="flex-shrink:0">${icon("x",11,3)}</span>${p}</div>`).join("")}</div>`:""}
+ ${a.sc>=3?`<div class="center" style="margin-top:16px">${claimed?`<p class="small blime" style="font-weight:800">Trofeo "Scudo Inattaccabile" già conquistato: questa password è da manuale.</p>`:`<button class="btn solid" style="background:var(--lime);border-color:var(--lime)" onclick="submit('game','testa-password',100);pwEval()">${icon("zap",15,2.6)} Password forte! Riscuoti +50 PX</button>`}</div>`:""}`}
+</script>
+<script>
+/* ══════════ ESCAPE ROOM ══════════ */
+let ES={st:0,mode:"intro",note:"",code:""};
+function rEscape(v){ES={st:0,mode:"intro",note:"",code:""};drawEscape(v)}
+function drawEscape(v){const done=hasComp("game","escape-room");
+ if(ES.mode==="intro"){v.innerHTML=`<a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('gioca');goHash()">${icon("arrow-left",14)} Sala Giochi</a>
+ <div class="card" style="margin-top:14px;border-color:#fbbf24;overflow:hidden;padding:0">
+  <div style="background:#0a0e24;padding:28px;position:relative">
+   <div style="border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:12px" class="row"><span class="dot" style="background:#fb7185"></span><span class="dot" style="background:#fbbf24"></span><span class="dot" style="background:#a3e635"></span><span class="fm xs" style="color:rgba(251,191,36,.8);margin-left:8px">TERMINALE_DI_EMERGENZA.exe</span></div>
+   <h1 class="fd" style="font-size:clamp(28px,5vw,44px);font-weight:700;margin-top:18px">Escape Room <span class="bgold">Digitale</span></h1>
+   <p class="fm small" style="margin-top:14px;line-height:1.7;color:#cbd5e1;max-width:560px">${ESCAPE_INTRO}</p>
+   <div class="row" style="margin-top:14px;gap:6px;flex-wrap:wrap">${colChip("5 enigmi","#fbbf24","puzzle")}${colChip("+120 PX","#a3e635")}${colChip("senza limite di tempo","#94a3b8","timer")}</div>
+   <div class="row" style="margin-top:18px;flex-wrap:wrap"><button class="btn solid big" style="background:var(--gold);border-color:var(--gold)" onclick="ES={st:0,mode:'play',note:'',code:''};drawEscape(document.getElementById('view'))">${icon("play",18,2.6)} ${done?"Rigioca la missione":"Accetta la missione"}</button>${micBtn(ESCAPE_INTRO)}</div></div></div>`;return}
+ if(ES.mode==="end"){v.innerHTML=`<div class="card center" style="margin-top:30px;border-color:#a3e635;padding:36px">
+  <span class="badgebox" style="margin:0 auto;background:var(--lime);color:#0b1026;width:80px;height:80px;border-radius:24px">${icon("lock-open",40)}</span>
+  <h1 class="fd" style="font-size:clamp(30px,5vw,44px);font-weight:700;margin-top:18px">PROFILO RECUPERATO!</h1>
+  <p class="fm small mut" style="max-width:460px;margin:12px auto 0;line-height:1.7">M4sk4ra è fuori dai giochi. Hai gestito un attacco vero: password nuova, link verificato, codice decifrato, 2FA attivo, sessioni chiuse.</p>
+  <div class="row" style="justify-content:center;margin-top:16px;gap:6px">${colChip("+120 PX","#a3e635")}${colChip("Trofeo: Fuga Perfetta","#fbbf24","trophy")}</div>
+  <div class="row" style="justify-content:center;margin-top:22px;flex-wrap:wrap"><button class="btn solid" style="background:var(--gold);border-color:var(--gold)" onclick="ES={st:0,mode:'intro',note:'',code:''};drawEscape(document.getElementById('view'))">${icon("rotate-ccw",15)} Rigioca</button>
+  <button class="btn ghost" style="border-color:rgba(34,211,238,.6);color:var(--cy)" onclick="go('finto');goHash()">Prossima: Finto Profilo</button></div></div>`;
+  submit("game","escape-room",100);ES.mode="done";return}
+ const st=ESCAPE[ES.st];const total=ESCAPE.length;
+ v.innerHTML=`<a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('gioca');goHash()">${icon("arrow-left",14)} Sala Giochi</a>
+ <div class="row" style="justify-content:center;gap:8px;margin:18px 0">${ESCAPE.map((_,i)=>`<span class="badgebox" style="width:42px;height:42px;border-radius:14px;box-shadow:none;border:2px solid ${i<ES.st?"#a3e635":i===ES.st?"#fbbf24":"#2b3560"};background:${i<ES.st?"rgba(163,230,53,.15)":i===ES.st?"rgba(251,191,36,.15)":"#0a0e24"};color:${i<ES.st?"#a3e635":i===ES.st?"#fbbf24":"#475569"}">${icon(i<ES.st?"lock-open":"lock",17)}</span>`).join("")}</div>
+ <div class="card" style="border-color:${ES.mode==="success"?"#a3e635":"#fbbf24"};padding:0;overflow:hidden">
+  <div style="background:#0a0e24;padding:12px 20px;border-bottom:2px solid var(--line)"><p class="fm xs" style="color:rgba(251,191,36,.8);font-weight:700">MISSIONE_RECUPERO ${String(ES.st+1).padStart(2,"0")} / ${String(total).padStart(2,"0")}</p></div>
+  <div style="padding:22px">
+   <h2 class="fd" style="font-size:clamp(20px,3.5vw,28px);font-weight:700">${st.t}</h2>
+   <div class="row" style="align-items:flex-start;margin-top:10px"><p class="small grow" style="line-height:1.65;color:#cbd5e1">${st.in}</p>${micBtn(st.t+". "+st.in,"hide-sm")}</div>
+   ${st.ty==="code"?`<div style="background:#05081a;border-radius:18px;padding:20px;text-align:center;margin-top:16px"><p class="fm xs mut2" style="letter-spacing:3px;text-transform:uppercase">Parola cifrata</p><p class="fm bcy" style="font-size:36px;font-weight:700;letter-spacing:8px;margin-top:8px">${st.disp}</p><p class="xs mut" style="margin-top:10px;line-height:1.5">${st.hint}</p></div>`:""}
+   ${ES.mode!=="success"?(st.ty==="c"?`<div class="grid" style="gap:9px;margin-top:18px">${st.o.map((o,i)=>`<button class="opt" onclick="esChoice(${i})"><span class="${ES.st===1?"fm":""}">${o[0]}</span>${icon("chevron-right",15)}</button>`).join("")}</div>`
+   :`<div class="row" style="margin-top:18px;flex-wrap:nowrap"><input class="field fm" style="text-align:center;text-transform:uppercase;letter-spacing:4px;flex:1" id="escode" placeholder="Scrivi la parola segreta..." maxlength="12" value="${ES.code}" onkeydown="if(event.key==='Enter')esCode()"><button class="btn solid" style="background:var(--gold);border-color:var(--gold)" onclick="esCode()">${icon("key-round",15)} Sblocca</button></div>`)
+   :""}
+   ${ES.mode==="wrong"||ES.mode==="success2"?"":""}
+   ${ES.mode==="success"?`<div style="border:2px solid rgba(163,230,53,.6);background:rgba(163,230,53,.1);border-radius:16px;padding:16px;margin-top:18px"><p class="fd blime" style="font-weight:700;display:flex;gap:8px;align-items:center">${icon("lock-open",18)} Lucchetto aperto!</p><p class="small" style="margin-top:8px;line-height:1.6;color:#d9f99d">${ES.note}</p><p class="fm xs mut" style="margin-top:8px">${st.ok}</p></div>
+   <button class="btn solid block" style="background:var(--gold);border-color:var(--gold);margin-top:14px" onclick="esNext()">${ES.st+1>=total?"Recupera il profilo!":"Vai al prossimo enigma"} ${icon("arrow-right",15)}</button>`:""}
+   ${ES.mode==="wrong"||ES.note&&ES.mode==="play"?`<div class="row" style="margin-top:14px;border:2px solid rgba(251,113,133,.5);background:rgba(251,113,133,.1);border-radius:14px;padding:12px;align-items:flex-start"><span class="brose" style="flex-shrink:0">${icon("alert",15)}</span><p class="small" style="line-height:1.55;color:#fecdd3">${ES.note}</p></div>`:""}
+  </div></div>`}
+function esChoice(i){const st=ESCAPE[ES.st];if(st.o[i][1]){ES.mode="success";ES.note=st.o[i][2]}else{ES.note=st.o[i][2];ES.mode="play";const v=document.getElementById("view");drawEscape(v);const card=v.querySelector(".card");if(card){card.style.animation="shake .45s";setTimeout(()=>card.style.animation="",500);return}}drawEscape(document.getElementById("view"))}
+function esCode(){const st=ESCAPE[ES.st];const inp=document.getElementById("escode");const val=(inp.value||"").trim().toUpperCase();if(val===st.ans){ES.mode="success";ES.note=`"${val}" è la parola giusta. Il lucchetto cede!`}else{ES.code=val;ES.note=val?`"${val}" non è giusta. Ricorda: sposta ogni lettera INDIETRO di una posizione.`:"Il campo è vuoto: decifra il codice!"}drawEscape(document.getElementById("view"))}
+function esNext(){if(ES.st+1>=ESCAPE.length){ES.mode="end"}else{ES.st++;ES.mode="play";ES.note="";ES.code=""}drawEscape(document.getElementById("view"))}
+/* ══════════ FINTO PROFILO ══════════ */
+let FP={found:[],miss:0,open:null};
+function rFinto(v){FP={found:[],miss:0,open:null};drawFinto(v)}
+function drawFinto(v){const total=MISTAKES.length;
+ v.innerHTML=`<a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('gioca');goHash()">${icon("arrow-left",14)} Sala Giochi</a>
+ <div class="row between" style="margin:14px 0;flex-wrap:wrap;gap:10px"><div class="row"><span class="badgebox" style="background:var(--cy);color:#0b1026">${icon("search",24,2.6)}</span><div><h1 class="fd" style="font-size:clamp(24px,4vw,34px);font-weight:700">Il Finto Profilo</h1><p class="small mut">Clicca sugli <b class="bcy">${total} errori di privacy</b> nascosti nel profilo di Alex.</p></div></div>
+ <div class="row" style="gap:6px">${colChip("Trovati: "+FP.found.length+"/"+total,"#22d3ee","target")}${FP.miss>=3?colChip("Indizio: nomi, luoghi, numeri, date...","#fbbf24","lightbulb"):""}</div></div>
+ <div class="row" style="gap:5px;margin-bottom:18px">${MISTAKES.map(m=>`<span style="flex:1;height:9px;border-radius:99px;background:${FP.found.includes(m.id)?"#a3e635":"#232b52"}"></span>`).join("")}</div>
+ ${FP.found.length===total?`<div class="card center" style="border-color:#22d3ee;padding:36px"><span class="badgebox" style="margin:0 auto;background:var(--cy);color:#0b1026;width:80px;height:80px;border-radius:24px">${icon("badge-check",40)}</span>
+  <h1 class="fd" style="font-size:clamp(30px,5vw,44px);font-weight:700;margin-top:16px">INDAGINE CHIUSA!</h1>
+  <p class="small mut" style="max-width:480px;margin:12px auto 0;line-height:1.65">Hai trovato tutti gli errori di privacy di Alex: nome completo, scuola, città, data di nascita, numero di telefono, "a casa da solo", foto del documento e la password svelata.</p>
+  <div class="row" style="justify-content:center;margin-top:16px;gap:6px">${colChip("Trofeo: Detective della Privacy","#fbbf24","trophy")}</div>
+  <div class="row" style="justify-content:center;margin-top:22px;flex-wrap:wrap"><button class="btn solid" style="background:var(--cy);border-color:var(--cy)" onclick="FP={found:[],miss:0,open:null};drawFinto(document.getElementById('view'))">Rigioca</button><button class="btn ghost" style="border-color:rgba(139,92,246,.6);color:#c4b5fd" onclick="go('lesson','privacy');goHash()">${icon("book-open",15)} Lezione Privacy</button></div></div>`
+ :`<div class="grid" style="grid-template-columns:1.15fr .85fr;gap:18px;align-items:start">
+  <div class="card sm" style="padding:0;overflow:hidden" onclick="fpMiss(event)">
+   <div style="height:70px;background:linear-gradient(90deg,rgba(139,92,246,.6),rgba(34,211,238,.6))"></div>
+   <div style="padding:0 18px 18px">
+    <div class="row" style="align-items:flex-end;gap:12px;margin-top:-34px"><div style="width:76px;border-radius:50%;border:4px solid var(--card)">${avatarSVG({skin:2,hair:"spike",hairColor:2,eyes:"happy",outfit:"tee",accessory:"glasses",bg:"sunset"},76)}</div><div style="padding-bottom:6px"><p class="fd" style="font-size:19px;font-weight:700">Alex_2013</p><p class="xs mut2" style="font-weight:800">481 amici · 233 post · Membro da 2 mesi</p></div></div>
+    <div style="background:rgba(11,16,38,.7);border-radius:14px;padding:12px;margin-top:12px;font-size:13.5px;line-height:1.65" onclick="event.stopPropagation()">
+     <p>${fpHot("nome","Mi chiamo Alessandro Verdi")}, frequento la ${fpHot("scuola","Scuola Media Verdi")} di ${fpHot("citta","Milano")}.</p>
+     <p style="margin-top:8px">${fpHot("nascita","Nato il 3 maggio 2013")} — mi mancano solo 19 follower ai 500, accetto TUTTI!</p></div>
+    <div style="border:2px solid var(--line);border-radius:14px;padding:12px;margin-top:12px" onclick="event.stopPropagation()"><p class="xs mut2" style="font-weight:800">Alex_2013 · 2 ore fa</p><p class="small" style="margin-top:6px;line-height:1.6">Ragazzi finalmente ho il mio PRIMO TELEFONO! Scrivetemi in privato qui: ${fpHot("telefono","333 456 7890")} così facciamo il gruppo!</p><p class="xs mut2" style="margin-top:8px">48 mi piace · 12 commenti</p></div>
+    <div style="border:2px solid var(--line);border-radius:14px;padding:12px;margin-top:12px" onclick="event.stopPropagation()"><p class="xs mut2" style="font-weight:800">Alex_2013 · ieri</p><p class="small" style="margin-top:6px;line-height:1.6">${fpHot("casa","I miei sono via tutto il weekend: finalmente a casa DA SOLO fino a domenica sera! Festa da me in Via Roma 12, portate le cuffie!")}</p><p class="xs mut2" style="margin-top:8px">Posizione attiva: Milano · 91 mi piace</p></div>
+    <div style="border:2px solid var(--line);border-radius:14px;padding:12px;margin-top:12px" onclick="event.stopPropagation()"><p class="xs mut2" style="font-weight:800">Alex_2013 · 3 giorni fa</p><button class="hot ${FP.found.includes("documento")?"ok":""}" style="display:block;width:100%;text-align:center" onclick="fpFind('documento')"><div style="height:90px;border-radius:10px;background:linear-gradient(135deg,#334155,#1e293b);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">${icon("badge-check",26)}<span class="xs" style="color:#94a3b8;font-weight:800">"Ecco la mia prima carta d'identità appena arrivata! Ingrandisci pure!"</span></div></button><p class="xs mut2" style="margin-top:8px">134 mi piace · 29 condivisioni</p></div>
+    <div style="border:2px solid var(--line);border-radius:14px;padding:12px;margin-top:12px" onclick="event.stopPropagation()"><p class="xs mut2" style="font-weight:800">Alex_2013 · 5 giorni fa</p><p class="small" style="margin-top:6px;line-height:1.6">${fpHot("password","Cambiata la password di TUTTI gli account: adesso uso sempre alex + 2013, il mio anno di nascita, così non la scordo mai. Genio vero?")}</p><p class="xs mut2" style="margin-top:8px">17 mi piace · 6 commenti</p></div>
+   </div></div>
+  <div class="card sm"><h2 class="fd row" style="font-size:17px;font-weight:700;gap:8px"><span class="bcy">${icon("target",18)}</span> Taccuino da detective</h2>
+   <p class="xs mut2" style="margin-top:6px;line-height:1.5">Ogni errore trovato viene analizzato qui. Trovali tutti per chiudere l'indagine.</p>
+   <div class="grid" style="gap:7px;margin-top:14px">${MISTAKES.map(m=>{const ok=FP.found.includes(m.id);const open=FP.open===m.id;
+   return`<div style="border:2px solid ${ok?"rgba(163,230,53,.5)":"#232b52"};background:${ok?"rgba(163,230,53,.05)":"rgba(11,16,38,.4)"};border-radius:14px;overflow:hidden">
+    <button class="opt" style="border:none;background:transparent;${ok?"":"cursor:default"}" onclick="${ok?`FP.open=FP.open==='${m.id}'?null:'${m.id}';drawFinto(document.getElementById('view'))`:"void 0"}"><span class="row" style="gap:8px"><span class="badgebox" style="width:28px;height:28px;border:none;box-shadow:none;background:${ok?"var(--lime)":"#1c2450"};color:${ok?"#0b1026":"#475569"}">${icon(ok?"check":"lock",13,3)}</span><b class="xs ${ok?"":"mut2"}" style="font-size:12.5px">${ok?m.t:"Errore da scoprire"}</b></span></button>
+    ${ok&&open?`<div class="xs" style="border-top:1px solid rgba(163,230,53,.2);padding:10px 12px;line-height:1.6"><p class="mut"><b class="brose">Perché è grave:</b> ${m.w}</p><p class="mut" style="margin-top:6px"><b class="blime">Come si sistema:</b> ${m.f}</p></div>`:""}</div>`}).join("")}</div>
+   <div class="small" style="margin-top:12px;border:1px dashed rgba(139,92,246,.5);border-radius:12px;padding:10px;color:#cbd5e1;display:flex;gap:8px;align-items:flex-start"><span class="bvio" style="flex-shrink:0">${icon("lightbulb",14)}</span>Gli hotspot sospetti hanno la linea tratteggiata azzurra: cliccali per analizzarli.</div></div>
+ </div>`}`}
+function fpHot(id,txt){return`<button class="hot ${FP.found.includes(id)?"ok":""}" onclick="event.stopPropagation();fpFind('${id}')">${txt}</button>`}
+function fpFind(id){if(FP.found.includes(id))return;FP.found.push(id);FP.open=id;drawFinto(document.getElementById("view"));if(FP.found.length===MISTAKES.length)setTimeout(()=>submit("game","finto-profilo",100),600)}
+function fpMiss(e){if(e.target.closest&&e.target.closest(".hot"))return;FP.miss++;}
+/* ══════════ STORIE ══════════ */
+let ST={s:null,node:null,typed:0,timer:null,done:false,vis:0};
+function rStorie(v){v.innerHTML=header("Bivi Decisivi","Storie dove scegli tu","Leggi la scena, poi decidi cosa fare. Ogni scelta cambia il finale: puoi sbagliare, imparare e riprovare. Meglio sbagliare qui che nella chat vera.","#e879f9","route","Benvenuto nelle Storie a Bivi. Quattro avventure interattive in cui ogni tua scelta cambia il finale.")+
+ `<div class="grid g2">${STORIES.map((s,i)=>{const done=hasComp("story",s.slug);const sc=scoreOf("story",s.slug);const good=done&&(sc||0)>=100;
+ return`<div class="card sm" style="border-color:${good?"#a3e635":s.c+"66"};cursor:pointer" onclick="go('story','${s.slug}');goHash()">
+  <div class="row between"><span class="badgebox" style="background:${s.c};color:#0b1026">${icon(s.icon==="camera-off"?"camera":s.icon==="message-q"?"message-square":s.icon==="users-round"?"users":s.icon,22,2.6)}</span>${doneB(good)}</div>
+  <h2 class="fd" style="font-size:19px;font-weight:700;margin-top:12px">${s.title}</h2>
+  <p class="small mut" style="margin-top:5px;line-height:1.5;min-height:38px">${s.tagline}</p>
+  <div class="row" style="margin-top:12px;gap:6px">${colChip("+"+s.xp+" PX","#a3e635")}${done&&!good?colChip("Finale da migliorare","#fbbf24","refresh-ccw"):""}<span class="fd" style="margin-left:auto;font-size:13px;font-weight:700;color:${s.c}">${done?"Rivivi":"Vivi la storia"} ${icon("arrow-right",13)}</span></div></div>`}).join("")}</div>
+ <div class="card sm row" style="margin-top:20px;border-color:#e879f966"><span class="badgebox" style="background:rgba(232,121,249,.15);color:#f0abfc;border:none;box-shadow:none">${icon("sparkles",20)}</span><p class="small mut grow"><b style="color:#fff">Regola del narratore:</b> per conquistare i PX devi raggiungere un <b style="color:#fff">finale positivo</b>. Se finisci in un vicolo cieco, riparti: i PX aspettano chi impara dagli errori.</p></div>`}
+function rStory(v,slug){const s=STORIES.find(x=>x.slug===(slug||V.arg))||STORIES[0];ST={s,node:s.start,typed:0,timer:null,done:false,vis:0};drawStory(v)}
+function storyNodeTxt(){return ST.s.nodes[ST.node]}
+function drawStory(v){const s=ST.s;const n=s.nodes[ST.node];ST.typed=0;clearInterval(ST.timer);
+ if(n.e)n.e[0]&&!ST.done?(ST.done=true,setTimeout(()=>submit("story",s.slug,100),600)):0;
+ v.innerHTML=`<div class="row between"><a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('storie');goHash()">${icon("arrow-left",14)} Tutte le storie</a>${colChip("Scena "+(ST.vis+1),"#e879f9","route")}</div>
+ <div class="center" style="margin:14px 0"><h1 class="fd" style="font-size:clamp(26px,4.5vw,40px);font-weight:700">${s.title}</h1><p class="small mut" style="margin-top:4px">${s.tagline}</p></div>
+ <div class="card" style="border-color:${n.e?(n.e[0]?"#a3e635":"#fb7185"):s.c+"77"};padding:0;overflow:hidden">
+  <div style="background:#0a0e24;padding:26px;text-align:center;border-bottom:2px solid var(--line)"><span class="badgebox" style="margin:0 auto;width:80px;height:80px;border-radius:22px;background:${n.e?(n.e[0]?"#a3e63522":"#fb718522"):s.c+"22"};border-color:${n.e?(n.e[0]?"#a3e635":"#fb7185"):s.c};color:${n.e?(n.e[0]?"#a3e635":"#fb7185"):s.c}">${icon(s.icon==="camera-off"?"camera":s.icon==="message-q"?"message-square":s.icon==="users-round"?"users":"gamepad-2",40)}</span></div>
+  <div style="padding:22px" id="sttext" ${!n.e?"onclick='skipType()' role='button' title='Tocca per andare più veloce'":""}>
+    <p id="stpar" style="min-height:110px;font-size:16.5px;line-height:1.75;color:#e2e8f0"></p>
+    <div class="row between"><span class="xs mut2" id="sthint">tocca per andare più veloce</span>${micBtn(n.t)}</div></div>
+  <div id="stchoices" style="padding:0 22px 22px"></div>
+ </div>
+ <div class="card sm row" style="margin-top:16px"><span class="mut2">${icon("lightbulb",17)}</span><p class="xs mut grow">Finali positivi: <b class="blime">${Object.values(s.nodes).filter(x=>x.e&&x.e[0]).length}</b> · Vicoli ciechi: <b class="brose">${Object.values(s.nodes).filter(x=>x.e&&!x.e[0]).length}</b>. Rigiocando scopri tutte le strade.</p></div>`;
+ ST.timer=setInterval(()=>{ST.typed+=3;const p=document.getElementById("stpar");if(!p){clearInterval(ST.timer);return}p.innerHTML=n.t.slice(0,ST.typed)+(ST.typed<n.t.length?'<span style="display:inline-block;width:3px;height:18px;background:#22d3ee;vertical-align:-3px;animation:pul .8s infinite"></span>':"");if(ST.typed>=n.t.length){clearInterval(ST.timer);renderStChoices()}},16)}
+function skipType(){const n=storyNodeTxt();clearInterval(ST.timer);ST.typed=n.t.length;const p=document.getElementById("stpar");if(p)p.textContent=n.t;renderStChoices()}
+function renderStChoices(){const s=ST.s;const n=s.nodes[ST.node];const box=document.getElementById("stchoices");const hint=document.getElementById("sthint");if(hint)hint.textContent="";if(!box)return;
+ if(n.e){box.innerHTML=`<div style="border:2px solid ${n.e[0]?"rgba(163,230,53,.6)":"rgba(251,113,133,.6)"};background:${n.e[0]?"rgba(163,230,53,.1)":"rgba(251,113,133,.1)"};border-radius:18px;padding:18px">
+  <div class="row"><span class="badgebox" style="background:${n.e[0]?"var(--lime)":"#fb7185"};color:#0b1026">${icon(n.e[0]?"sparkles":"x",24)}</span>
+   <div><p class="xs fd mut" style="text-transform:uppercase;letter-spacing:2px">${n.e[0]?"Finale positivo raggiunto":"Finale pericoloso"}</p><p class="fd" style="font-size:23px;font-weight:700">${n.e[1]}</p></div></div>
+  <div style="background:#0b1026;border-radius:14px;padding:14px;margin-top:12px"><p class="xs fd bgold" style="text-transform:uppercase;letter-spacing:1px;display:flex;gap:6px;align-items:center">${icon("lightbulb",13)} La lezione della storia</p><p class="small" style="margin-top:8px;line-height:1.6;color:#cbd5e1">${n.e[2]}</p></div>
+  ${n.e[0]?"":`<p class="xs brose" style="margin-top:10px;font-weight:800">Questo finale non dà PX: torna indietro e trova la strada giusta!</p>`}</div>
+  <div class="row" style="margin-top:14px;flex-wrap:wrap"><button class="btn solid" style="background:${s.c};border-color:${s.c}" onclick="ST.node='${s.start}';ST.vis=0;ST.done=${hasComp("story",s.slug)};drawStory(document.getElementById('view'))">${icon("rotate-ccw",15)} Rivivi la storia</button>
+  <button class="btn ghost" style="border-color:rgba(34,211,238,.6);color:var(--cy)" onclick="go('storie');goHash()">${icon("route",15)} Tutte le storie</button></div>`;return}
+ box.innerHTML=`<p class="fd xs mut2" style="text-transform:uppercase;letter-spacing:3px;margin-bottom:10px">La decisione è tua:</p>`+n.c.map(c=>`<button class="opt" style="margin-bottom:9px" onclick="storyGo('${c[1]}')"><b class="fd" style="font-size:15px">${c[0]}</b>${icon("arrow-right",16)}</button>`).join("")}
+function storyGo(id){ST.node=id;ST.vis++;drawStory(document.getElementById("view"))}
+/* ══════════ PRONTO SOCCORSO ══════════ */
+let SOS_OPEN=0;
+function rSos(v){SOS_OPEN=0;v.innerHTML=header("Pronto Soccorso","Cosa fare se...","Qualcosa è andato storto online? Respira: si può sistemare quasi tutto. Trova la tua situazione e segui i passi, uno alla volta. Se leggere è difficile, premi Ascolta.","#fb7185","siren","Benvenuto al Pronto Soccorso Digitale. Se qualcosa è andato storto online, respira: si può sistemare. Trova la tua situazione e segui i passi uno alla volta. E ricorda: raccontalo subito a un adulto di fiducia.")+
+ `<div class="card" style="margin-bottom:26px;border-color:#fb7185"><h2 class="fd row" style="font-size:20px;font-weight:700;gap:8px"><span class="brose">${icon("zap",19,2.6)}</span> Le 4 regole di sopravvivenza</h2>
+  <div class="grid g2" style="gap:10px;margin-top:14px">${[["users","Raccontalo a un adulto di fiducia. Sempre, anche se sembra 'una cosa da niente'."],["hand","Non rispondere alle provocazioni e non cancellare le prove."],["camera","Screenshot di tutto: messaggi, profili, orari. Sono la tua arma."],["life-buoy","Pericolo reale o minacce gravi? Chiama il 112 o la Polizia Postale."]].map(r=>`<div class="row" style="background:rgba(11,16,38,.7);border-radius:14px;padding:12px;align-items:flex-start"><span class="badgebox" style="width:34px;height:34px;border:none;box-shadow:none;background:rgba(251,113,133,.14);color:#fda4af">${icon(r[0],16)}</span><p class="small" style="line-height:1.55">${r[1]}</p></div>`).join("")}</div></div>
+ <div class="grid" style="gap:12px" id="soslist"></div>
+ <div class="card" style="margin-top:26px;border-color:#22d3ee"><h2 class="fd" style="font-size:22px;font-weight:700">I numeri che salvano la giornata</h2>
+ <div class="grid g3" style="gap:10px;margin-top:16px">${[["112","#fb7185","Emergenze vere e pericoli immediati"],["196","#22d3ee","Telefono Azzurro: per parlare con esperti, gratis, sempre"],["Polizia Postale","#8b5cf6","Truffe, ricatti e account rubati (commissariatoPS online)"]].map(n=>`<div class="center" style="background:rgba(11,16,38,.7);border-radius:16px;padding:18px"><p class="fd" style="font-size:26px;font-weight:700;color:${n[1]}">${n[0]}</p><p class="xs mut" style="margin-top:4px;font-weight:800">${n[2]}</p></div>`).join("")}</div></div>`;drawSosList()}
+function drawSosList(){const el=document.getElementById("soslist");el.innerHTML=AID.map((g,i)=>{const open=SOS_OPEN===i;
+ return`<div class="card sm" style="padding:0;overflow:hidden;border-color:${open?g.c:"var(--line)"}">
+  <button class="opt" style="border:none;background:transparent;padding:16px 18px" onclick="SOS_OPEN=SOS_OPEN===${i}?-1:${i};drawSosList()">
+   <span class="row" style="gap:12px"><span class="badgebox" style="background:${g.c};color:#0b1026">${icon(g.i==="message-x"?"message-square":g.i=="camera-off"?"camera":g.i,20,2.5)}</span>
+   <span class="grow"><b class="fd" style="font-size:16.5px">${g.t}</b><span class="small mut" style="display:block;margin-top:2px">${g.s}</span></span></span>
+   <span style="transform:rotate(${open?180:0}deg);transition:.2s;color:${open?"#fff":"#64748b"}">${icon("chevron-down",17)}</span></button>
+  ${open?`<div style="border-top:2px solid var(--line);padding:18px">
+   <div style="text-align:right;margin-bottom:12px">${micBtn(`${g.t}. ${g.s}. ${g.st.map((s,j)=>"Passo "+(j+1)+": "+s[0]+". "+s[1]).join(" ")}. Ricorda: ${g.rem}`)}</div>
+   ${g.st.map((s,j)=>`<div class="row" style="align-items:flex-start;margin-bottom:14px;position:relative;padding-left:2px">
+     ${j<g.st.length-1?`<span style="position:absolute;left:19px;top:38px;width:2px;height:calc(100% - 26px);background:#2b3560"></span>`:""}
+     <span class="badgebox" style="width:38px;height:38px;border:none;border-radius:12px;background:${g.c}1c;color:${g.c};font-family:var(--fd);font-size:16px">${j+1}</span>
+     <div class="grow" style="padding-top:4px"><b class="fd" style="font-size:14.5px">${s[0]}</b><p class="small mut" style="margin-top:3px;line-height:1.6">${s[1]}</p></div></div>`).join("")}
+   <div class="row" style="border:2px solid ${g.c}66;background:${g.c}0d;border-radius:14px;padding:12px;align-items:flex-start;margin-top:4px"><span style="color:${g.c};flex-shrink:0">${icon("star",15)}</span><p class="small" style="font-weight:800;line-height:1.55">${g.rem}</p></div></div>`:""}
+ </div>`}).join("")}
+</script>
+<script>
+/* ══════════ TROFEI ══════════ */
+function rTrofei(v){const un=trophies(S);
+ v.innerHTML=header("Sala delle Medaglie","I tuoi Trofei","Ogni impresa lascia una medaglia nella tua vetrina. Quelle grigie aspettano solo di essere conquistate.","#fbbf24","trophy")+
+ `<div class="card row" style="margin-bottom:24px;border-color:#fbbf24">
+   <div style="position:relative;width:110px;height:110px;flex-shrink:0"><svg viewBox="0 0 120 120" style="transform:rotate(-90deg)"><circle cx="60" cy="60" r="50" fill="none" stroke="#0a0e24" stroke-width="12"/><circle cx="60" cy="60" r="50" fill="none" stroke="#fbbf24" stroke-width="12" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="${314*(1-un.length/TROPHIES.length)}"/></svg>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><b class="fd" style="font-size:28px">${un.length}</b><span class="xs mut2" style="font-weight:900">su 12</span></div></div>
+   <div class="grow"><h2 class="fd" style="font-size:22px;font-weight:700">${un.length===0?"La vetrina è vuota... per ora":un.length===12?"VETRINA COMPLETA! Sei una leggenda":"La collezione cresce"}</h2>
+   <p class="small mut" style="margin-top:6px;line-height:1.6">Le medaglie si conquistano finendo lezioni, vincendo sfide, vivendo storie e tornando qui ogni giorno. Il trofeo <b class="blime">Cyber Guardiano</b> sblocca anche l'Armatura Cyber.</p></div>
+   ${colChip("Serie: "+S.streak+" gg","#fb923c","flame")}</div>
+ <div class="grid g3">${TROPHIES.map(t=>{const has=un.includes(t.k);return`<div class="card sm center" style="position:relative;overflow:hidden;border-color:${has?t.c:"var(--line)"};${has?"":"opacity:.8"}">
+  ${has?`<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,${t.c},transparent 65%);opacity:.18"></div>`:""}
+  <div style="position:relative"><div class="badgebox" style="margin:0 auto;width:76px;height:76px;border-radius:50%;background:${has?t.c+"22":"#0a0e24"};border:4px solid ${has?t.c:"#2b3560"};color:${has?t.c:"#3d4776"}">${icon(has?t.i:"lock",32)}</div>
+  <h3 class="fd" style="font-size:17px;font-weight:700;margin-top:14px;${has?"":"color:#64748b"}">${has?t.t:"???"}</h3>
+  <p class="xs mut" style="margin-top:6px;line-height:1.5">${t.d}</p>
+  <span class="chip" style="margin-top:12px;font-size:10px;border-color:${has?t.c+"66":"#2b3560"};color:${has?t.c:"#475569"}">${icon(has?"check":"lock",11)} ${has?"Conquistato":"Da conquistare"}</span></div></div>`}).join("")}</div>`}
+/* ══════════ AVATAR ══════════ */
+function rAvatar(v){const plan=planOf(S);const lvl=computeLevel(S.xp);const ul=AITEMS.filter(i=>itemUnlocked(i,S)).length;
+ const sec=(title,ic,c,inner)=>`<div class="card sm"><p class="acc-h" style="margin-bottom:12px"><span class="badgebox" style="width:30px;height:30px;border:none;box-shadow:none;background:${c}1c;color:${c}">${icon(ic,14)}</span>${title}</p>${inner}</div>`;
+ const btn=(it,cat,cur)=>{const ok=itemUnlocked(it,S);const on=S.avatar[cat]===it.id;
+  const hint=ok?it.l:(it.pro?"Esclusiva Abbonamento PRO / Business":it.lv?"Raggiungi il livello "+it.lv:"Trofeo: "+it.tr);
+  const msg=it.pro?"Servono Pro, Famiglia o Business.":it.lv?"Raggiungi il livello "+it.lv+"!":"Conquista il trofeo: "+it.tr+"!";
+  const act=ok?("avSet('"+cat+"','"+it.id+"')"):("toast('Oggetto bloccato','"+msg+"','#fb7185')");
+  return`<button class="itembtn ${on?"on":""} ${ok?"":"lock"}" title="${hint}" onclick="${act}">
+  <span class="row between" style="width:100%"><span style="line-height:1.25">${it.l}</span>${on?icon("check",13,3):ok?"":icon("lock",12)}</span>${ok?"":`<span class="xs" style="color:#475569;font-size:9.5px">${it.pro?"PRO":it.lv?"Lv."+it.lv:"Trofeo"}</span>`}</button>`};
+ const cats=c=>AITEMS.filter(i=>i.cat===c).map(i=>btn(i,c,S.avatar[c])).join("");
+ v.innerHTML=header("Laboratorio Eroe","Il tuo Avatar",`Personalizza il tuo personaggio: ${ul}/${AITEMS.length} oggetti sbloccati. Gli altri si conquistano con livelli, trofei o i piani Pro!`,"#8b5cf6","user")+
+ `<div class="grid" style="grid-template-columns:.85fr 1.15fr;gap:20px;align-items:start">
+  <div>
+   <div class="card center" style="border-color:#8b5cf6"><div class="svgwarp">${avatarSVG(S.avatar,260)}</div>
+    <p class="fd" style="font-size:23px;font-weight:700;margin-top:12px">${S.name}</p>
+    <div class="row" style="justify-content:center;margin-top:8px;gap:6px">${colChip("Lv."+lvl.level+" — "+lvl.name,"#fbbf24","star")}${colChip(S.xp+" PX","#a3e635")}</div>
+    <button class="btn ghost block" style="border-color:rgba(34,211,238,.6);color:var(--cy);margin-top:16px" onclick="avRandom()">${icon("refresh-ccw",15)} Eroe casuale</button></div>
+   <div class="card sm" style="margin-top:16px"><p class="acc-h" style="margin-bottom:10px"><span class="badgebox" style="width:30px;height:30px;border:none;box-shadow:none;background:rgba(232,121,249,.15);color:#f0abfc">${icon("badge-check",14)}</span>Nome in codice</p>
+    <p class="xs mut2" style="margin-bottom:10px;line-height:1.5">Usa un soprannome, non nome e cognome: la lezione Privacy vale anche qui.</p>
+    <div class="row" style="flex-wrap:nowrap"><input class="field" id="avname" maxlength="18" value="${S.name}" onkeydown="if(event.key==='Enter')avName()"><button class="btn solid" style="background:#e879f9;border-color:#e879f9;padding:11px 16px" onclick="avName()">Salva</button></div></div>
+  </div>
+  <div class="grid" style="gap:16px">
+   <div class="grid g2" style="gap:16px">
+    ${sec("Colore della pelle","user","#eab883",`<div class="row" style="gap:8px">${SKIN_C.map((c,i)=>`<button class="swatch ${S.avatar.skin===i?"on":""}" style="background:${c}" onclick="avSet('skin',${i})" aria-label="Tono ${i+1}"></button>`).join("")}</div>`)}
+    ${sec("Colore dei capelli","sparkles","#f2c94c",`<div class="row" style="gap:8px">${HAIR_C.map((c,i)=>`<button class="swatch ${S.avatar.hairColor===i?"on":""}" style="background:${c}" onclick="avSet('hairColor',${i})" aria-label="Colore ${i+1}"></button>`).join("")}</div>`)}
+   </div>
+   ${sec("Acconciatura","sparkles","#fb7185",`<div class="grid g2" style="gap:8px">${cats("hair")}</div>`)}
+   ${sec("Sguardo","eye","#22d3ee",`<div class="grid g2" style="gap:8px">${cats("eyes")}</div>`)}
+   ${sec("Divisa","shield","#a3e635",`<div class="grid g2" style="gap:8px">${cats("outfit")}</div>`)}
+   ${sec("Accessorio","gem","#fbbf24",`<div class="grid g2" style="gap:8px">${cats("accessory")}</div>`)}
+   ${sec("Sfondo dello scenario","sparkles","#e879f9",`<div class="grid g2" style="gap:8px">${cats("bg")}</div>`)}
+   <div class="card sm row" style="border-color:rgba(251,191,36,.5)"><span class="badgebox" style="background:rgba(251,191,36,.15);color:var(--gold);border:none;box-shadow:none">${icon("trophy",20)}</span><p class="small mut grow"><b style="color:#fff">Vuoi più oggetti?</b> L'Armatura Cyber si sblocca col trofeo Cyber Guardiano; il set NEON + Corona + Visiera con i piani Pro & Business!</p><button class="btn ghost sm" style="border-color:rgba(251,191,36,.6);color:var(--gold)" onclick="go('piani');goHash()">Vantaggi Pro</button></div>
+  </div></div>`}
+function avSet(cat,val){S.avatar[cat]=val;save();document.querySelector(".svgwarp").innerHTML=avatarSVG(S.avatar,260);document.querySelectorAll(".itembtn").length&&render()}
+function avName(){const n=document.getElementById("avname").value.trim().slice(0,18);if(n.length<2){toast("Nome troppo corto","Almeno 2 caratteri","#fb7185");return}S.name=n;save();toast("Nome aggiornato!","Il tuo nuovo nome da eroe è salvato","#a3e635",icon("badge-check",15));render()}
+function avRandom(){const get=(cat)=>{const u=AITEMS.filter(i=>i.cat===cat&&itemUnlocked(i,S));return u[Math.floor(Math.random()*u.length)].id};S.avatar.skin=Math.floor(Math.random()*6);S.avatar.hairColor=Math.floor(Math.random()*6);["hair","eyes","outfit","accessory","bg"].forEach(c=>S.avatar[c]=get(c));save();render()}
+/* ══════════ PIANI ══════════ */
+let PL_CYCLE="monthly";
+function rPiani(v){PL_CYCLE=PL_CYCLE||"monthly";const plan=planOf(S);const pd=planDef(plan);
+ v.innerHTML=header("Abbonamenti","Scegli il piano su misura per te","CyberQuest è gratuita per tutti. Con Pro Eroe, Famiglia Plus e Business & Scuole raddoppi i Punti Esperienza, sblocchi equipaggiamento esclusivo e gestisci figli o classi intere.","#fbbf24","crown")+
+ `<div class="card row" style="margin-bottom:18px;border-color:${pd.c}">
+  <span class="badgebox" style="background:${pd.c};color:#0b1026">${icon(pd.i==="building"?"building":pd.i,22,2.6)}</span>
+  <div class="grow"><p class="xs fd mut2" style="text-transform:uppercase;letter-spacing:2px">${S.user?"Il tuo abbonamento attivo":"Stai giocando come ospite"}</p>
+  <h2 class="fd" style="font-size:22px;font-weight:700;margin-top:3px">${S.user?pd.n:"Base Gratuito da Ospite"} <span class="small bcy" style="font-weight:800">(XP x${xpMult()})</span></h2></div>
+  <div class="row" style="gap:6px">${colChip("XP x"+xpMult()+" attivo","#a3e635")}${plan!=="free"?colChip("Scudo Salva-Serie","#22d3ee","shield-check"):""}${S.user?"":`<button class="btn solid sm" style="background:var(--lime);border-color:var(--lime)" onclick="go('accedi');goHash()">Accedi per attivare un abbonamento</button>`}</div></div>
+ <div class="center"><div class="row" style="justify-content:center;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:5px;display:inline-flex;gap:4px;margin-bottom:22px">
+  <button class="icbtn" id="cy-m" style="border:none;font-size:12px" onclick="PL_CYCLE='monthly';rPiani(document.getElementById('view'))">Mensile</button>
+  <button class="icbtn" id="cy-y" style="border:none;font-size:12px" onclick="PL_CYCLE='yearly';rPiani(document.getElementById('view'))">Annuale <span style="background:rgba(0,0,0,.2);border-radius:99px;padding:2px 7px;font-size:10px">-20%</span></button></div></div>
+ <div class="grid g4">${PLANS.map(p=>{const price=p.mp===0?["€0","per sempre"]:PL_CYCLE==="yearly"?[euro(p.yp)+"/mese",euro(p.yt)+" all'anno"]:[euro(p.mp)+"/mese","disdici quando vuoi"];const cur=S.user&&plan===p.id;
+ return`<div class="card sm plancard" style="border-color:${cur?"#a3e635":p.pop?"#22d3ee":p.c+"55"}">
+  ${p.pop?`<span class="pop-badge">Più scelto</span>`:""}
+  <div class="row between"><span class="chip fd" style="font-size:10px;border-color:${p.c}66;color:${p.c};background:${p.c}15">${icon(p.i==="building"?"building":p.i,11)} ${p.tag}</span>${cur?`<span class="chip" style="font-size:10px;border-color:#a3e635;color:#a3e635;background:rgba(163,230,53,.1)">Attivo</span>`:""}</div>
+  <h3 class="fd" style="font-size:21px;font-weight:700;margin-top:12px">${p.n}</h3>
+  <p class="xs mut" style="margin-top:4px;line-height:1.5;min-height:32px">${p.tl}</p>
+  <div style="border-block:1px solid rgba(255,255,255,.08);padding:14px 0;margin:14px 0"><b class="fd" style="font-size:30px">${price[0]}</b><span class="xs mut" style="display:block;margin-top:3px;font-weight:800">${price[1]}</span></div>
+  <div class="grid" style="gap:8px;font-size:11.5px;line-height:1.5;color:#cbd5e1">${p.perks.map(k=>`<div class="row" style="align-items:flex-start"><span style="color:${p.c};flex-shrink:0">${icon("check",12,3)}</span>${k}</div>`).join("")}</div>
+  <button class="btn sm block" style="margin-top:16px;${cur?"border-color:rgba(163,230,53,.4);background:rgba(163,230,53,.1);color:#a3e635;cursor:default":`border-color:${p.c};background:${p.id==="free"?"transparent":p.c};color:${p.id==="free"?"#e2e8f0":"#0b1026"}`}" ${cur?"disabled":""} onclick="selectPlan('${p.id}')">${cur?"Piano attuale":p.cta}</button></div>`}).join("")}</div>
+ <div class="card" style="margin-top:24px;overflow-x:auto"><h3 class="fd" style="font-size:20px;font-weight:700;margin-bottom:16px">Confronto dettagliato dei vantaggi</h3>
+  <table class="compare"><thead><tr><th>Funzionalità</th><th>Base (€0)</th><th class="bcy">Pro (€4,99)</th><th class="bfux">Famiglia (€9,99)</th><th class="bgold">Business (€29,99)</th></tr></thead>
+  <tbody>${[["Lezioni, Prove, Storie & SOS","✓","✓","✓","✓"],["Patentino statico stampabile","✓","✓","✓","✓"],["Moltiplicatore Punti Esperienza","x1","x2","x2","x2"],["Scudo Salva-Serie Giornaliera","—","✓","✓","✓"],["Cosmetici Avatar Esclusivi PRO","—","✓","✓","✓ + Tutti"],["Profili gestibili","1","1","Fino a 5","Fino a 30"],["Codice Invito & Pannello","—","—","Famiglia","Classe/Team"],["Kit Educazione Civica LIM","—","—","—","✓"]].map(r=>`<tr><td style="font-weight:800">${r[0]}</td><td>${r[1]}</td><td style="color:#a5f3fc">${r[2]}</td><td style="color:#f5b8f8">${r[3]}</td><td style="color:#fcd34d">${r[4]}</td></tr>`).join("")}</tbody></table></div>`;
+ const my=document.getElementById("cy-m"),yy=document.getElementById("cy-y");if(my&&yy){const on=b=>{b.style.background=PL_CYCLE==="monthly"===(b===my)?"var(--vio)":"var(--lime)";b.style.color="#fff"};on(my);on(yy);if(PL_CYCLE==="yearly"){yy.style.background="var(--lime)";yy.style.color="#0b1026"}}}
+function selectPlan(id){const p=planDef(id);if(!S.user){showModal(`<div class="badgebox" style="margin:0 auto;background:rgba(34,211,238,.15);color:var(--cy);width:70px;height:70px;border-radius:22px">${icon("log-in",32)}</div>
+ <h2 class="fd" style="font-size:24px;font-weight:700;margin-top:16px">Serve un account</h2>
+ <p class="small mut" style="margin-top:8px;line-height:1.6">Gli abbonamenti (come <b style="color:${p.c}">${p.n}</b>) si attivano solo su un account personale. Registrati gratis: i tuoi progressi da ospite <b class="blime">restano tutti salvati</b>!</p>
+ <button class="btn solid block" style="background:var(--lime);border-color:var(--lime);margin-top:16px" onclick="closeModal();go('accedi','${id}');goHash()">Accedi o Registrati</button>
+ <button class="btn ghost block" style="border-color:#334155;color:var(--mut);margin-top:8px" onclick="closeModal()">Continua gratis da ospite</button>`,"#22d3ee");return}
+ S.accounts[S.user].plan=id;S.accounts[S.user].cycle=PL_CYCLE;save();confetti(true);renderTop();rPiani(document.getElementById("view"));
+ toast(`Piano ${p.n} attivato!`,id!=="free"?"Moltiplicatore XP x2 e vantaggi esclusivi subito attivi!":"Sei tornato al piano Base Gratuito.",p.c,icon("crown",16))}
+/* ══════════ ACCEDI ══════════ */
+let AUTH={mode:"register",plan:"free",loading:false};
+function rAccedi(v,prePlan){const pd=planDef(prePlan||AUTH.plan);
+ if(S.user){const me=S.accounts[S.user];const my=planDef(me.plan);v.innerHTML=`<a class="fd mut" style="font-size:13px;font-weight:800;cursor:pointer" onclick="go('home');goHash()">${icon("arrow-left",14)} Torna alla Home</a>
+ <div class="card center" style="max-width:520px;margin:30px auto 0;border-color:#a3e635;padding:34px"><span class="badgebox" style="margin:0 auto;background:rgba(163,230,53,.15);color:var(--lime);width:64px;height:64px;border-radius:20px">${icon("badge-check",32)}</span>
+ <h1 class="fd" style="font-size:30px;font-weight:700;margin-top:16px">Sei già connesso!</h1>
+ <p class="small mut" style="margin-top:8px;line-height:1.6">Stai usando l'account <b style="color:#fff">${S.user}</b> con il piano <b style="color:${my.c}">${my.n}</b> (${me.cycle==="yearly"?"annuale":"mensile"}).</p>
+ <div class="row" style="justify-content:center;margin-top:20px"><button class="btn solid" style="background:var(--lime);border-color:var(--lime)" onclick="go('home');goHash()">${icon("home",15)} Vai alla Home</button>
+ <button class="btn ghost" style="border-color:rgba(34,211,238,.6);color:var(--cy)" onclick="go('piani');goHash()">${icon("crown",15)} Gestisci piano</button></div></div>`;return}
+ AUTH.plan=prePlan||AUTH.plan;
+ v.innerHTML=header("Area Account","Accedi o crea il tuo Account","L'account serve per salvare i progressi nel cloud e attivare gli abbonamenti. Puoi anche continuare a giocare da ospite: i PX che guadagni restano nel tuo dispositivo.","#22d3ee","lock")+
+ `<div class="card" style="max-width:520px;margin:0 auto">
+  <div class="row" style="background:#0a0e24;border:2px solid var(--line);border-radius:16px;padding:5px;gap:5px">
+   <button class="icbtn grow" id="tab-r" onclick="AUTH.mode='register';rAccedi(document.getElementById('view'))" style="justify-content:center">${icon("user-plus",15)} Registrati</button>
+   <button class="icbtn grow" id="tab-l" onclick="AUTH.mode='login';rAccedi(document.getElementById('view'))" style="justify-content:center">${icon("log-in",15)} Accedi</button></div>
+  <form onsubmit="return authSubmit(event)" style="margin-top:20px;display:grid;gap:14px">
+   ${AUTH.mode==="register"?`<div><label class="xs fd mut" style="font-weight:800;text-transform:uppercase;letter-spacing:1.5px">Nome in codice / Soprannome</label><input class="field" id="authName" required minlength="2" maxlength="24" placeholder="Es. SuperMarco, CyberSofia..." style="margin-top:6px"></div>`:""}
+   <div><label class="xs fd mut" style="font-weight:800;text-transform:uppercase;letter-spacing:1.5px">Indirizzo Email</label><input class="field" id="authMail" required type="email" placeholder="tuonome@esempio.it" style="margin-top:6px"></div>
+   <div><label class="xs fd mut" style="font-weight:800;text-transform:uppercase;letter-spacing:1.5px">Password (minimo 6 caratteri)</label><input class="field" id="authPass" required type="password" minlength="6" placeholder="Minimo 6 caratteri" style="margin-top:6px"></div>
+   ${AUTH.mode==="register"?`<div><label class="xs fd mut" style="font-weight:800;text-transform:uppercase;letter-spacing:1.5px">Piano scelto (modificabile quando vuoi)</label><div class="grid g2" style="gap:8px;margin-top:8px">${PLANS.map(p=>`<button type="button" class="itembtn ${AUTH.plan===p.id?"on":""}" onclick="AUTH.plan='${p.id}';rAccedi(document.getElementById('view'))">${p.n}<span class="xs" style="color:${p.c};font-weight:900;margin-top:2px">${p.mp===0?"€0 · Gratis":euro(p.mp)+"/mese"}</span></button>`).join("")}</div></div>`:""}
+   <div id="authErr"></div>
+   <button type="submit" class="btn solid big block" style="background:var(--lime);border-color:var(--lime)">${icon(AUTH.mode==="register"?"rocket":"log-in",18,2.6)} ${AUTH.mode==="register"?"Crea Account e Entra":"Accedi al tuo Account"}</button>
+  </form>
+  <p class="center small mut" style="margin-top:16px">${AUTH.mode==="register"?`Hai già un account? <a class="bcy" style="cursor:pointer;font-weight:900" onclick="AUTH.mode='login';rAccedi(document.getElementById('view'))">Accedi qui</a>`:`Prima volta? <a class="blime" style="cursor:pointer;font-weight:900" onclick="AUTH.mode='register';rAccedi(document.getElementById('view'))">Registrati gratis</a>`}</p>
+  <p class="center xs mut2" style="margin-top:12px;line-height:1.6;border-top:1px solid var(--line);padding-top:12px">Versione file unico: l'account è salvato in sicurezza nel browser (localStorage). Registrandoti, tutti i progressi da ospite restano sul tuo profilo.</p></div>`;
+ const tr=document.getElementById("tab-r"),tl=document.getElementById("tab-l");const on=(b,yes,bg)=>{if(b){b.style.background=yes?bg:"transparent";b.style.color=yes?(bg==="var(--lime)"?"#0b1026":"#0b1026"):"var(--mut)";if(!yes)b.style.color="var(--mut)"}};on(tr,AUTH.mode==="register","var(--lime)");on(tl,AUTH.mode==="login","var(--cy)")}
+function authSubmit(e){e.preventDefault();const mail=document.getElementById("authMail").value.trim().toLowerCase();const pass=document.getElementById("authPass").value;const err=document.getElementById("authErr");
+ const fail=msg=>{err.innerHTML=`<div class="row small" style="border:2px solid rgba(251,113,133,.6);background:rgba(251,113,133,.14);border-radius:14px;padding:12px;font-weight:800;color:#fecdd3;align-items:flex-start"><span class="brose" style="flex-shrink:0">${icon("alert",15)}</span>${msg}</div>`;return false};
+ if(AUTH.mode==="register"){const name=document.getElementById("authName").value.trim();
+  if(name.length<2||name.length>24)return fail("Il nome eroe deve avere tra 2 e 24 caratteri.");
+  if(S.accounts[mail])return fail("Questa email è già registrata. Passa alla scheda 'Accedi' per entrare!");
+  S.accounts[mail]={pass:btoa(pass),plan:AUTH.plan,cycle:"monthly",date:new Date().toISOString()};S.user=mail;if(name)S.name=name;save();
+  const delta=AUTH.plan!=="free";if(delta)confetti(true);
+  renderTop();toast("Account creato con successo!","Benvenuto in CyberQuest"+(delta?" — piano "+planDef(AUTH.plan).n+" attivo!":", la tua avventura comincia ora!"),"#a3e635",icon("rocket",16));
+  confetti(true);go("home");goHash();return false}
+ if(!S.accounts[mail]||S.accounts[mail].pass!==btoa(pass))return fail("Email o password non corretti. Riprova!");
+ S.user=mail;save();renderTop();toast("Bentornato!","Accesso effettuato come "+mail,"#22d3ee",icon("badge-check",15));go("home");goHash();return false}
+function logout(){S.user=null;save();renderTop();toast("Sei uscito","Continui a giocare come ospite: i progressi restano sul dispositivo.","#22d3ee",icon("log-out",15));if(["piani","accedi"].includes(V.name)){go("home")}renderTop()}
+/* ══════════ PATENTINO (STATICO) ══════════ */
+function rPatentino(v){const ready=patentinoReady();const done=REQUIRE.filter(r=>hasComp(r[0],r[1])).length;const dateStr=new Date().toLocaleDateString("it-IT",{day:"numeric",month:"long",year:"numeric"});const serial="CQ-"+String(done*7+13).padStart(3,"0")+"-"+new Date().getFullYear();
+ const urlFor=(k,r)=>k==="lesson"?`go('lesson','${r}')`:k==="game"?`go('${{"trova-la-truffa":"trova","testa-password":"pw","escape-room":"escape","finto-profilo":"finto"}[r]}')`:`go('story','${r}')`;
+ v.innerHTML=`<div class="no-print">${header("Certificato ufficiale","Il tuo Patentino",ready?"Complimenti, Cyber Guardiano: hai completato tutto il percorso! Controlla il nome, poi stampa o scarica il tuo attestato.":"Il Patentino di Sicurezza Digitale si conquista completando tutto il percorso. Ecco quanto ti manca per il traguardo: ogni casella spuntata ti avvicina.","#fbbf24","graduation-cap")}
+ ${ready?"":`<div class="card" style="margin-bottom:24px;border-color:rgba(251,191,36,.6)">
+  <div class="row between"><h2 class="fd" style="font-size:19px;font-weight:700">Percorso: ${done}/${REQUIRE.length} missioni completate</h2><span class="chip" style="border-color:rgba(251,191,36,.5);color:#fcd34d;background:rgba(251,191,36,.1)">Mancano ${REQUIRE.length-done}</span></div>
+  ${bar(done/REQUIRE.length,"#fbbf24",14)}
+  <div class="grid g2" style="gap:8px;margin-top:16px">${REQUIRE.map(r=>{const ok=hasComp(r[0],r[1]);return`<button class="opt" style="${ok?"border-color:rgba(163,230,53,.5);background:rgba(163,230,53,.05)":""}" onclick="${urlFor(r[0],r[1])};goHash()"><span class="row" style="gap:8px"><span style="color:${ok?"#a3e635":"#475569"}">${icon(ok?"check":"circle",15,3)}</span><span class="${ok?"":"mut2"}" style="font-size:13px;font-weight:800">${r[2]}</span></span>${ok?"":icon("arrow-right",13)}</button>`}).join("")}</div></div>`}
+ ${ready?`<div class="card row" style="margin-bottom:20px;align-items:flex-end;flex-wrap:wrap">
+   <div class="grow" style="min-width:220px"><label class="xs fd mut" style="font-weight:800;text-transform:uppercase;letter-spacing:2px">Nome sul certificato</label><input class="field" id="certName" maxlength="24" value="${S.name}" style="margin-top:6px"></div>
+   <button class="btn ghost" style="border-color:rgba(139,92,246,.6);color:#c4b5fd" onclick="avName2()">Aggiorna nome</button>
+   <button class="btn solid" style="background:var(--gold);border-color:var(--gold)" onclick="window.print()">${icon("printer",18,2.6)} Stampa o scarica il PDF</button></div>`
+ :`<p class="small mut2" style="font-weight:800;display:flex;gap:8px;align-items:center;margin-bottom:20px">${icon("lock",14)} Il download si attiva quando completi tutte le missioni. L'anteprima è il tuo traguardo.</p>`}
+ </div>
+ <div id="certWrap"><div id="cert">
+   <div class="cert-frame"></div><div class="cert-frame2"></div>
+   <svg viewBox="0 0 24 24" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:55%;opacity:.045" fill="none" stroke="#1e2a5a" stroke-width="1.3"><path d="M12 2 20 5v6c0 5.5-3.5 9.5-8 11-4.5-1.5-8-5.5-8-11V5l8-3zM8.5 11.5 11 14l4.5-4.5"/></svg>
+   ${ready?"":`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:5"><p class="fd" style="font-size:clamp(38px,7vw,64px);font-weight:700;text-transform:uppercase;letter-spacing:6px;color:rgba(160,40,60,.16);transform:rotate(-12deg);user-select:none">In corso</p></div>`}
+   <div class="cert-in" style="position:relative;z-index:6">
+    <div>
+      <p class="fd" style="font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#1e2a5a">⚡ CyberQuest Academy</p>
+      <div class="row" style="justify-content:center;gap:12px;margin-top:10px"><span style="height:1px;width:80px;background:#c9a227"></span><span style="width:6px;height:6px;background:#c9a227;transform:rotate(45deg)"></span><span style="height:1px;width:80px;background:#c9a227"></span></div>
+      <h2 class="fd" style="font-size:clamp(22px,3.6vw,38px);font-weight:700;color:#1e2a5a;margin-top:10px;letter-spacing:-.5px">PATENTINO DI SICUREZZA DIGITALE</h2>
+      <p style="font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#8a6d1d;margin-top:6px">Attestato di completamento del percorso formativo</p>
+    </div>
+    <div style="width:100%">
+      <p style="font-size:12.5px;color:#4b5563">Il presente attestato certifica che</p>
+      <p class="cert-name" id="certNameOut">${S.name}</p>
+      <div class="cert-rule"></div>
+      <p style="font-size:12.5px;color:#4b5563;line-height:1.6;max-width:560px;margin:8px auto 0">ha completato con successo l'intero percorso CyberQuest, dimostrando di saper proteggere se stesso e gli altri nel mondo digitale:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px 26px;max-width:600px;margin:10px auto 0;text-align:left;font-size:11.5px;font-weight:900;color:#1e2a5a">
+        ${["Creare password sicure e attivare il 2FA","Riconoscere truffe, phishing e link pericolosi","Proteggere la propria privacy sui social","Reagire a cyberbullismo e richieste sospette"].map(c=>`<p style="display:flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 20 20" style="flex-shrink:0"><circle cx="10" cy="10" r="9" fill="#1e2a5a"/><path d="M6 10.5 L9 13 L14 7.5" stroke="#f8f3e7" stroke-width="2" fill="none" stroke-linecap="round"/></svg>${c}</p>`).join("")}
+      </div>
+    </div>
+    <div style="display:flex;width:100%;align-items:flex-end;justify-content:space-between">
+      <svg viewBox="0 0 120 150" style="height:96px;width:77px"><path d="M38 108 L28 146 L48 134 L58 146 L62 116 Z" fill="#a16207"/><path d="M82 108 L92 146 L72 134 L62 146 L58 116 Z" fill="#ca8a04"/><circle cx="60" cy="56" r="46" fill="#d4af37"/><circle cx="60" cy="56" r="46" fill="none" stroke="#92610a" stroke-width="3"/><circle cx="60" cy="56" r="37" fill="#f1d68a" stroke="#92610a" stroke-width="2"/><polygon points="60,28 66.8,45.2 85,46 71,57.5 75.6,75 60,65.5 44.4,75 49,57.5 35,46 53.2,45.2" fill="#92610a"/></svg>
+      <div style="text-align:center"><p class="fm" style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#8a6d1d">Codice attestato</p><p class="fm" style="font-size:11px;font-weight:700;color:#1e2a5a">${serial}</p><p style="font-size:10.5px;color:#4b5563;margin-top:8px">Rilasciato il <b>${dateStr}</b></p></div>
+      <div style="text-align:center;min-width:150px"><p class="fd" style="font-size:21px;font-style:italic;color:#1e2a5a">CyberQuest HQ</p><div style="height:1px;background:#1e2a5a;margin-top:3px"></div><p style="font-size:9.5px;text-transform:uppercase;letter-spacing:1.5px;color:#4b5563;margin-top:4px">Il Direttore dell'Accademia</p></div>
+    </div>
+   </div></div></div>
+ <p class="center xs mut2 no-print" style="margin-top:14px">Consiglio di stampa: orientamento orizzontale (si imposta da solo). Puoi anche scegliere "Salva come PDF" per averlo sempre con te.</p>`}
+function avName2(){const inp=document.getElementById("certName");const n=inp.value.trim().slice(0,24);if(n.length>=2){S.name=n;save();document.getElementById("certNameOut").textContent=n;toast("Nome aggiornato!","Certificato aggiornato col nuovo nome.","#a3e635",icon("badge-check",15))}}
+/* ══════════ INIT ══════════ */
+load();dailyCheck();
+function routeFromHash(){const h=location.hash.replace(/^#\/?/,"").split("/");if(h[0]){const map={"impara":"impara","gioca":"gioca","storie":"storie","trofei":"trofei","avatar":"avatar","patentino":"patentino","piani":"piani","accedi":"accedi","soccorso":"soccorso","lesson":"lesson","story":"story","trova":"trova","pw":"pw","escape":"escape","finto":"finto","trova-la-truffa":"trova","testa-password":"pw","escape-room":"escape","finto-profilo":"finto"};if(map[h[0]]){V={name:map[h[0]],arg:h[1]||null};if(h[0]==="accedi"&&h[1])AUTH.plan=h[1];if(h[0]==="gioca"&&h[1]&&map[h[1]])V={name:map[h[1]],arg:null}}else V={name:"home",arg:null}}else V={name:"home",arg:null};render()}
+window.addEventListener("hashchange",routeFromHash);routeFromHash();
+window.addEventListener("resize",()=>{cnf.width=innerWidth;cnf.height=innerHeight});
+</script>
+</body>
+</html>
+</body>
+</html>
